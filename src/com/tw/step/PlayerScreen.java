@@ -14,7 +14,7 @@ public class PlayerScreen extends JFrame {
         if (RIGHT_TO_LEFT)
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
-        JPanel player, cards, UNOButton, log, cardStatus, drawButton, pileButton;
+        JPanel player, cards, UNOButton, log;
 
         pane.setLayout(new GridBagLayout());
         constraints = new GridBagConstraints();
@@ -36,17 +36,25 @@ public class PlayerScreen extends JFrame {
         String[] logMessages = {"Aniket placed red 4", "Shital placed red 6", "Sandesh placed blue 6", "ram said UNO"};
 
         log = new Log(logMessages);
-        addToRow(log, 0, 3, 1);
 
-        cardStatus = new Status();
-        addToRow(cardStatus, 3,1,2);
+        addLogToFrame(log);
 
-        drawButton = new DrawButton();
-        addToRow(drawButton, 2,1,1);
+        addToRow(new Status(), 3,1,2);
 
-        pileButton = new PileButton();
-        addToRow(pileButton,2,2,1 );
+        addToRow(new DrawButton(), 2,1,1);
 
+        addToRow(new PileButton(),2,2,1 );
+
+        addToRow(new WildCard().addAllButtons(),2,3,1);
+    }
+
+    private static void addLogToFrame(JPanel log) {
+        constraints.weightx = 0.5;
+        constraints.gridx = 3;
+        constraints.gridy = 0;
+        constraints.gridheight = 1;
+
+        PlayerScreen.pane.add(log, constraints);
     }
 
     private static void addToRow(JPanel panel, int gridY, int gridX, int width) {
