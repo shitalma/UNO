@@ -11,11 +11,10 @@ public class PlayerScreen extends JFrame {
     private static Container pane;
 
     public static void addComponentsToPane(Container pane) {
-        if (RIGHT_TO_LEFT) {
+        if (RIGHT_TO_LEFT)
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        }
 
-        JPanel player, cards, UNOButton,log;
+        JPanel player, cards, UNOButton, log, cardStatus, drawButton, pileButton;
 
         pane.setLayout(new GridBagLayout());
         constraints = new GridBagConstraints();
@@ -25,22 +24,32 @@ public class PlayerScreen extends JFrame {
 //            constraints.fill = GridBagConstraints.VERTICAL;
         }
         //adds players to grid 0,0
-        player = new Players(Arrays.asList("Sandesh", "Ram","Sheetal","Aniket"));
-        addToPane(player,0,0,3);
+        player = new Players(Arrays.asList("Sandesh", "Ram", "Sheetal", "Aniket"));
+        addToRow(player, 0, 0, 3);
 
-        cards = new MyCards(Arrays.asList("blue 1", "red 4", "yellow 8", "wild +4","blue 1", "red 4", "yellow 8", "wild +4"));
-        addToPane(cards,4,0,2);
+        cards = new MyCards(Arrays.asList("blue 1", "red 4", "yellow 8", "wild +4", "blue 1", "red 4", "yellow 8", "wild +4"));
+        addToRow(cards, 4, 0, 2);
 
-        UNOButton = new com.tw.step.UNOButton();
-        addToPane(UNOButton, 4, 3, 1);
+        UNOButton = new UNOButton();
+        addToRow(UNOButton, 4, 3, 1);
 
         String[] logMessages = {"Aniket placed red 4", "Shital placed red 6", "Sandesh placed blue 6", "ram said UNO"};
 
         log = new Log(logMessages);
-        addToPane(log,0,3,1);
+        addToRow(log, 0, 3, 1);
+
+        cardStatus = new Status();
+        addToRow(cardStatus, 3,1,2);
+
+        drawButton = new DrawButton();
+        addToRow(drawButton, 2,1,1);
+
+        pileButton = new PileButton();
+        addToRow(pileButton,2,2,1 );
+
     }
 
-    private static void addToPane(JPanel panel, int gridY,int gridX , int width) {
+    private static void addToRow(JPanel panel, int gridY, int gridX, int width) {
 
         constraints.weightx = 0.5;
         constraints.gridx = gridX;
@@ -51,7 +60,7 @@ public class PlayerScreen extends JFrame {
     }
 
     public PlayerScreen() {
-        setMinimumSize(new Dimension(400,250));
+        setMinimumSize(new Dimension(400, 250));
 
         setMaximizedBounds(new Rectangle(800, 500));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
