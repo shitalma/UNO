@@ -24,7 +24,7 @@ public class PlayerScreen extends JFrame {
 //            constraints.fill = GridBagConstraints.VERTICAL;
         }
         //adds players to grid 0,0
-        player = new Players(Arrays.asList("Sandesh", "Ram", "Sheetal", "Aniket"));
+        player = new Players(Arrays.asList("Sandesh", "Ram", "Sheetal", "Aniket"),Arrays.asList("5", "8", "2", "6"));
         addToRow(player, 0, 0, 3);
 
         cards = new MyCards(Arrays.asList("blue 1", "red 4", "yellow 8", "wild +4", "blue 1", "red 4", "yellow 8", "wild +4"));
