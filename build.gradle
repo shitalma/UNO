@@ -2,10 +2,10 @@ apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'idea'
 
-group = "com.tw.step"
+group = "com.tw.com.tw.step"
 version = "0.1"
 
-mainClassName="com.tw.step.Main" // Change it to your main class
+mainClassName="com.tw.com.tw.step.Main" // Change it to your main class
 
 repositories { mavenCentral() }
 

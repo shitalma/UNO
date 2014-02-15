@@ -1,9 +1,10 @@
-
 package com.tw.step;
 
+/**
+ * This is for starting the main uno screen.
+ */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        new MainFrame().display();
     }
 }
-                
