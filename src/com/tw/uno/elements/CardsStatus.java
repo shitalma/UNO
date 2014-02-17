@@ -1,8 +1,4 @@
-package com.tw.step;
-
-import com.tw.step.DrawButton;
-import com.tw.step.PileButton;
-import com.tw.step.Status;
+package com.tw.uno.elements;
 
 import javax.swing.*;
 import java.awt.*;

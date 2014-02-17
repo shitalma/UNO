@@ -1,4 +1,4 @@
-package shital;
+package com.tw.uno.screen;
 
 import javax.swing.*;
 import java.awt.*;

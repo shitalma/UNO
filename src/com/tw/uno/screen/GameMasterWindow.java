@@ -1,10 +1,13 @@
-package com.tw.step;
+package com.tw.uno.screen;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
 
-public class PlayerScreen extends JFrame {
+/**
+ * keep tak of log
+ */
+public class GameMasterWindow extends JFrame{
     final static boolean shouldFill = true;
     final static boolean RIGHT_TO_LEFT = false;
     private static GridBagConstraints constraints;
@@ -14,7 +17,7 @@ public class PlayerScreen extends JFrame {
         if (RIGHT_TO_LEFT)
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
-        JPanel player, cards, UNOButton, log;
+        JPanel player,log;
 
         pane.setLayout(new GridBagLayout());
         constraints = new GridBagConstraints();
@@ -27,11 +30,6 @@ public class PlayerScreen extends JFrame {
         player = new Players(Arrays.asList("Sandesh", "Ram", "Sheetal", "Aniket"),Arrays.asList("5", "8", "2", "6"));
         addToRow(player, 0, 0, 3);
 
-        cards = new MyCards(Arrays.asList("blue 1", "red 4", "yellow 8", "wild +4", "blue 1", "red 4", "yellow 8", "wild +4"));
-        addToRow(cards, 4, 0, 2);
-
-        UNOButton = new UNOButton();
-        addToRow(UNOButton, 4, 3, 1);
 
         String[] logMessages = {"Aniket placed red 4", "Shital placed red 6", "Sandesh placed blue 6", "ram said UNO"};
 
@@ -54,7 +52,7 @@ public class PlayerScreen extends JFrame {
         constraints.gridy = 0;
         constraints.gridheight = 1;
 
-        PlayerScreen.pane.add(log, constraints);
+        GameMasterWindow.pane.add(log, constraints);
     }
 
     private static void addToRow(JPanel panel, int gridY, int gridX, int width) {
@@ -67,7 +65,7 @@ public class PlayerScreen extends JFrame {
         pane.add(panel, constraints);
     }
 
-    public PlayerScreen() {
+    public GameMasterWindow() {
         setMinimumSize(new Dimension(400, 250));
 
         setMaximizedBounds(new Rectangle(800, 500));
@@ -83,6 +81,6 @@ public class PlayerScreen extends JFrame {
     }
 
     public static void main(String[] args) {
-        new PlayerScreen();
+        new GameMasterWindow();
     }
 }
