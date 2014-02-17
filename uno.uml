@@ -403,7 +403,7 @@
 <XPD:REF name="Views[2]">evbyk4Lv90OLZds8kCvWDAAA</XPD:REF>
 <XPD:REF name="Views[3]">thPivbsyoUGok7nfNckW5gAA</XPD:REF>
 <XPD:ATTR name="#TypedParameters" type="integer">1</XPD:ATTR>
-<XPD:REF name="TypedParameters[0]" pathname="card">Xn2Ux0QWCEi+1Ji3DZxM9AAA</XPD:REF>
+<XPD:REF name="TypedParameters[0]" pathname="numberCard">Xn2Ux0QWCEi+1Ji3DZxM9AAA</XPD:REF>
 <XPD:ATTR name="#Associations" type="integer">1</XPD:ATTR>
 <XPD:REF name="Associations[0]">IXZ3cGQQqUat5zZv6F2BZQAA</XPD:REF>
 <XPD:ATTR name="#Attributes" type="integer">3</XPD:ATTR>
@@ -442,7 +442,7 @@
 <XPD:REF name="Owner">vYnp98K7Xky9EhfpXdcB9AAA</XPD:REF>
 <XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="nKDuHX2vMU2EGj4czBVUzgAA">
-<XPD:ATTR name="Name" type="string">card</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">numberCard</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">n4+jP41xeU2EMMyrArtI0gAA</XPD:REF>
 <XPD:REF name="Type_">QYlbuXDmtU6wZ0ZCTGm0HwAA</XPD:REF>
 </XPD:OBJ>
@@ -453,7 +453,7 @@
 </XPD:OBJ>
 <XPD:ATTR name="#Attributes" type="integer">2</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="Ux9hO27oE0GglvYOA903mQAA">
-<XPD:ATTR name="Name" type="string">cards</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">numberCards</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">List&lt;Card&gt;</XPD:ATTR>
 <XPD:REF name="Owner">vYnp98K7Xky9EhfpXdcB9AAA</XPD:REF>
@@ -497,7 +497,7 @@
 <XPD:REF name="Owner">+FIjb5lRNE2J0BsnoW/oEgAA</XPD:REF>
 <XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="phWNgSuTrUevS7/GeZHGaQAA">
-<XPD:ATTR name="Name" type="string">Action card</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Action numberCard</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">Rk05aXfftEaXSJftmSr/vAAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -527,7 +527,7 @@
 <XPD:REF name="Associations[0]">0AQTlxw8XEaxEgOe2fi2EgAA</XPD:REF>
 <XPD:ATTR name="#Attributes" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="8PviCAr58U+tJUpcMZ13LQAA">
-<XPD:ATTR name="Name" type="string">cards</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">numberCards</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">List&lt;Card&gt;</XPD:ATTR>
 <XPD:REF name="Owner">nAC6Bzs5c0efnQPKdox7/QAA</XPD:REF>
