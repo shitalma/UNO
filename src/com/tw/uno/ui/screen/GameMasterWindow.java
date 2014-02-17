@@ -68,6 +68,7 @@ public class GameMasterWindow extends JFrame{
     public GameMasterWindow() {
         setMinimumSize(new Dimension(400, 250));
 
+        setTitle("Game Master Window");
         setMaximizedBounds(new Rectangle(800, 500));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
