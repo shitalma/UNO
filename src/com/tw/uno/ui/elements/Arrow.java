@@ -7,8 +7,8 @@ public class Arrow extends JPanel{
     private JLabel right;
 
     public Arrow() {
-        this.left = new JLabel(" -> ");
-        this.right = new JLabel(" <- ");
+        this.left = new JLabel(" --> ");
+        this.right = new JLabel(" <-- ");
         add(left);
         add(right);
     }

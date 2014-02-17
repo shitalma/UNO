@@ -1,5 +1,6 @@
 package com.tw.uno.ui.screen;
 
+import com.tw.uno.lib.Player;
 import com.tw.uno.ui.elements.*;
 
 import javax.swing.*;
@@ -27,9 +28,9 @@ public class GameMasterWindow extends JFrame{
             constraints.fill = GridBagConstraints.HORIZONTAL;
         }
         //adds players to grid 0,0
-        player = new Players(Arrays.asList("Sandesh", "Ram", "Sheetal", "Aniket"),Arrays.asList("5", "8", "2", "6"));
-        addToRow(player, 0, 0, 3);
+        player = new Players(Arrays.asList( new Player("Sandesh"), new Player("Ram"), new Player("Sheetal")));
 
+        addToRow(player, 0, 0, 3);
 
         String[] logMessages = {"Aniket placed RED 4", "Shital placed RED 6", "Sandesh placed BLUE 6", "ram said UNO"};
 
@@ -38,11 +39,8 @@ public class GameMasterWindow extends JFrame{
         addLogToFrame(log);
 
         addToRow(new Status(), 3,1,2);
-
         addToRow(new DrawButton(), 2,1,1);
-
         addToRow(new PileButton(),2,2,1 );
-
         addToRow(new WildCard().addAllButtons(),2,3,1);
     }
 
