@@ -1,6 +1,5 @@
 package com.tw.uno.lib;
 
-import com.sun.prism.paint.Color;
 import org.junit.Before;
 import org.junit.Test;
 
