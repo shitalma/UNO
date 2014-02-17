@@ -1,11 +1,13 @@
 package com.tw.uno.ui.screen;
 
+import com.tw.uno.lib.Player;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class LoginScreen extends JFrame {
+public class LoginScreen extends JFrame{
     JPanel loginPanel;
-    JButton join;
+    JButton joinButton;
     JLabel label1;
     JLabel label2;
     JTextField masterAddress;
@@ -16,14 +18,14 @@ public class LoginScreen extends JFrame {
         setTitle("Login");
         setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setVisible(true);
 
         createControls();
-        setVisibility();
         addControlsToPanel();
 
         add(loginPanel);
         this.addComponentsToPane(this.getContentPane());
+        joinButton.addActionListener(new Player());
+        setVisible(true);
     }
 
 
@@ -32,20 +34,12 @@ public class LoginScreen extends JFrame {
         loginPanel.add(masterAddress);
         loginPanel.add(label2);
         loginPanel.add(player);
-        loginPanel.add(join);
-    }
-
-    private void setVisibility() {
-        join.setVisible(true);
-        label1.setVisible(true);
-        label2.setVisible(true);
-        masterAddress.setVisible(true);
-        player.setVisible(true);
+        loginPanel.add(joinButton);
     }
 
     private void createControls() {
         loginPanel = new JPanel();
-        join = new JButton("JOIN");
+        joinButton = new JButton("JOIN");
         label1 = new JLabel("Game Master    ");
         label2 = new JLabel("Player Name    ");
         masterAddress = new JTextField(20);
@@ -91,6 +85,8 @@ public class LoginScreen extends JFrame {
         c.gridx = 0;
         c.gridwidth = 2;
         c.gridy = 2;
-        pane.add(join, c);
+        pane.add(joinButton, c);
     }
+
+
 }
