@@ -1,5 +1,6 @@
 package com.tw.uno.lib;
 
+import com.sun.prism.paint.Color;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,11 +17,11 @@ public class PileTest {
 
     @Test
     public void shouldGetLastPlacedCard() throws Exception {
-        pile.addCardToPile(new NumberCard("red",7));
-        pile.addCardToPile(new NumberCard("blue",2));
+        pile.addCardToPile(new NumberCard(CardColor.RED,7));
+        pile.addCardToPile(new NumberCard(CardColor.BLUE,2));
 
         NumberCard actualCard = pile.getLastPlacedCard();
 
-        assertThat(actualCard,is(new NumberCard("blue",2)));
+        assertThat(actualCard,is(new NumberCard(CardColor.BLUE,2)));
     }
 }

@@ -31,7 +31,7 @@ public class GameMasterWindow extends JFrame{
         addToRow(player, 0, 0, 3);
 
 
-        String[] logMessages = {"Aniket placed red 4", "Shital placed red 6", "Sandesh placed blue 6", "ram said UNO"};
+        String[] logMessages = {"Aniket placed RED 4", "Shital placed RED 6", "Sandesh placed BLUE 6", "ram said UNO"};
 
         log = new Log(logMessages);
 

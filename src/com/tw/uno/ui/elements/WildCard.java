@@ -12,17 +12,17 @@ public class WildCard extends JPanel {
     List<String> colors = new ArrayList<>();
 
     public WildCard addAllButtons() {
-        map.put("green", Color.GREEN);
-        map.put("red", Color.RED);
-        map.put("blue", Color.BLUE);
-        map.put("yellow", Color.YELLOW);
+        map.put("GREEN", Color.GREEN);
+        map.put("RED", Color.RED);
+        map.put("BLUE", Color.BLUE);
+        map.put("YELLOW", Color.YELLOW);
 
         setSize(500, 500);
 
-        colors.add("green");
-        colors.add("red");
-        colors.add("blue");
-        colors.add("yellow");
+        colors.add("GREEN");
+        colors.add("RED");
+        colors.add("BLUE");
+        colors.add("YELLOW");
 
         for (int i = 0; i < map.size(); i++) {
             final int finalI = i;

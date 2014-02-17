@@ -1,12 +1,12 @@
 package com.tw.uno.lib;
 
 public class NumberCard {
-    private String color;
+    private CardColor color;
     private int number;
 
-    public NumberCard(String color, int number) {
+    public NumberCard(CardColor cardColor, int number) {
 
-        this.color = color;
+        this.color = cardColor;
         this.number = number;
     }
 

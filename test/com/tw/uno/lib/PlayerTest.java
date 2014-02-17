@@ -14,8 +14,8 @@ public class PlayerTest {
     public void setUp() throws Exception {
         sandesh = new Player("Sandesh");
         List<NumberCard> cards = new ArrayList<>();
-        cards.add(new NumberCard("red", 1));
-        cards.add(new NumberCard("blue", 9));
+        cards.add(new NumberCard(CardColor.RED, 1));
+        cards.add(new NumberCard(CardColor.BLUE, 9));
 
         sandesh.addCards(cards);
     }
@@ -23,8 +23,8 @@ public class PlayerTest {
     @Test
     public void shouldGiveAllCardsOfPlayer() {
         List<NumberCard> expected = new ArrayList<>();
-        expected.add(new NumberCard("red", 1));
-        expected.add(new NumberCard("blue", 9));
+        expected.add(new NumberCard(CardColor.RED, 1));
+        expected.add(new NumberCard(CardColor.BLUE, 9));
 
         List<NumberCard> actual = sandesh.getCards();
 
@@ -35,9 +35,9 @@ public class PlayerTest {
     public void placeCardShouldPlaceACard() {
         List<NumberCard> expected = new ArrayList<>();
 
-        expected.add(new NumberCard("red",1));
+        expected.add(new NumberCard(CardColor.RED,1));
 
-        assertEquals(true, sandesh.placeACard(new NumberCard("blue",9)));
+        assertEquals(true, sandesh.placeACard(new NumberCard(CardColor.BLUE,9)));
         assertEquals(expected, sandesh.getCards());
 
     }
@@ -45,9 +45,9 @@ public class PlayerTest {
     @Test
     public void placeCardShouldNotPlaceACardWhichIsNotPresent() {
         List<NumberCard> expected = new ArrayList<>();
-        NumberCard blue10 = new NumberCard("blue", 10);
-        expected.add(new NumberCard("red",1));
-        expected.add(new NumberCard("blue",9));
+        NumberCard blue10 = new NumberCard(CardColor.BLUE, 10);
+        expected.add(new NumberCard(CardColor.RED,1));
+        expected.add(new NumberCard(CardColor.BLUE,9));
 
         assertEquals(false, sandesh.placeACard(blue10));
         assertEquals(expected,sandesh.getCards());
