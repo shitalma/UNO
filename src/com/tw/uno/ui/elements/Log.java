@@ -8,15 +8,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Log extends JPanel {
-    private JList listBox;
+    private JList<String> listBox;
     private JScrollPane scrollPane;
+
+
 
     public Log(String[] actionList) {
         setSize(300, 800);
         setBackground(Color.gray);
 
         setLayout(new BorderLayout());
-        listBox = new JList(actionList);
+        listBox = new JList<>(actionList);
 
         scrollPane = new JScrollPane();
         scrollPane.getViewport().add(listBox);
