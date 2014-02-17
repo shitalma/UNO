@@ -22,14 +22,36 @@ public class PlayerTest {
     }
 
     @Test
-    public void shouldGiveAllCardsOfPlayer() throws Exception {
+    public void shouldGiveAllCardsOfPlayer() {
         List<NumberCard> expected = new ArrayList();
-        expected.add(new NumberCard("red",1));
+        expected.add(new NumberCard("red", 1));
         expected.add(new NumberCard("blue", 9));
 
         List<NumberCard> actual = sandesh.getCards();
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
+    @Test
+    public void placeCardShouldPlaceACard() {
+        List<NumberCard> expected = new ArrayList();
+
+        expected.add(new NumberCard("red",1));
+
+        assertEquals(true, sandesh.placeACard(new NumberCard("blue",9)));
+        assertEquals(expected, sandesh.getCards());
+
+    }
+
+    @Test
+    public void placeCardShouldNotPlaceACardWhichIsNotPresent() {
+        List<NumberCard> expected = new ArrayList();
+        NumberCard blue10 = new NumberCard("blue", 10);
+        expected.add(new NumberCard("red",1));
+        expected.add(new NumberCard("blue",9));
+
+        assertEquals(false, sandesh.placeACard(blue10));
+        assertEquals(expected,sandesh.getCards());
+
+    }
 }
