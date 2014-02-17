@@ -14,7 +14,7 @@ public class Player implements ActionListener {
 
     public Player(String name) {
         this.name = name;
-        cards = new ArrayList();
+        cards = new ArrayList<>();
     }
 
     public void addCards(List<NumberCard> numberCards){

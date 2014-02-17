@@ -1,5 +1,4 @@
 package com.tw.uno.lib;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +13,7 @@ public class PlayerTest {
     @Before
     public void setUp() throws Exception {
         sandesh = new Player("Sandesh");
-        List<NumberCard> cards = new ArrayList();
+        List<NumberCard> cards = new ArrayList<>();
         cards.add(new NumberCard("red", 1));
         cards.add(new NumberCard("blue", 9));
 
@@ -23,7 +22,7 @@ public class PlayerTest {
 
     @Test
     public void shouldGiveAllCardsOfPlayer() {
-        List<NumberCard> expected = new ArrayList();
+        List<NumberCard> expected = new ArrayList<>();
         expected.add(new NumberCard("red", 1));
         expected.add(new NumberCard("blue", 9));
 
@@ -34,7 +33,7 @@ public class PlayerTest {
 
     @Test
     public void placeCardShouldPlaceACard() {
-        List<NumberCard> expected = new ArrayList();
+        List<NumberCard> expected = new ArrayList<>();
 
         expected.add(new NumberCard("red",1));
 
@@ -45,7 +44,7 @@ public class PlayerTest {
 
     @Test
     public void placeCardShouldNotPlaceACardWhichIsNotPresent() {
-        List<NumberCard> expected = new ArrayList();
+        List<NumberCard> expected = new ArrayList<>();
         NumberCard blue10 = new NumberCard("blue", 10);
         expected.add(new NumberCard("red",1));
         expected.add(new NumberCard("blue",9));
