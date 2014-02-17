@@ -1,7 +1,9 @@
-package com.tw.uno.screen;
+package com.tw.uno;
+
+import com.tw.uno.screen.*;
 
 /**
- *run all windows
+ *run all windows for testing and debugging.
  */
 public class Main {
     public static void main(String[] args) {
