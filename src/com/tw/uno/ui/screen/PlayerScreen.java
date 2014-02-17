@@ -73,6 +73,7 @@ public class PlayerScreen extends JFrame {
     }
 
     public PlayerScreen() {
+        setTitle("Player's Screen");
 
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setMinimumSize(screenSize);

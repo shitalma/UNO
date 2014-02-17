@@ -8,5 +8,6 @@ import com.tw.uno.ui.screen.*;
 public class Main {
     public static void main(String[] args) {
         new LoginScreen();
+        new PlayerScreen();
     }
 }
