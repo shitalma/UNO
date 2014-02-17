@@ -1,4 +1,4 @@
-package shital;
+package com.tw.uno.screen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,9 +24,5 @@ public class WaitingScreen extends JFrame{
         panel.add(label);
         add(panel);
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new WaitingScreen();
     }
 }

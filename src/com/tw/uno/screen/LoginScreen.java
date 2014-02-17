@@ -1,4 +1,4 @@
-package shital;
+package com.tw.uno.screen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -92,9 +92,5 @@ public class LoginScreen extends JFrame {
         c.gridwidth = 2;
         c.gridy = 2;
         pane.add(join, c);
-    }
-
-    public static void main(String[] args) {
-        new LoginScreen();
     }
 }
