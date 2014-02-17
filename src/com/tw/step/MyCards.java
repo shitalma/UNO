@@ -4,7 +4,6 @@ import java.awt.*;
 import java.util.List;
 
 public class MyCards extends JPanel{
-
     public MyCards(List<String> cards) {
         setLayout(new GridLayout(0, cards.size()));
         for (String card : cards) {
@@ -12,5 +11,4 @@ public class MyCards extends JPanel{
             add(b);
         }
     }
-
 }
