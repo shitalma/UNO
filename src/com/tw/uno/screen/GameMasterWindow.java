@@ -1,5 +1,7 @@
 package com.tw.uno.screen;
 
+import com.tw.uno.elements.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
