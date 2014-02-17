@@ -24,9 +24,7 @@ public class GameMasterWindow extends JFrame{
         pane.setLayout(new GridBagLayout());
         constraints = new GridBagConstraints();
         if (shouldFill) {
-            //natural height, maximum width
             constraints.fill = GridBagConstraints.HORIZONTAL;
-//            constraints.fill = GridBagConstraints.VERTICAL;
         }
         //adds players to grid 0,0
         player = new Players(Arrays.asList("Sandesh", "Ram", "Sheetal", "Aniket"),Arrays.asList("5", "8", "2", "6"));
@@ -80,9 +78,5 @@ public class GameMasterWindow extends JFrame{
         //Display the window.
         pack();
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new GameMasterWindow();
     }
 }

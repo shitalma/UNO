@@ -9,7 +9,7 @@ public class Players extends JPanel {
         int count = 0;
         setLayout(new GridLayout(0, players.size(), 40, 40));
         for (String player : players) {
-            JButton b = new JButton(" " + player + "  \n   " + remainingCards.get(count));
+            JButton b = new JButton(" "+player+"  \n   "+remainingCards.get(count));
             add(b);
             count++;
         }

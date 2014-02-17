@@ -93,8 +93,4 @@ public class LoginScreen extends JFrame {
         c.gridy = 2;
         pane.add(join, c);
     }
-
-    public static void main(String[] args) {
-        new LoginScreen();
-    }
 }
