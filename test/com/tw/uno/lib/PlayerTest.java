@@ -3,33 +3,33 @@ package com.tw.uno.lib;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class PlayerTest {
     Player sandesh;
-    List<Card> cards;
 
     @Before
     public void setUp() throws Exception {
         sandesh = new Player("Sandesh");
-        sandesh.setCards(Arrays.asList(new Card("red",1),new Card("blue",9)));
+        List<NumberCard> cards = new ArrayList();
+        cards.add(new NumberCard("red", 1));
+        cards.add(new NumberCard("blue", 9));
+
+        sandesh.addCards(cards);
     }
 
     @Test
-    public void shouldGiveTotalNumberOfCards() throws Exception {
-        cards = sandesh.getCards();
-        assertEquals(2, cards.size());
+    public void shouldGiveAllCardsOfPlayer() throws Exception {
+        List<NumberCard> expected = new ArrayList();
+        expected.add(new NumberCard("red",1));
+        expected.add(new NumberCard("blue", 9));
+
+        List<NumberCard> actual = sandesh.getCards();
+
+        assertEquals(expected,actual);
     }
 
-    @Test
-    public void shouldGiveCards() throws Exception {
-        cards = sandesh.getCards();
-        Card actualCard = cards.get(0);
-        assertThat(actualCard,is(new Card("red",1)));
-    }
 }
