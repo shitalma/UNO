@@ -1,21 +1,35 @@
 package com.tw.uno.lib;
 
-import junit.framework.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class PlayerTest {
-    @Test
-    public void testShouldReturnAllCardsPlayerHaving() throws Exception {
-        List<NumberCard> expected = new ArrayList<>();
-        expected.add(new NumberCard());
-        expected.add(new NumberCard());
-        Player player = new Player();
-        player.addCards(expected);
-        List<NumberCard> actual = player.getMyNumberCards();
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
-        Assert.assertEquals(expected,actual);
+public class PlayerTest {
+    Player sandesh;
+    List<Card> cards;
+
+    @Before
+    public void setUp() throws Exception {
+        sandesh = new Player("Sandesh");
+        sandesh.setCards(Arrays.asList(new Card("red",1),new Card("blue",9)));
+    }
+
+    @Test
+    public void shouldGiveTotalNumberOfCards() throws Exception {
+        cards = sandesh.getCards();
+        assertEquals(2, cards.size());
+    }
+
+    @Test
+    public void shouldGiveCards() throws Exception {
+        cards = sandesh.getCards();
+        Card actualCard = cards.get(0);
+        assertThat(actualCard,is(new Card("red",1)));
     }
 }

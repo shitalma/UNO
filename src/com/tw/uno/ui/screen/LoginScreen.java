@@ -24,7 +24,7 @@ public class LoginScreen extends JFrame{
 
         add(loginPanel);
         this.addComponentsToPane(this.getContentPane());
-        joinButton.addActionListener(new Player());
+        joinButton.addActionListener(new Player("sayali"));
         setVisible(true);
     }
 
