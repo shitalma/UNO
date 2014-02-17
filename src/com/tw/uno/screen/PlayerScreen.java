@@ -11,12 +11,13 @@ public class PlayerScreen extends JFrame {
     final static boolean RIGHT_TO_LEFT = false;
     private static GridBagConstraints constraints;
     private static Container pane;
+    private final Dimension screenSize;
 
     public static void addComponentsToPane(Container pane) {
         if (RIGHT_TO_LEFT)
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
-        JPanel player, cards, UNOButton, log;
+        JPanel player, cards, UNOButton, log,arrow;
 
         pane.setLayout(new GridBagLayout());
         constraints = new GridBagConstraints();
@@ -40,7 +41,9 @@ public class PlayerScreen extends JFrame {
         log = new Log(logMessages);
 
         addLogToFrame(log);
-
+        arrow = new Arrow();
+        addToRow(arrow,1,0
+                ,3);
         addToRow(new Status(), 3,1,2);
 
         addToRow(new DrawButton(), 2,1,1);
@@ -70,7 +73,9 @@ public class PlayerScreen extends JFrame {
     }
 
     public PlayerScreen() {
-        setMinimumSize(new Dimension(400, 250));
+
+        screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setMinimumSize(screenSize);
 
         setMaximizedBounds(new Rectangle(800, 500));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
