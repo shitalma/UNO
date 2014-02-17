@@ -23,10 +23,4 @@ public class NumberCard {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        int result = color.hashCode();
-        result = 31 * result + number;
-        return result;
-    }
 }
