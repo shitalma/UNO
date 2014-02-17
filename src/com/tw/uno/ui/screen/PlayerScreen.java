@@ -1,5 +1,6 @@
 package com.tw.uno.ui.screen;
 
+import com.tw.uno.lib.NumberCard;
 import com.tw.uno.ui.elements.*;
 
 import javax.swing.*;
@@ -30,7 +31,7 @@ public class PlayerScreen extends JFrame {
         player = new Players(Arrays.asList("Sandesh", "Ram", "Sheetal", "Aniket"),Arrays.asList("5", "8", "2", "6"));
         addToRow(player, 0, 0, 3);
 
-        cards = new MyCards(Arrays.asList("blue 1", "red 4", "yellow 8", "wild +4", "blue 1", "red 4", "yellow 8", "wild +4"));
+        cards = new MyCards(Arrays.asList(new NumberCard("red",4), new NumberCard("green",5)));
         addToRow(cards, 4, 0, 2);
 
         UNOButton = new com.tw.uno.ui.elements.UNOButton();

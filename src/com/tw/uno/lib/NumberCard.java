@@ -24,9 +24,7 @@ public class NumberCard {
     }
 
     @Override
-    public int hashCode() {
-        int result = color.hashCode();
-        result = 31 * result + number;
-        return result;
+    public String toString() {
+        return color+ " " +number;
     }
 }
