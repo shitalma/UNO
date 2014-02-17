@@ -16,9 +16,10 @@ public class FileSystem {
         text = text.substring(0 , text.length()-1);
         return text;
     }
-    public void writeFile(String data , String fileNmae){
+    
+    public void writeFile(String data , String fileName){
         try{
-            File file = new File(fileNmae);
+            File file = new File(fileName);
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(data);
