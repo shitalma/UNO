@@ -1,3 +1,3 @@
 UNO Game
 ---------------------------------
-Checkout the screen.
+Checkout the scre
