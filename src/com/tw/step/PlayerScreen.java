@@ -20,9 +20,7 @@ public class PlayerScreen extends JFrame {
         pane.setLayout(new GridBagLayout());
         constraints = new GridBagConstraints();
         if (shouldFill) {
-            //natural height, maximum width
             constraints.fill = GridBagConstraints.HORIZONTAL;
-//            constraints.fill = GridBagConstraints.VERTICAL;
         }
         //adds players to grid 0,0
         player = new Players(Arrays.asList("Sandesh", "Ram","Sheetal","Aniket"));
