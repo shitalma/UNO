@@ -12,15 +12,16 @@ public class ReportScreen extends JFrame {
     String col[] = {"Player", "NumberOfCards", "Points"};
 
     public static void main(String args[]) {
-        new ReportScreen().displayReportTable();
+        new ReportScreen().start();
     }
 
-    public void displayReportTable() {
+    public void start() {
 
         model = new DefaultTableModel(col, 2);
         table = new JTable(model) {
             @Override
             public boolean isCellEditable(int arg0, int arg1) {
+
                 return false;
             }
         };
