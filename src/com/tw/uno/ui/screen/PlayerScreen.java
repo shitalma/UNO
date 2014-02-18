@@ -1,5 +1,6 @@
 package com.tw.uno.ui.screen;
 
+import com.tw.uno.lib.Player;
 import com.tw.uno.lib.UNOFactory;
 import com.tw.uno.lib.card.Card;
 import com.tw.uno.lib.card.CardColor;
@@ -41,8 +42,9 @@ public class PlayerScreen extends JFrame {
         List<Card> cards1 = new ArrayList<>();
         cards1.add(new NumberCard(CardColor.RED, CardValue.EIGHT));
         cards1.add(new NumberCard(CardColor.GREEN, CardValue.FOUR));
-
-        cards = new MyCards(cards1);
+        Player myPlayer = new Player("player");
+        myPlayer.addCards(cards1);
+        cards = new MyCards(myPlayer);
 
         addToRow(cards, 4, 0, 2);
         UNOButton = new com.tw.uno.ui.elements.UNOButton();

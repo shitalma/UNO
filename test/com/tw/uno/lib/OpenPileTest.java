@@ -10,20 +10,20 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class PileTest {
-    Pile pile;
+public class OpenPileTest {
+    OpenPile openPile;
 
     @Before
     public void setUp() throws Exception {
-        pile = new Pile();
+        openPile = new OpenPile();
     }
 
     @Test
     public void shouldGetLastPlacedCard() throws Exception {
-        pile.addCardToPile(new NumberCard(CardColor.RED, CardValue.EIGHT));
-        pile.addCardToPile(new NumberCard(CardColor.BLUE,CardValue.THREE));
+        openPile.onCardPaced(new NumberCard(CardColor.RED, CardValue.EIGHT));
+        openPile.onCardPaced(new NumberCard(CardColor.BLUE, CardValue.THREE));
 
-        Card actualCard = pile.getLastPlacedCard();
+        Card actualCard = openPile.getLastPlacedCard();
 
         assertThat((NumberCard)actualCard,is(new NumberCard(CardColor.BLUE,CardValue.THREE)));
     }

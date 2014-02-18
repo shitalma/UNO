@@ -1,10 +1,12 @@
 package com.tw.uno.lib;
 
 import com.tw.uno.lib.card.Card;
+<<<<<<< HEAD
 import com.tw.uno.lib.card.CardColor;
 import com.tw.uno.lib.card.CardValue;
 import com.tw.uno.lib.card.NumberCard;
-import com.tw.uno.ui.elements.UNOButton;
+=======
+>>>>>>> e28081be4e4d1678d702d4835f2ffbf36d19ef95
 import com.tw.uno.ui.screen.CreateGameScreen;
 import com.tw.uno.ui.screen.GameMasterWindow;
 import com.tw.uno.ui.screen.LoginScreen;
@@ -12,11 +14,13 @@ import com.tw.uno.ui.screen.LoginScreen;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
+<<<<<<< HEAD
+import java.util.*;
+=======
+>>>>>>> e28081be4e4d1678d702d4835f2ffbf36d19ef95
 
 public class UNOFactory {
-    Pile pile = new Pile();
+    OpenPile openPile = new OpenPile();
 
     public ServerSocket createServerSocket() {
         try {
@@ -55,8 +59,10 @@ public class UNOFactory {
 
         return new GameMasterWindow(numOfPacks, numOfPlayers);
     }
+<<<<<<< HEAD
 
     public NumberCard createCard(String color, String value) {
+
         Map<String, CardColor> colors = new HashMap<>(4);
         Map<String, CardValue> values = new HashMap<>(10);
 
@@ -75,14 +81,24 @@ public class UNOFactory {
         }
 
         return new NumberCard(colors.get(color), values.get(value));
-
-    }
+=======
+>>>>>>> e28081be4e4d1678d702d4835f2ffbf36d19ef95
 
     public Card GetTopCardOnPile(){
-        return pile.getLastPlacedCard();
-    }
-    public void addRemovedCardToPile(Card card) {
-        pile.addCardToPile(card);
+        return openPile.getLastPlacedCard();
     }
 
+    public List<Card> getPacksOfCards(int numberOfPacks) {
+        List<String> colors1 = Arrays.asList("RED", "BLUE", "GREEN", "YELLOW");
+        List<Card> pack = new ArrayList<Card>();
+        for (int i = 0; i < numberOfPacks; i++) {
+            for (String color : colors1) {
+                for (int j = 1; j < 18; j++) {
+                    pack.add(createCard(color, String.valueOf(i)));
+                }
+            }
+        }
+        Collections.shuffle(pack);
+        return pack;
+    }
 }

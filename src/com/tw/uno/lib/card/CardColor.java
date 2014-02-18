@@ -5,4 +5,5 @@ package com.tw.uno.lib.card;
  */
 public enum CardColor {
     RED, GREEN, YELLOW, BLUE;
+
 }

@@ -9,10 +9,6 @@ public class NumberCard implements Card{
         this.value = value;
     }
 
-    public CardValue getValue() {
-        return value;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -21,13 +17,13 @@ public class NumberCard implements Card{
         NumberCard that = (NumberCard) o;
 
         if (color != that.color) return false;
-        if (value != that.value) return false;
+        if (value.getValue() != that.value.getValue()) return false;
 
         return true;
     }
 
     @Override
     public String toString() {
-        return color+ " " + value.getValue();
+        return color +" " + value.getValue();
     }
 }
