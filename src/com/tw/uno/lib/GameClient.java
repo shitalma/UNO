@@ -2,29 +2,20 @@ package com.tw.uno.lib;
 
 import java.net.Socket;
 
-public class GameClient implements LoginObserver,MessageChannelListener {
+public class GameClient implements MessageChannelListener {
     private UNOFactory unoFactory;
     private MessageChannel channel;
     private String name;
 
-    public GameClient(UNOFactory unoFactory) {
+    public GameClient(UNOFactory unoFactory, String playerName) {
         this.unoFactory = unoFactory;
-        unoFactory.showPlayerLoginScreen(this);
+        this.name = playerName;
     }
 
     public void connectTo(String serverAddress) {
         Socket socket = unoFactory.createClientSocket(serverAddress);
         channel = new MessageChannel(socket);
         channel.send(name);
-    }
-
-    public static void main(String[] args) {
-        new GameClient(new UNOFactory());
-    }
-    @Override
-    public void onJoin(String serverAddress, String playerName) {
-        this.name = playerName;
-        connectTo(serverAddress);
     }
 
     public String getName() {
