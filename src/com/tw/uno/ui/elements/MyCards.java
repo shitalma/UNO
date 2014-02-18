@@ -1,5 +1,6 @@
 package com.tw.uno.ui.elements;
 
+import com.tw.uno.lib.UNOFactory;
 import com.tw.uno.lib.card.Card;
 import com.tw.uno.lib.card.CardColor;
 import com.tw.uno.lib.card.CardValue;
@@ -31,28 +32,7 @@ public class MyCards extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Card card;
         String[] s = e.getActionCommand().split(" ");
-        card = createCard(s[0], s[1]);
+        card = new UNOFactory().createCard(s[0], s[1]);
         cards.remove(card);
-    }
-
-    private NumberCard createCard(String color, String value) {
-        Map<String, CardColor> colors = new HashMap<>(4);
-        Map<String, CardValue> values = new HashMap<>(10);
-
-        colors.put("RED", CardColor.RED);
-        colors.put("BLUE", CardColor.BLUE);
-        colors.put("GREEN", CardColor.GREEN);
-        colors.put("YELLOW", CardColor.YELLOW);
-
-        String[] numbers = {"zero","one","two","three","four","five","six","seven","eight","nine","drawtwo"};
-        CardValue[] cardValues = {CardValue.ZERO, CardValue.ONE,CardValue.TWO,CardValue.THREE,
-                                    CardValue.FOUR,CardValue.FIVE,CardValue.SIX,CardValue.SEVEN,
-                                    CardValue.EIGHT,CardValue.NINE,CardValue.DRAWTWO};
-
-        for (int index = 0; index < numbers.length; index++) {
-            values.put(numbers[index],cardValues[index]);
-        }
-
-        return new NumberCard(colors.get(color), values.get(value));
     }
 }

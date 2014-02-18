@@ -1,5 +1,9 @@
 package com.tw.uno.lib;
 
+import com.tw.uno.lib.card.Card;
+import com.tw.uno.lib.card.CardColor;
+import com.tw.uno.lib.card.CardValue;
+import com.tw.uno.lib.card.NumberCard;
 import com.tw.uno.ui.screen.CreateGameScreen;
 import com.tw.uno.ui.screen.GameMasterWindow;
 import com.tw.uno.ui.screen.LoginScreen;
@@ -8,6 +12,8 @@ import com.tw.uno.ui.screen.PlayerScreen;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UNOFactory {
     public ServerSocket createServerSocket() {
@@ -45,5 +51,25 @@ public class UNOFactory {
 
     public GameMasterWindow showServerScreen(int numOfPacks, int numOfPlayers) {
         return new GameMasterWindow(numOfPacks, numOfPlayers);
+    }
+    public NumberCard createCard(String color, String value) {
+        Map<String, CardColor> colors = new HashMap<>(4);
+        Map<String, CardValue> values = new HashMap<>(10);
+
+        colors.put("RED", CardColor.RED);
+        colors.put("BLUE", CardColor.BLUE);
+        colors.put("GREEN", CardColor.GREEN);
+        colors.put("YELLOW", CardColor.YELLOW);
+
+        String[] numbers = {"zero","one","two","three","four","five","six","seven","eight","nine","drawtwo"};
+        CardValue[] cardValues = {CardValue.ZERO, CardValue.ONE,CardValue.TWO,CardValue.THREE,
+                CardValue.FOUR,CardValue.FIVE,CardValue.SIX,CardValue.SEVEN,
+                CardValue.EIGHT,CardValue.NINE,CardValue.DRAWTWO};
+
+        for (int index = 0; index < numbers.length; index++) {
+            values.put(numbers[index],cardValues[index]);
+        }
+
+        return new NumberCard(colors.get(color), values.get(value));
     }
 }
