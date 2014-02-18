@@ -21,6 +21,8 @@ public class Game implements CardListener{
         this.cards = new UNOFactory().getPacksOfCards(2);
         this.cards = cards;
         this.pile = new Pile();
+        shufflePlayers();
+        this.currentPlayer = this.players.get(0);
     }
 
     public List<Player> getPlayers() {
@@ -37,6 +39,10 @@ public class Game implements CardListener{
 
     public void shufflePlayers(){
         Collections.shuffle(players);
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 
     @Override
