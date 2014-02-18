@@ -30,9 +30,12 @@ public class MyCards extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        UNOFactory unoFactory = new UNOFactory();
         Card card;
+
         String[] s = e.getActionCommand().split(" ");
-        card = new UNOFactory().createCard(s[0], s[1]);
+        card = unoFactory.createCard(s[0], s[1]);
         cards.remove(card);
+        unoFactory.addRemovedCardToPile(card);
     }
 }

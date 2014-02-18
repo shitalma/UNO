@@ -10,8 +10,8 @@ import javax.swing.*;
 public class PileButton extends JPanel {
     private JButton pileButton;
 
-    public PileButton() {
-        pileButton = new JButton(new NumberCard(CardColor.RED, CardValue.SIX).toString());
+    public PileButton(Card card) {
+        pileButton = new JButton(card.toString());
         add(pileButton);
     }
 
