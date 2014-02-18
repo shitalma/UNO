@@ -1,5 +1,6 @@
 package com.tw.uno.lib;
 
+import com.tw.uno.lib.card.Card;
 import com.tw.uno.lib.card.CardColor;
 import com.tw.uno.lib.card.CardValue;
 import com.tw.uno.lib.card.NumberCard;
