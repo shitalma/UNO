@@ -23,7 +23,7 @@ public class PlayerScreen extends JFrame {
         if (RIGHT_TO_LEFT)
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
-        JPanel player, cards, UNOButton, log,arrow;
+        JPanel player, cards, UNOButton, log, arrow;
 
         pane.setLayout(new GridBagLayout());
         constraints = new GridBagConstraints();
@@ -36,12 +36,12 @@ public class PlayerScreen extends JFrame {
 //        player = new Players(Arrays.asList( new Player("Sandesh"), new Player("Ram"), new Player("Sheetal")));
 //        addToRow(player, 0, 0, 3);
 
-        List<Card> cards1 = new ArrayList<>()
-;
-        cards1.add(new NumberCard(CardColor.RED, CardValue.eight));
-        cards1.add(new NumberCard(CardColor.GREEN,CardValue.four));
+        List<Card> cards1 = new ArrayList<>();
+        cards1.add(new NumberCard(CardColor.RED, CardValue.EIGHT));
+        cards1.add(new NumberCard(CardColor.GREEN, CardValue.FOUR));
 
-                cards = new MyCards(cards1);
+        cards = new MyCards(cards1);
+
         addToRow(cards, 4, 0, 2);
         UNOButton = new com.tw.uno.ui.elements.UNOButton();
         addToRow(UNOButton, 4, 3, 1);
@@ -52,15 +52,15 @@ public class PlayerScreen extends JFrame {
 
         addLogToFrame(log);
         arrow = new Arrow();
-        addToRow(arrow,1,0
-                ,3);
-        addToRow(new Status(), 3,1,2);
+        addToRow(arrow, 1, 0
+                , 3);
+        addToRow(new Status(), 3, 1, 2);
 
-        addToRow(new DrawButton(), 2,1,1);
+        addToRow(new DrawButton(), 2, 1, 1);
 
-        addToRow(new PileButton(),2,2,1 );
+        addToRow(new PileButton(), 2, 2, 1);
 
-        addToRow(new WildCard().addAllButtons(),2,3,1);
+        addToRow(new WildCard().addAllButtons(), 2, 3, 1);
     }
 
     private static void addLogToFrame(JPanel log) {

@@ -45,9 +45,9 @@ public class MyCards extends JPanel implements ActionListener {
         colors.put("YELLOW", CardColor.YELLOW);
 
         String[] numbers = {"zero","one","two","three","four","five","six","seven","eight","nine","drawtwo"};
-        CardValue[] cardValues = {CardValue.zero, CardValue.one,CardValue.tow,CardValue.three,
-                                    CardValue.four,CardValue.five,CardValue.six,CardValue.seven,
-                                    CardValue.eight,CardValue.nine,CardValue.drawTwo};
+        CardValue[] cardValues = {CardValue.ZERO, CardValue.ONE,CardValue.TWO,CardValue.THREE,
+                                    CardValue.FOUR,CardValue.FIVE,CardValue.SIX,CardValue.SEVEN,
+                                    CardValue.EIGHT,CardValue.NINE,CardValue.DRAWTWO};
 
         for (int index = 0; index < numbers.length; index++) {
             values.put(numbers[index],cardValues[index]);

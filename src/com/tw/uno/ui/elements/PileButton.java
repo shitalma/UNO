@@ -11,7 +11,7 @@ public class PileButton extends JPanel {
     private JButton pileButton;
 
     public PileButton() {
-        pileButton = new JButton(new NumberCard(CardColor.RED, CardValue.six).toString());
+        pileButton = new JButton(new NumberCard(CardColor.RED, CardValue.SIX).toString());
         add(pileButton);
     }
 
