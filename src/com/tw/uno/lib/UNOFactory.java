@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class UNOFactory {
-    OpenPile openPile = new OpenPile();
+    Pile pile = new Pile();
 
     public ServerSocket createServerSocket() {
         try {
@@ -56,7 +56,7 @@ public class UNOFactory {
     }
 
     public Card GetTopCardOnPile(){
-        return openPile.getLastPlacedCard();
+        return pile.getLastPlacedFromOpenPile();
     }
 
     public List<Card> getPacksOfCards(int numberOfPacks) {
