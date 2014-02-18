@@ -1,5 +1,6 @@
 package com.tw.uno.ui.elements;
 
+import com.tw.uno.lib.card.Card;
 import com.tw.uno.lib.card.CardColor;
 import com.tw.uno.lib.card.CardValue;
 import com.tw.uno.lib.card.NumberCard;
@@ -10,7 +11,8 @@ public class PileButton extends JPanel {
     private JButton pileButton;
 
     public PileButton() {
-        pileButton = new JButton(new NumberCard(CardColor.RED, CardValue.six).toString());
+        pileButton = new JButton(new NumberCard(CardColor.RED, CardValue.SIX).toString());
         add(pileButton);
     }
+
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This is for player to play.
+ * This is for player to - play.
  */
 public class Player implements ActionListener {
     private List<Card> cards;
@@ -38,4 +38,7 @@ public class Player implements ActionListener {
         return cards.remove(blue9);
     }
 
+    public String getName() {
+        return name;
+    }
 }

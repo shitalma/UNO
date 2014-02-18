@@ -19,8 +19,8 @@ public class PlayerTest {
     public void setUp() throws Exception {
         sandesh = new Player("Sandesh");
         List<Card> cards = new ArrayList<>();
-        cards.add(new NumberCard(CardColor.RED, CardValue.one));
-        cards.add(new NumberCard(CardColor.BLUE,CardValue.nine));
+        cards.add(new NumberCard(CardColor.RED, CardValue.ONE));
+        cards.add(new NumberCard(CardColor.BLUE,CardValue.NINE));
 
         sandesh.addCards(cards);
     }
@@ -28,8 +28,8 @@ public class PlayerTest {
     @Test
     public void shouldGiveAllCardsOfPlayer() {
         List<Card> expected = new ArrayList<>();
-        expected.add(new NumberCard(CardColor.RED, CardValue.one));
-        expected.add(new NumberCard(CardColor.BLUE,CardValue.nine));
+        expected.add(new NumberCard(CardColor.RED, CardValue.ONE));
+        expected.add(new NumberCard(CardColor.BLUE,CardValue.NINE));
 
         List<Card> actual = sandesh.getCards();
 
@@ -40,9 +40,9 @@ public class PlayerTest {
     public void placeCardShouldPlaceACard() {
         List<Card> expected = new ArrayList<>();
 
-        expected.add(new NumberCard(CardColor.RED,CardValue.one));
+        expected.add(new NumberCard(CardColor.RED,CardValue.ONE));
 
-        assertEquals(true, sandesh.placeACard(new NumberCard(CardColor.BLUE,CardValue.nine)));
+        assertEquals(true, sandesh.placeACard(new NumberCard(CardColor.BLUE,CardValue.NINE)));
         assertEquals(expected, sandesh.getCards());
 
     }
@@ -50,9 +50,9 @@ public class PlayerTest {
     @Test
     public void placeCardShouldNotPlaceACardWhichIsNotPresent() {
         List<Card> expected = new ArrayList<>();
-        NumberCard blue8  = new NumberCard(CardColor.BLUE, CardValue.eight);
-        expected.add(new NumberCard(CardColor.RED,CardValue.one));
-        expected.add(new NumberCard(CardColor.BLUE,CardValue.nine));
+        NumberCard blue8  = new NumberCard(CardColor.BLUE, CardValue.EIGHT);
+        expected.add(new NumberCard(CardColor.RED,CardValue.ONE));
+        expected.add(new NumberCard(CardColor.BLUE,CardValue.NINE));
 
         assertEquals(false, sandesh.placeACard(blue8));
         assertEquals(expected,sandesh.getCards());
