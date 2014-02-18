@@ -1,8 +1,8 @@
 package com.tw.uno.lib;
 
 import com.tw.uno.ui.screen.CreateGameScreen;
+import com.tw.uno.ui.screen.GameMasterWindow;
 import com.tw.uno.ui.screen.LoginScreen;
-import com.tw.uno.ui.screen.PlayerScreen;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -17,10 +17,10 @@ public class UNOFactory {
         }
     }
 
-    public GameClient acceptClient(ServerSocket serverSocket) {
+    public MessageChannel acceptClient(ServerSocket serverSocket) {
         try {
             Socket socket = serverSocket.accept();
-            return new GameClient(this);
+            return new MessageChannel(socket);
         } catch (IOException e) {
             throw new RuntimeException("not able to accept the client");
         }
@@ -42,7 +42,7 @@ public class UNOFactory {
         return new CreateGameScreen(observer);
     }
 
-    public PlayerScreen showServerScreen(int numOfPacks, int numOfPlayers) {
-        return new PlayerScreen(numOfPacks, numOfPlayers);
+    public GameMasterWindow showServerScreen(int numOfPacks, int numOfPlayers) {
+        return new GameMasterWindow();
     }
 }
