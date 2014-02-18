@@ -1,12 +1,7 @@
 package com.tw.uno.lib;
 
 import com.tw.uno.lib.card.Card;
-<<<<<<< HEAD
-import com.tw.uno.lib.card.CardColor;
-import com.tw.uno.lib.card.CardValue;
-import com.tw.uno.lib.card.NumberCard;
-=======
->>>>>>> e28081be4e4d1678d702d4835f2ffbf36d19ef95
+import com.tw.uno.lib.card.CardGenerator;
 import com.tw.uno.ui.screen.CreateGameScreen;
 import com.tw.uno.ui.screen.GameMasterWindow;
 import com.tw.uno.ui.screen.LoginScreen;
@@ -14,10 +9,10 @@ import com.tw.uno.ui.screen.LoginScreen;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-<<<<<<< HEAD
-import java.util.*;
-=======
->>>>>>> e28081be4e4d1678d702d4835f2ffbf36d19ef95
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class UNOFactory {
     OpenPile openPile = new OpenPile();
@@ -59,30 +54,6 @@ public class UNOFactory {
 
         return new GameMasterWindow(numOfPacks, numOfPlayers);
     }
-<<<<<<< HEAD
-
-    public NumberCard createCard(String color, String value) {
-
-        Map<String, CardColor> colors = new HashMap<>(4);
-        Map<String, CardValue> values = new HashMap<>(10);
-
-        colors.put("RED", CardColor.RED);
-        colors.put("BLUE", CardColor.BLUE);
-        colors.put("GREEN", CardColor.GREEN);
-        colors.put("YELLOW", CardColor.YELLOW);
-
-        String[] numbers = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "drawtwo"};
-        CardValue[] cardValues = {CardValue.ZERO, CardValue.ONE, CardValue.TWO, CardValue.THREE,
-                CardValue.FOUR, CardValue.FIVE, CardValue.SIX, CardValue.SEVEN,
-                CardValue.EIGHT, CardValue.NINE, CardValue.DRAWTWO};
-
-        for (int index = 0; index < numbers.length; index++) {
-            values.put(numbers[index], cardValues[index]);
-        }
-
-        return new NumberCard(colors.get(color), values.get(value));
-=======
->>>>>>> e28081be4e4d1678d702d4835f2ffbf36d19ef95
 
     public Card GetTopCardOnPile(){
         return openPile.getLastPlacedCard();
@@ -94,7 +65,7 @@ public class UNOFactory {
         for (int i = 0; i < numberOfPacks; i++) {
             for (String color : colors1) {
                 for (int j = 1; j < 18; j++) {
-                    pack.add(createCard(color, String.valueOf(i)));
+                    pack.add(new CardGenerator().createCard(color, String.valueOf(i)));
                 }
             }
         }

@@ -1,6 +1,7 @@
 package com.tw.uno.lib;
 
 import com.tw.uno.lib.card.Card;
+import com.tw.uno.lib.card.CardGenerator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,9 +25,10 @@ public class GameMasterTest {
         players.add(new Player("raj"));
         UNOFactory unoFactory = new UNOFactory();
         List<Card> cards = new ArrayList<>();
+        CardGenerator generator = new CardGenerator();
         for (int i = 0; i < 2; i++) {
-            cards.add(unoFactory.createCard("RED","5"));
-            cards.add(unoFactory.createCard("BLUE", "1"));
+            cards.add(generator.createCard("RED", "five"));
+            cards.add(generator.createCard("BLUE", "one"));
         }
         gameMaster = new GameMaster(unoFactory, players.size(), 1);
         game = gameMaster.startGame(players, cards);
@@ -63,4 +65,5 @@ public class GameMasterTest {
             System.out.println(player.getName());
         }
     }
+
 }
