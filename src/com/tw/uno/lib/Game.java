@@ -36,6 +36,18 @@ public class Game implements CardListener{
     public void shuffleCards() {
         Collections.shuffle(cards);
     }
+//    private void prepareToPlay() {
+//
+//        List<Card> cards = unoFactory.getPacksOfCards(numOfPacks);
+//        for (int i = 0; i < clients.size() * 7; i++) {
+//            for (MessageChannel client : clients) {
+//                    client.addCard(cards.get(i));
+//                    cards.remove(i);
+//                client.send("CARD:" + cards);
+//            }
+//        }
+//    }
+
 
     public void shufflePlayers(){
         Collections.shuffle(players);

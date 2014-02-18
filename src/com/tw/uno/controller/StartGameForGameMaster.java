@@ -24,7 +24,6 @@ public class StartGameForGameMaster {
                 waitingScreen.dispose();
                 unoFactory.showServerScreen(numOfPlayers, numOfPacks);
             }
-
         });
 
     }

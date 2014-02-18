@@ -1,7 +1,5 @@
 package com.tw.uno.lib;
 
-import com.tw.uno.lib.card.Card;
-
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
@@ -80,10 +78,6 @@ public class MessageChannel {
         } catch (IOException e) {
             listener.onError(this, e);
         }
-    }
-
-    public void addCard(Card card) {
-
     }
 }
 
