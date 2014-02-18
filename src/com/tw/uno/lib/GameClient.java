@@ -1,13 +1,11 @@
 package com.tw.uno.lib;
 
-import com.tw.uno.ui.screen.LoginScreen;
-
 import java.net.Socket;
 
 public class GameClient implements LoginObserver {
     private UNOFactory unoFactory;
-    private Socket socket;
-    private LoginScreen loginScreen;
+    private MessageChannel channel;
+    private String name;
 
     public GameClient(UNOFactory unoFactory) {
         this.unoFactory = unoFactory;
@@ -15,16 +13,21 @@ public class GameClient implements LoginObserver {
     }
 
     public void connectTo(String serverAddress) {
-        socket = unoFactory.createClientSocket(serverAddress);
+        Socket socket = unoFactory.createClientSocket(serverAddress);
+        channel = new MessageChannel(socket);
+        channel.send(name);
     }
 
     public static void main(String[] args) {
         new GameClient(new UNOFactory());
     }
-
-
     @Override
     public void onJoin(String serverAddress, String playerName) {
+        this.name = playerName;
         connectTo(serverAddress);
+    }
+
+    public String getName() {
+        return name;
     }
 }

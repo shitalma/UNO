@@ -21,6 +21,7 @@ public class CreateGameScreen extends JFrame {
         panel = new JPanel();
         players = new JLabel("Number of players : ");
         packs = new JLabel("Number of packs : ");
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         playersField = new JTextField(15);
         packsField = new JTextField(15);
@@ -29,6 +30,7 @@ public class CreateGameScreen extends JFrame {
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                setVisible(false);
                 serverScreenObserver.onStartGame(playersField.getText(),packsField.getText());
             }
         });

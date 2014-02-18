@@ -1,5 +1,6 @@
 package com.tw.uno.ui.screen;
 
+import com.tw.uno.lib.UNOFactory;
 import com.tw.uno.ui.elements.*;
 
 import javax.swing.*;
@@ -14,7 +15,14 @@ public class GameMasterWindow extends JFrame{
     private static GridBagConstraints constraints;
     private static Container pane;
 
+    public GameMasterWindow(int numOfPacks, int numOfPlayers) {
+
+
+    }
+
     public static void addComponentsToPane(Container pane) {
+        UNOFactory factory = new UNOFactory();
+
         if (RIGHT_TO_LEFT)
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
@@ -38,7 +46,7 @@ public class GameMasterWindow extends JFrame{
 
         addToRow(new Status(), 3,1,2);
         addToRow(new DrawButton(), 2,1,1);
-        addToRow(new PileButton(),2,2,1 );
+        addToRow(new PileButton(factory.GetTopCardOnPile()),2,2,1 );
         addToRow(new WildCard().addAllButtons(),2,3,1);
     }
 

@@ -1,5 +1,6 @@
 package com.tw.uno.lib;
 
+import com.tw.uno.lib.card.Card;
 import com.tw.uno.lib.card.CardColor;
 import com.tw.uno.lib.card.CardValue;
 import com.tw.uno.lib.card.NumberCard;
@@ -22,8 +23,8 @@ public class PileTest {
         pile.addCardToPile(new NumberCard(CardColor.RED, CardValue.EIGHT));
         pile.addCardToPile(new NumberCard(CardColor.BLUE,CardValue.THREE));
 
-        NumberCard actualCard = pile.getLastPlacedCard();
+        Card actualCard = pile.getLastPlacedCard();
 
-        assertThat(actualCard,is(new NumberCard(CardColor.BLUE,CardValue.THREE)));
+        assertThat((NumberCard)actualCard,is(new NumberCard(CardColor.BLUE,CardValue.THREE)));
     }
 }
