@@ -8,7 +8,7 @@ import com.tw.uno.lib.card.NumberCard;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pile {
+public class Pile implements CardPlaceListener{
 
     private List<Card> cards;
 
@@ -17,11 +17,16 @@ public class Pile {
         cards.add(new NumberCard(CardColor.BLUE, CardValue.THREE));
     }
 
-    public void addCardToPile(Card card){
+    private void addCardToPile(Card card){
         cards.add(card);
     }
 
     public Card getLastPlacedCard(){
         return cards.get(cards.size()-1);
+    }
+
+    @Override
+    public void onCardPaced(Card card) {
+        addCardToPile(card);
     }
 }

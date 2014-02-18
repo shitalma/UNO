@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * This is for player to - play.
  */
-public class Player implements ActionListener {
+public class Player implements CardPlaceListener{
     private List<Card> cards;
     private String name;
 
@@ -24,21 +24,20 @@ public class Player implements ActionListener {
             cards.add(numberCard);
         }
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
-
     public List<Card> getCards() {
         return this.cards;
     }
 
-    public boolean placeACard(Card blue9) {
-        return cards.remove(blue9);
+    public boolean placeACard(Card card) {
+        return cards.remove(card);
     }
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void onCardPaced(Card card) {
+        placeACard(card);
     }
 }
