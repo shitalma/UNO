@@ -45,11 +45,4 @@ public class GameTest {
         assertEquals(4, game.getCards().size());
     }
 
-    @Test
-    public void ShouldRemoveCardFromCurrentPlayerAndAddToPile(){
-        List<Card> cardList = getCardList();
-        raj.addCards(cardList);
-        game.onCardPlaced(cardList.get(0));
-        assertEquals(3,game.getCurrentPlayer().getCards().size());
-    }
 }
