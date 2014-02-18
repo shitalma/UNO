@@ -25,4 +25,5 @@ public class WaitingScreen extends JFrame{
         add(panel);
         setVisible(true);
     }
+
 }
