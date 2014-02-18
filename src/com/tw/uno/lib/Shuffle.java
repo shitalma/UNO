@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * shuffle List
+ * shuffleCards List
  */
 public class Shuffle {
     Shuffle(List elements){

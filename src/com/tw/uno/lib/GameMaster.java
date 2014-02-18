@@ -1,7 +1,8 @@
 package com.tw.uno.lib;
 
-import com.tw.uno.ui.screen.WaitingScreen;
+import com.tw.uno.lib.card.Card;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,50 +10,52 @@ import java.util.List;
 /**
  * This is for the game master to do various responsibilities like start,.
  */
-public class GameMaster implements ServerScreenObserver,MessageChannelListener {
+public class GameMaster implements MessageChannelListener {
     private ServerSocket serverSocket;
     private List<MessageChannel> clients;
     private UNOFactory unoFactory;
     private int numOfPlayers;
     private int numOfPacks;
 
-    public GameMaster(UNOFactory unoFactory) {
+    public GameMaster(UNOFactory unoFactory, int numOfPlayers, int numOfPacks) {
         this.unoFactory = unoFactory;
+        this.numOfPlayers = numOfPlayers;
+        this.numOfPacks = numOfPacks;
         this.clients = new ArrayList<>();
         this.serverSocket = unoFactory.createServerSocket();
-        unoFactory.showServerStartScreen(this);
+
+    }
+
+    public void stopGame(){
+        try {
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void addClients() {
-        WaitingScreen waitingScreen = new WaitingScreen();
         for (int i = 0; i < numOfPlayers; i++) {
             MessageChannel channel = unoFactory.acceptClient(serverSocket);
             channel.startListeningForMessages(this);
             clients.add(channel);
         }
-        waitingScreen.dispose();
         System.out.println(clients.size() + "people joined");
         prepareToPlay();
     }
 
     private void prepareToPlay() {
-        unoFactory.showServerScreen(numOfPlayers, numOfPacks);
-        for (MessageChannel client : clients) {
-            client.send("Welcome");
+
+        List<Card> cards = unoFactory.getPacksOfCards(numOfPacks);
+        for (int i = 0; i < clients.size() * 7; i++) {
+            for (MessageChannel client : clients) {
+                    client.addCard(cards.get(i));
+                    cards.remove(i);
+                client.send("CARD:" + cards);
+            }
         }
     }
 
-    @Override
-    public void onStartGame(String noOfPacks, String noOfPlayers) {
-        numOfPlayers = Integer.parseInt(noOfPlayers);
-        numOfPacks = Integer.parseInt(noOfPacks);
-
-        addClients();
-    }
-
-    public static void main(String[] args) {
-        GameMaster master = new GameMaster(new UNOFactory());
-    }
 
     @Override
     public void onError(MessageChannel client, Exception e) {
@@ -67,5 +70,9 @@ public class GameMaster implements ServerScreenObserver,MessageChannelListener {
     @Override
     public void onConnectionClosed(MessageChannel client) {
 
+    }
+
+    public Game startGame(List<Player> players, List<Card> cards) {
+        return new Game(players,cards);
     }
 }

@@ -2,7 +2,7 @@ package com.tw.uno.lib;
 
 import java.net.Socket;
 
-public class GameClient implements LoginObserver {
+public class GameClient implements LoginObserver,MessageChannelListener {
     private UNOFactory unoFactory;
     private MessageChannel channel;
     private String name;
@@ -29,5 +29,20 @@ public class GameClient implements LoginObserver {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void onError(MessageChannel client, Exception e) {
+
+    }
+
+    @Override
+    public void onMessage(MessageChannel client, Object message) {
+        System.out.println(message);
+    }
+
+    @Override
+    public void onConnectionClosed(MessageChannel client) {
+
     }
 }
