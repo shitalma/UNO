@@ -1,5 +1,7 @@
 package com.tw.uno.ui.screen;
 
+import com.tw.uno.lib.Player;
+import com.tw.uno.lib.UNOFactory;
 import com.tw.uno.lib.card.Card;
 import com.tw.uno.lib.card.CardColor;
 import com.tw.uno.lib.card.CardValue;
@@ -20,6 +22,7 @@ public class PlayerScreen extends JFrame {
     private final Dimension screenSize;
 
     public static void addComponentsToPane(Container pane) {
+        UNOFactory factory = new UNOFactory();
         if (RIGHT_TO_LEFT)
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
@@ -39,8 +42,9 @@ public class PlayerScreen extends JFrame {
         List<Card> cards1 = new ArrayList<>();
         cards1.add(new NumberCard(CardColor.RED, CardValue.EIGHT));
         cards1.add(new NumberCard(CardColor.GREEN, CardValue.FOUR));
-
-        cards = new MyCards(cards1);
+        Player myPlayer = new Player("player");
+        myPlayer.addCards(cards1);
+        cards = new MyCards(myPlayer);
 
         addToRow(cards, 4, 0, 2);
         UNOButton = new com.tw.uno.ui.elements.UNOButton();
@@ -58,7 +62,7 @@ public class PlayerScreen extends JFrame {
 
         addToRow(new DrawButton(), 2, 1, 1);
 
-        addToRow(new PileButton(), 2, 2, 1);
+        addToRow(new PileButton(factory.GetTopCardOnPile()), 2, 2, 1);
 
         addToRow(new WildCard().addAllButtons(), 2, 3, 1);
     }

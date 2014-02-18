@@ -1,25 +1,23 @@
 package com.tw.uno.ui.elements;
 
-import com.tw.uno.lib.UNOFactory;
+import com.tw.uno.controller.Controller;
+import com.tw.uno.lib.Player;
 import com.tw.uno.lib.card.Card;
-import com.tw.uno.lib.card.CardColor;
-import com.tw.uno.lib.card.CardValue;
-import com.tw.uno.lib.card.NumberCard;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MyCards extends JPanel implements ActionListener {
     private List<Card> cards = new ArrayList<>();
+    private Player player;
 
-    public MyCards(List<Card> cards) {
-        this.cards = cards;
+    public MyCards(Player player) {
+        this.player = player;
+        this.cards = player.getCards();
         setLayout(new GridLayout(0, cards.size()));
         for (Card card : cards) {
             JButton button = new JButton(card.toString());
@@ -30,9 +28,11 @@ public class MyCards extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Controller controller = new Controller(player);
         Card card;
         String[] s = e.getActionCommand().split(" ");
-        card = new UNOFactory().createCard(s[0], s[1]);
-        cards.remove(card);
+
+        card = controller.createCard(s[0], s[1]);
+        controller.onCardPlace(card);
     }
 }

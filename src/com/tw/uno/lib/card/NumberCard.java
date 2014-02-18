@@ -17,13 +17,13 @@ public class NumberCard implements Card{
         NumberCard that = (NumberCard) o;
 
         if (color != that.color) return false;
-        if (value != that.value) return false;
+        if (value.getValue() != that.value.getValue()) return false;
 
         return true;
     }
 
     @Override
     public String toString() {
-        return color+ " " + value;
+        return color +" " + value.getValue();
     }
 }

@@ -4,6 +4,7 @@ import com.tw.uno.lib.card.Card;
 import com.tw.uno.lib.card.CardColor;
 import com.tw.uno.lib.card.CardValue;
 import com.tw.uno.lib.card.NumberCard;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -57,5 +58,13 @@ public class PlayerTest {
         assertEquals(false, sandesh.placeACard(blue8));
         assertEquals(expected,sandesh.getCards());
 
+    }
+
+    @Test
+    public void OnPlaceEventShouldRemoveCardFromPlayersCardsList(){
+        List<Card> expected = new ArrayList<>();
+        expected.add(new NumberCard(CardColor.RED,CardValue.ONE));
+        sandesh.onCardPaced(new NumberCard(CardColor.BLUE,CardValue.NINE));
+        assertEquals(expected, sandesh.getCards());
     }
 }
