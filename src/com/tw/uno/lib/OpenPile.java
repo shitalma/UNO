@@ -8,11 +8,11 @@ import com.tw.uno.lib.card.NumberCard;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pile implements CardPlaceListener{
+public class OpenPile implements CardPlaceListener{
 
     private List<Card> cards;
 
-    public Pile() {
+    public OpenPile() {
         cards = new ArrayList<>();
         cards.add(new NumberCard(CardColor.BLUE, CardValue.THREE));
     }

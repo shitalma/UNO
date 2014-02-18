@@ -1,10 +1,6 @@
 package com.tw.uno.lib;
 
 import com.tw.uno.lib.card.Card;
-import com.tw.uno.lib.card.CardColor;
-import com.tw.uno.lib.card.CardValue;
-import com.tw.uno.lib.card.NumberCard;
-import com.tw.uno.ui.elements.UNOButton;
 import com.tw.uno.ui.screen.CreateGameScreen;
 import com.tw.uno.ui.screen.GameMasterWindow;
 import com.tw.uno.ui.screen.LoginScreen;
@@ -12,11 +8,9 @@ import com.tw.uno.ui.screen.LoginScreen;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
 
 public class UNOFactory {
-    Pile pile = new Pile();
+    OpenPile openPile = new OpenPile();
 
     public ServerSocket createServerSocket() {
         try {
@@ -57,6 +51,6 @@ public class UNOFactory {
     }
 
     public Card GetTopCardOnPile(){
-        return pile.getLastPlacedCard();
+        return openPile.getLastPlacedCard();
     }
 }
