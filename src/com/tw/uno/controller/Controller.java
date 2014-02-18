@@ -1,6 +1,7 @@
 package com.tw.uno.controller;
 
-import com.tw.uno.lib.OpenPile;
+import com.tw.uno.lib.Game;
+import com.tw.uno.lib.Pile;
 import com.tw.uno.lib.Player;
 import com.tw.uno.lib.card.Card;
 import com.tw.uno.lib.card.CardGenerator;
@@ -10,16 +11,15 @@ import com.tw.uno.lib.card.CardGenerator;
  */
 
 public class Controller {
-    private OpenPile openPile;
+    private Pile pile;
     private Player player;
 
-    public Controller(Player player){
-        this.player = player;
-        this.openPile = new OpenPile();
+    public Controller(){
+        this.pile = new Pile();
     }
-    public void onCardPlace(Card card) {
-        openPile.onCardPaced(card);
-        player.onCardPaced(card);
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public Card createCard(String color, String value) {

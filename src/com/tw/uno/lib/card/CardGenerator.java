@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by kavitama on 2/18/14.
+ *generate NumberCard
  */
 public class CardGenerator {
     public NumberCard createCard(String color, String value) {

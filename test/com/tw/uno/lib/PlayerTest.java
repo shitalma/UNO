@@ -59,12 +59,4 @@ public class PlayerTest {
         assertEquals(expected,sandesh.getCards());
 
     }
-
-    @Test
-    public void OnPlaceEventShouldRemoveCardFromPlayersCardsList(){
-        List<Card> expected = new ArrayList<>();
-        expected.add(new NumberCard(CardColor.RED,CardValue.ONE));
-        sandesh.onCardPaced(new NumberCard(CardColor.BLUE,CardValue.NINE));
-        assertEquals(expected, sandesh.getCards());
-    }
 }

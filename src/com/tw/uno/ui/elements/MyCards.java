@@ -12,12 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyCards extends JPanel implements ActionListener {
-    private List<Card> cards = new ArrayList<>();
-    private Player player;
 
-    public MyCards(Player player) {
-        this.player = player;
-        this.cards = player.getCards();
+    public MyCards(List<Card> cards) {
         setLayout(new GridLayout(0, cards.size()));
         for (Card card : cards) {
             JButton button = new JButton(card.toString());
@@ -28,11 +24,12 @@ public class MyCards extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Controller controller = new Controller(player);
+        Controller controller = new Controller();
         Card card;
         String[] s = e.getActionCommand().split(" ");
 
         card = controller.createCard(s[0], s[1]);
-        controller.onCardPlace(card);
+     //   controller.onCardPlace(card);
     }
+
 }

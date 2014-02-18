@@ -2,15 +2,14 @@ package com.tw.uno.lib;
 
 import com.tw.uno.lib.card.Card;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * This is for player to - play.
  */
-public class Player implements CardPlaceListener{
+public class Player {
     private List<Card> cards;
     private String name;
 
@@ -36,8 +35,4 @@ public class Player implements CardPlaceListener{
         return name;
     }
 
-    @Override
-    public void onCardPaced(Card card) {
-        placeACard(card);
-    }
 }
