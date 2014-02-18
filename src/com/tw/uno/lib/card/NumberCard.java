@@ -24,7 +24,6 @@ public class NumberCard implements Card{
 
     @Override
     public String toString() {
-        System.out.println(value);
         return color +" " + value.getValue();
     }
 }
