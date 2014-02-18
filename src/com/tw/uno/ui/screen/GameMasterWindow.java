@@ -14,6 +14,11 @@ public class GameMasterWindow extends JFrame{
     private static GridBagConstraints constraints;
     private static Container pane;
 
+    public GameMasterWindow(int numOfPacks, int numOfPlayers) {
+
+
+    }
+
     public static void addComponentsToPane(Container pane) {
         if (RIGHT_TO_LEFT)
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);

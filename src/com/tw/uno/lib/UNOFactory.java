@@ -1,6 +1,7 @@
 package com.tw.uno.lib;
 
 import com.tw.uno.ui.screen.CreateGameScreen;
+import com.tw.uno.ui.screen.GameMasterWindow;
 import com.tw.uno.ui.screen.LoginScreen;
 import com.tw.uno.ui.screen.PlayerScreen;
 
@@ -42,7 +43,7 @@ public class UNOFactory {
         return new CreateGameScreen(observer);
     }
 
-    public PlayerScreen showServerScreen(int numOfPacks, int numOfPlayers) {
-        return new PlayerScreen(numOfPacks, numOfPlayers);
+    public GameMasterWindow showServerScreen(int numOfPacks, int numOfPlayers) {
+        return new GameMasterWindow(numOfPacks, numOfPlayers);
     }
 }

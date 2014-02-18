@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This is for player to play.
+ * This is for player to - play.
  */
 public class Player implements ActionListener {
     private List<Card> cards;
