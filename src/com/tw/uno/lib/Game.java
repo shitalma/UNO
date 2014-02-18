@@ -18,6 +18,7 @@ public class Game implements CardListener{
 
     public Game(List<Player> players,List<Card> cards) {
         this.players = players;
+        this.cards = new UNOFactory().getPacksOfCards(2);
         this.cards = cards;
         this.pile = new Pile();
     }
