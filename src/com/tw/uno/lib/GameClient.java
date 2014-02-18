@@ -11,19 +11,15 @@ public class GameClient implements LoginObserver {
 
     public GameClient(UNOFactory unoFactory) {
         this.unoFactory = unoFactory;
+        unoFactory.showPlayerLoginScreen(this);
     }
 
     public void connectTo(String serverAddress) {
         socket = unoFactory.createClientSocket(serverAddress);
     }
 
-
-    private void showPlayerLoginScreen() {
-        loginScreen = unoFactory.showPlayerLoginScreen( this);
-    }
-
     public static void main(String[] args) {
-        new GameClient(new UNOFactory()).showPlayerLoginScreen();
+        new GameClient(new UNOFactory());
     }
 
 

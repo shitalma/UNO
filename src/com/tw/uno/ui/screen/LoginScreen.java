@@ -1,6 +1,7 @@
 package com.tw.uno.ui.screen;
 
 import com.tw.uno.lib.LoginObserver;
+import com.tw.uno.lib.card.PlayerConnectionObserver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,11 +24,12 @@ public class LoginScreen extends JFrame{
 
         createControls();
         addControlsToPanel();
+        joinButton.addActionListener(new PlayerConnectionObserver(loginObserver));
         joinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new WaitingScreen();
-                loginObserver.onJoin(masterAddress.getText(),player.getText());
+                loginObserver.onJoin(masterAddress.getText(), player.getText());
             }
         });
         add(loginPanel);

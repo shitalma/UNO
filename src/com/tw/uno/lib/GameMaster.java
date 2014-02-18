@@ -27,6 +27,7 @@ public class GameMaster implements ServerScreenObserver {
             clients.add(client);
         }
         System.out.println(clients.size() + "people joined");
+        unoFactory.showServerScreen(numOfPlayers, numOfPacks);
     }
 
 
@@ -34,7 +35,6 @@ public class GameMaster implements ServerScreenObserver {
     public void onStartGame(String noOfPacks, String noOfPlayers) {
         numOfPlayers = Integer.parseInt(noOfPlayers);
         numOfPacks = Integer.parseInt(noOfPacks);
-        unoFactory.showServerScreen(numOfPlayers, numOfPacks);
         addClients();
     }
     public static void main(String[] args) {
