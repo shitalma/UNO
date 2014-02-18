@@ -18,7 +18,7 @@
 <XPD:REF name="Namespace">Vf0vLYT3K0m1gP++aeNu1gAA</XPD:REF>
 <XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="OwnedDiagrams[0]" type="UMLUseCaseDiagram" guid="5Yx0vUx5ZUSFmODdj8wEpAAA">
-<XPD:ATTR name="Name" type="string">Main</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">com.tw.uno.cliTest.Main</XPD:ATTR>
 <XPD:REF name="DiagramOwner">nGUVaynrsUK6Zmtu9lbWNgAA</XPD:REF>
 <XPD:OBJ name="DiagramView" type="UMLUseCaseDiagramView" guid="69VsX1mm30WatICq++qxYQAA">
 <XPD:REF name="Diagram">5Yx0vUx5ZUSFmODdj8wEpAAA</XPD:REF>
@@ -32,7 +32,7 @@
 <XPD:REF name="Namespace">Vf0vLYT3K0m1gP++aeNu1gAA</XPD:REF>
 <XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="OwnedDiagrams[0]" type="UMLClassDiagram" guid="dCzT0UOmJUCgLfS2+lC35QAA">
-<XPD:ATTR name="Name" type="string">Main</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">com.tw.uno.cliTest.Main</XPD:ATTR>
 <XPD:ATTR name="DefaultDiagram" type="boolean">True</XPD:ATTR>
 <XPD:ATTR name="DiagramType" type="string">RobustnessDiagram</XPD:ATTR>
 <XPD:REF name="DiagramOwner">hJVSK69iZUSpwehiOl4qVgAA</XPD:REF>
@@ -48,7 +48,7 @@
 <XPD:REF name="Namespace">Vf0vLYT3K0m1gP++aeNu1gAA</XPD:REF>
 <XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="OwnedDiagrams[0]" type="UMLClassDiagram" guid="JBUvdk8DPUGX13t7KyD+iwAA">
-<XPD:ATTR name="Name" type="string">Main</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">com.tw.uno.cliTest.Main</XPD:ATTR>
 <XPD:ATTR name="DefaultDiagram" type="boolean">True</XPD:ATTR>
 <XPD:REF name="DiagramOwner">/CdrtjXOqEaRdkHXKW88yAAA</XPD:REF>
 <XPD:OBJ name="DiagramView" type="UMLClassDiagramView" guid="dQEYI/C3t0ew7msoZajuagAA">
@@ -671,7 +671,7 @@
 <XPD:REF name="Namespace">Vf0vLYT3K0m1gP++aeNu1gAA</XPD:REF>
 <XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="OwnedDiagrams[0]" type="UMLComponentDiagram" guid="0vAvUV7pJki9eKhxGPZ5LAAA">
-<XPD:ATTR name="Name" type="string">Main</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">com.tw.uno.cliTest.Main</XPD:ATTR>
 <XPD:REF name="DiagramOwner">KDeJyywR20uRu8x7hO7DvgAA</XPD:REF>
 <XPD:OBJ name="DiagramView" type="UMLComponentDiagramView" guid="Rk486HIwq0SfhXPxBmUv6QAA">
 <XPD:REF name="Diagram">0vAvUV7pJki9eKhxGPZ5LAAA</XPD:REF>
@@ -685,7 +685,7 @@
 <XPD:REF name="Namespace">Vf0vLYT3K0m1gP++aeNu1gAA</XPD:REF>
 <XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="OwnedDiagrams[0]" type="UMLDeploymentDiagram" guid="cp1iP/f9xUWEvQshVLBcNAAA">
-<XPD:ATTR name="Name" type="string">Main</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">com.tw.uno.cliTest.Main</XPD:ATTR>
 <XPD:REF name="DiagramOwner">LXb/BJlAM0qI4nv+wT12FAAA</XPD:REF>
 <XPD:OBJ name="DiagramView" type="UMLDeploymentDiagramView" guid="4GHA1bQh8kuc4UJ2x+WpqwAA">
 <XPD:REF name="Diagram">cp1iP/f9xUWEvQshVLBcNAAA</XPD:REF>

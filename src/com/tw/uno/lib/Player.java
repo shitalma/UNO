@@ -34,8 +34,8 @@ public class Player implements ActionListener {
         return this.cards;
     }
 
-    public boolean placeACard(Card blue9) {
-        return cards.remove(blue9);
+    public boolean placeACard(Card card) {
+        return cards.remove(card);
     }
 
     public String getName() {
