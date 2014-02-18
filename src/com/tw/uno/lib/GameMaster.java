@@ -50,6 +50,7 @@ public class GameMaster implements MessageChannelListener {
 
     private void seeAllPlayers() {
         System.out.println("M here");
+        System.out.println(playerChannels.size());
         for (Player player : playerChannels.keySet()) {
             System.out.println(player.getName());
         }

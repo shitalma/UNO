@@ -14,7 +14,7 @@ public class StartGameForClient {
         unoFactory.showPlayerLoginScreen(new LoginObserver() {
             @Override
             public void onJoin(String serverAddress, String playerName) {
-                GameClient client = new GameClient(unoFactory,playerName);
+                GameClient client = new GameClient(unoFactory,"NAME:" + playerName);
                 client.connectTo(serverAddress);
             }
         });
