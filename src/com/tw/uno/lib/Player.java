@@ -38,7 +38,4 @@ public class Player implements ActionListener {
         return cards.remove(blue9);
     }
 
-    public String getName() {
-        return name;
-    }
 }
