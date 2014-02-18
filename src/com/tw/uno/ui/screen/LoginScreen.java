@@ -1,9 +1,11 @@
 package com.tw.uno.ui.screen;
 
-import com.tw.uno.lib.Player;
+import com.tw.uno.lib.LoginObserver;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LoginScreen extends JFrame{
     JPanel loginPanel;
@@ -14,17 +16,22 @@ public class LoginScreen extends JFrame{
     JTextField player;
     final static boolean shouldWeightX = true;
 
-    public LoginScreen() {
+    public LoginScreen(final LoginObserver loginObserver) {
         setTitle("Login");
         setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         createControls();
         addControlsToPanel();
-
+        joinButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new WaitingScreen();
+                loginObserver.onJoin(masterAddress.getText(),player.getText());
+            }
+        });
         add(loginPanel);
         this.addComponentsToPane(this.getContentPane());
-        joinButton.addActionListener(new Player("sayali"));
         setVisible(true);
     }
 
@@ -86,7 +93,5 @@ public class LoginScreen extends JFrame{
         c.gridwidth = 2;
         c.gridy = 2;
         pane.add(joinButton, c);
-    }
-
-
-}
+      }
+ }

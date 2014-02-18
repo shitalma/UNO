@@ -1,11 +1,9 @@
 package com.tw.uno.ui.screen;
 
-import com.tw.uno.lib.Player;
 import com.tw.uno.ui.elements.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
 
 /**
  * keep tak of log
@@ -28,9 +26,9 @@ public class GameMasterWindow extends JFrame{
             constraints.fill = GridBagConstraints.HORIZONTAL;
         }
         //adds players to grid 0,0
-        player = new Players(Arrays.asList( new Player("Sandesh"), new Player("Ram"), new Player("Sheetal")));
+//        player = new Players(Arrays.asList( new Player("Sandesh"), new Player("Ram"), new Player("Sheetal")));
 
-        addToRow(player, 0, 0, 3);
+//        addToRow(player, 0, 0, 3);
 
         String[] logMessages = {"Aniket placed RED 4", "Shital placed RED 6", "Sandesh placed BLUE 6", "ram said UNO"};
 

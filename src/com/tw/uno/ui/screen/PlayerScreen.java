@@ -1,14 +1,9 @@
 package com.tw.uno.ui.screen;
 
-import com.tw.uno.lib.CardColor;
-import com.tw.uno.lib.NumberCard;
-import com.tw.uno.lib.Player;
 import com.tw.uno.ui.elements.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
 public class PlayerScreen extends JFrame {
     final static boolean shouldFill = true;
@@ -31,11 +26,11 @@ public class PlayerScreen extends JFrame {
 //            constraints.fill = GridBagConstraints.VERTICAL;
         }
         //adds players to grid 0,0
-        player = new Players(Arrays.asList( new Player("Sandesh"), new Player("Ram"), new Player("Sheetal")));
-        addToRow(player, 0, 0, 3);
+//        player = new Players(Arrays.asList( new Player("Sandesh"), new Player("Ram"), new Player("Sheetal")));
+//        addToRow(player, 0, 0, 3);
 
-        cards = new MyCards(Arrays.asList(new NumberCard(CardColor.RED,4), new NumberCard(CardColor.GREEN,5)));
-        addToRow(cards, 4, 0, 2);
+//        cards = new MyCards(Arrays.asList(new NumberCard(CardColor.RED,4), new NumberCard(CardColor.GREEN,5)));
+//        addToRow(cards, 4, 0, 2);
 
         UNOButton = new com.tw.uno.ui.elements.UNOButton();
         addToRow(UNOButton, 4, 3, 1);
@@ -76,7 +71,7 @@ public class PlayerScreen extends JFrame {
         pane.add(panel, constraints);
     }
 
-    public PlayerScreen() {
+    public PlayerScreen(int numOfPacks, int numOfPlayers) {
         setTitle("Player's Screen");
 
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
