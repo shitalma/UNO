@@ -1,8 +1,12 @@
 package com.tw.uno.ui.screen;
 
+import com.tw.uno.lib.ServerScreenObserver;
+
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CreateGameScreen extends JFrame {
     private JLabel players;
@@ -12,7 +16,7 @@ public class CreateGameScreen extends JFrame {
     private JPanel panel;
     private JButton start;
 
-    public CreateGameScreen() {
+    public CreateGameScreen(final ServerScreenObserver serverScreenObserver) {
         super("Create game screen");
         panel = new JPanel();
         players = new JLabel("Number of players : ");
@@ -20,14 +24,18 @@ public class CreateGameScreen extends JFrame {
 
         playersField = new JTextField(15);
         packsField = new JTextField(15);
-
         start = new JButton(" START ");
+        createFirstScreenFromServerSide();
+        start.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                serverScreenObserver.onStartGame(playersField.getText(),packsField.getText());
+            }
+        });
     }
 
     public void createFirstScreenFromServerSide() {
         setSize(500,500);
-
-
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
