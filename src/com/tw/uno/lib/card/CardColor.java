@@ -1,4 +1,4 @@
-package com.tw.uno.lib;
+package com.tw.uno.lib.card;
 
 /**
  * gives colors - RED, GREEN, YELLOW, BLUE

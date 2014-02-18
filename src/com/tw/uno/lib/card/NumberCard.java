@@ -1,13 +1,12 @@
-package com.tw.uno.lib;
+package com.tw.uno.lib.card;
 
-public class NumberCard {
+public class NumberCard implements Card{
     private CardColor color;
-    private int number;
+    private CardValue value;
 
-    public NumberCard(CardColor cardColor, int number) {
-
+    public NumberCard(CardColor cardColor, CardValue value) {
         this.color = cardColor;
-        this.number = number;
+        this.value = value;
     }
 
     @Override
@@ -17,14 +16,14 @@ public class NumberCard {
 
         NumberCard that = (NumberCard) o;
 
-        if (number != that.number) return false;
-        if (!color.equals(that.color)) return false;
+        if (color != that.color) return false;
+        if (value != that.value) return false;
 
         return true;
     }
 
     @Override
     public String toString() {
-        return color+ " " +number;
+        return color+ " " + value;
     }
 }

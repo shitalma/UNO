@@ -1,13 +1,13 @@
 package com.tw.uno.ui.screen;
 
-import com.tw.uno.lib.CardColor;
-import com.tw.uno.lib.NumberCard;
+import com.tw.uno.lib.card.CardColor;
+import com.tw.uno.lib.card.CardValue;
+import com.tw.uno.lib.card.NumberCard;
 import com.tw.uno.lib.Player;
 import com.tw.uno.ui.elements.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class PlayerScreen extends JFrame {
@@ -34,7 +34,7 @@ public class PlayerScreen extends JFrame {
         player = new Players(Arrays.asList( new Player("Sandesh"), new Player("Ram"), new Player("Sheetal")));
         addToRow(player, 0, 0, 3);
 
-        cards = new MyCards(Arrays.asList(new NumberCard(CardColor.RED,4), new NumberCard(CardColor.GREEN,5)));
+        cards = new MyCards(Arrays.asList(new NumberCard(CardColor.RED, CardValue.eight), new NumberCard(CardColor.GREEN,CardValue.four)));
         addToRow(cards, 4, 0, 2);
 
         UNOButton = new com.tw.uno.ui.elements.UNOButton();

@@ -1,5 +1,8 @@
 package com.tw.uno.lib;
 
+import com.tw.uno.lib.card.CardColor;
+import com.tw.uno.lib.card.CardValue;
+import com.tw.uno.lib.card.NumberCard;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,11 +19,11 @@ public class PileTest {
 
     @Test
     public void shouldGetLastPlacedCard() throws Exception {
-        pile.addCardToPile(new NumberCard(CardColor.RED,7));
-        pile.addCardToPile(new NumberCard(CardColor.BLUE,2));
+        pile.addCardToPile(new NumberCard(CardColor.RED, CardValue.eight));
+        pile.addCardToPile(new NumberCard(CardColor.BLUE,CardValue.three));
 
         NumberCard actualCard = pile.getLastPlacedCard();
 
-        assertThat(actualCard,is(new NumberCard(CardColor.BLUE,2)));
+        assertThat(actualCard,is(new NumberCard(CardColor.BLUE,CardValue.three)));
     }
 }

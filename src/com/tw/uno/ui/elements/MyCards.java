@@ -1,5 +1,5 @@
 package com.tw.uno.ui.elements;
-import com.tw.uno.lib.NumberCard;
+import com.tw.uno.lib.card.NumberCard;
 
 import javax.swing.*;
 import java.awt.*;
