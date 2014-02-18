@@ -19,11 +19,11 @@ public class PileTest {
 
     @Test
     public void shouldGetLastPlacedCard() throws Exception {
-        pile.addCardToPile(new NumberCard(CardColor.RED, CardValue.eight));
-        pile.addCardToPile(new NumberCard(CardColor.BLUE,CardValue.three));
+        pile.addCardToPile(new NumberCard(CardColor.RED, CardValue.EIGHT));
+        pile.addCardToPile(new NumberCard(CardColor.BLUE,CardValue.THREE));
 
         NumberCard actualCard = pile.getLastPlacedCard();
 
-        assertThat(actualCard,is(new NumberCard(CardColor.BLUE,CardValue.three)));
+        assertThat(actualCard,is(new NumberCard(CardColor.BLUE,CardValue.THREE)));
     }
 }

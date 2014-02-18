@@ -34,7 +34,7 @@ public class PlayerScreen extends JFrame {
 //        addToRow(player, 0, 0, 3);
 
 
-        cards = new MyCards(Arrays.asList(new NumberCard(CardColor.RED, CardValue.eight), new NumberCard(CardColor.GREEN,CardValue.four)));
+        cards = new MyCards(Arrays.asList(new NumberCard(CardColor.RED, CardValue.EIGHT), new NumberCard(CardColor.GREEN,CardValue.FOUR)));
         addToRow(cards, 4, 0, 2);
         UNOButton = new com.tw.uno.ui.elements.UNOButton();
         addToRow(UNOButton, 4, 3, 1);
