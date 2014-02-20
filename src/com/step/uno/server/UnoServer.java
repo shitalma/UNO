@@ -1,11 +1,9 @@
 package com.step.uno.server;
 
-import com.step.communication.factory.CommunicationFactory;
-import com.step.uno.server.controller.GameMasterController;
+import com.step.uno.server.view.CreateGameScreen;
 
 public class UnoServer{
     public static void main(String[] args) {
-        GameMasterController controller = new GameMasterController(2, 1, new CommunicationFactory());
-        controller.waitForConnections();
+        new CreateGameScreen();
     }
 }
