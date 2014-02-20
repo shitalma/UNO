@@ -28,7 +28,7 @@ idea {
 }
 distZip {
     into(project.name + "/bin" ) {
-        from 'src/UnoServer.bat', 'src/UnoServer.sh'
+        from 'src/UnoServer.bat', 'src/UnoServer.sh','src/UnoClient.bat', 'src/UnoClient.sh'
         include '*'
     }
 }
