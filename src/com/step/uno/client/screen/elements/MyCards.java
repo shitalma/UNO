@@ -1,13 +1,15 @@
 package com.step.uno.client.screen.elements;
+import com.step.uno.model.Card;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
 public class MyCards extends JPanel{
-    public MyCards(List<String> cards) {
+    public MyCards(List<Card> cards) {
         setLayout(new GridLayout(0, cards.size()));
-        for (String card : cards) {
-            JButton b = new JButton(card);
+        for (Card card : cards) {
+            JButton b = new JButton(card.toString());
             add(b);
         }
     }
