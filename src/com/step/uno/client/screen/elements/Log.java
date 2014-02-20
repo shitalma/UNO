@@ -16,7 +16,7 @@ public class Log extends JPanel {
         setBackground(Color.gray);
 
         setLayout(new BorderLayout());
-        listBox = new JList(actionList);
+        listBox = new JList<>(actionList);
 
         scrollPane = new JScrollPane();
         scrollPane.getViewport().add(listBox);
