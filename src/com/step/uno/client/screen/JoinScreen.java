@@ -46,8 +46,8 @@ public class JoinScreen extends JFrame implements JoinGameView{
     private void createControls() {
         loginPanel = new JPanel();
         joinButton = new JButton("JOIN");
-        label1 = new JLabel("Game Master    ");
-        label2 = new JLabel("Player Name    ");
+        label1 = new JLabel("Game Master ");
+        label2 = new JLabel("Player Name ");
         masterAddress = new JTextField(20);
         player = new JTextField(20);
     }
@@ -92,7 +92,7 @@ public class JoinScreen extends JFrame implements JoinGameView{
         c.gridwidth = 2;
         c.gridy = 2;
         pane.add(joinButton, c);
-      }
+    }
 
     @Override
     public PlayerView switchToPlayerView() {
@@ -105,7 +105,6 @@ public class JoinScreen extends JFrame implements JoinGameView{
             @Override
             public void update(GameSnapshot snapshot) {
                 System.out.println("Got a snapshot");
-                new PlayerScreen().setVisible(true);
             }
         };
         setVisible(false);

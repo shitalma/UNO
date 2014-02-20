@@ -9,7 +9,7 @@ mainClassName="com.step.uno.client.UnoClient" // Change it to your main class
 repositories { mavenCentral() }
 
 dependencies {
-    testCompile 'junit:junit:4.10','org.mockito:mockito-all:1.9.5'
+    testCompile 'junit:junit:4.10', 'org.mockito:mockito-all:1.9.5'
 }
 
 sourceSets {
@@ -24,5 +24,11 @@ task wrapper(type: Wrapper) {
 idea {
     module {
         excludeDirs += [file(".gradle"), file('gradle')]
+    }
+}
+distZip {
+    into(project.name + "/bin" ) {
+        from 'src/UnoServer.bat', 'src/UnoServer.sh'
+        include '*'
     }
 }

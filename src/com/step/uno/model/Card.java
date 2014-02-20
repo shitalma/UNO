@@ -1,9 +1,10 @@
 package com.step.uno.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Card {
+public class Card implements Serializable{
     public Colour colour;
     public Sign sign;
 
@@ -39,11 +40,16 @@ public class Card {
         return cards;
     }
 
-    private static Card createCard(Colour c, String signText) {
+    public static Card createCard(Colour c, String signText) {
         Card card = new Card();
         card.colour = c;
         card.sign = Sign.valueOf(signText);
         return card;
+    }
+
+    @Override
+    public String toString() {
+        return colour.toString() +" " + sign.getPoints();
     }
 }
 
