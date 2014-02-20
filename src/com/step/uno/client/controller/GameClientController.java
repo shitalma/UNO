@@ -25,7 +25,7 @@ public class GameClientController implements MessageChannelListener {
     public void join(String serverAddress,String playerName) {
         channel = factory.connectTo(serverAddress,this);
         channel.startListeningForMessages(this);
-        channel.send(new Introduction(playerName));
+        channel.send(Introduction.create(playerName));
     }
 
     @Override
