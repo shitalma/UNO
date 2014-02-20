@@ -34,6 +34,7 @@ public class GameClientController implements MessageChannelListener {
     }
 
     private void handle(GameSnapshot snapshot){
+
         if(playerView == null) playerView = joinGameView.switchToPlayerView();
         playerView.update(snapshot);
     }
