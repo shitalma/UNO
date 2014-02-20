@@ -2,7 +2,7 @@ package com.step.uno.client;
 
 import com.step.communication.factory.CommunicationFactory;
 import com.step.uno.client.controller.GameClientController;
-import com.step.uno.client.screen.JoinGameScreen;
+import com.step.uno.client.screen.JoinScreen;
 
 public class UnoClient {
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class UnoClient {
         CommunicationFactory factory = new CommunicationFactory();
 
         GameClientController controller = new GameClientController(factory);
-        JoinGameScreen joinGameScreen = new JoinGameScreen(controller);
-        joinGameScreen.showScreen();
+        JoinScreen joinScreen = new JoinScreen(controller);
+        joinScreen.showScreen();
     }
 }
