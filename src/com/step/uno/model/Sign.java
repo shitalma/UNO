@@ -21,4 +21,8 @@ public enum Sign{
     Sign(int v) {
         this.points = v;
     }
+
+    public int getPoints() {
+        return points;
+    }
 }

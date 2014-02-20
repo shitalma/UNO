@@ -2,10 +2,11 @@ package com.step.uno.model;
 
 import com.step.uno.messages.Snapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements Serializable{
     public String name;
     private List<Card> cards = new ArrayList<>();
     private boolean declaredUno;
