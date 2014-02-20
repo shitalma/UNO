@@ -1,10 +1,13 @@
 package com.step.uno.client.screen;
 
 import com.step.uno.client.screen.elements.*;
+import com.step.uno.model.Card;
+import com.step.uno.model.Player;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
+import java.util.*;
+import java.util.List;
 
 public class PlayerScreen extends JFrame {
     final static boolean shouldFill = true;
@@ -13,7 +16,13 @@ public class PlayerScreen extends JFrame {
     private static Container pane;
     private final Dimension screenSize;
 
-    public static void addComponentsToPane(Container pane) {
+
+    private List<Player> players;
+    private List<Card> cards;
+    private String[] log;
+
+
+    public void addComponentsToPane(Container pane) {
         if (RIGHT_TO_LEFT)
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
@@ -27,10 +36,10 @@ public class PlayerScreen extends JFrame {
 //            constraints.fill = GridBagConstraints.VERTICAL;
         }
         //adds players to grid 0,0
-        player = new Players(Arrays.asList("Sandesh", "Ram", "Sheetal", "Aniket"),Arrays.asList("5", "8", "2", "6"));
+        player = new Players(this.players,Arrays.asList("5", "8", "2", "6"));
         addToRow(player, 0, 0, 3);
 
-        cards = new MyCards(Arrays.asList("blue 1", "red 4", "yellow 8", "wild +4", "blue 1", "red 4", "yellow 8", "wild +4"));
+        cards = new MyCards(this.cards);
         addToRow(cards, 4, 0, 2);
 
         UNOButton = new UNOButton();
@@ -38,7 +47,7 @@ public class PlayerScreen extends JFrame {
 
         String[] logMessages = {"Aniket placed red 4", "Shital placed red 6", "Sandesh placed blue 6", "ram said UNO"};
 
-        log = new Log(logMessages);
+        log = new Log(this.log);
 
         addLogToFrame(log);
         arrow = new Arrow();
@@ -72,8 +81,10 @@ public class PlayerScreen extends JFrame {
         pane.add(panel, constraints);
     }
 
-    public PlayerScreen() {
-
+        public PlayerScreen(List<Player> players, List<Card> cards, String[] log) {
+            this.players = players;
+            this.cards = cards;
+            this.log = log;
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setMinimumSize(screenSize);
 
