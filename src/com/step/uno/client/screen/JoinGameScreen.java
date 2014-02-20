@@ -40,7 +40,8 @@ public class JoinGameScreen extends JFrame implements JoinGameView {
 
             @Override
             public void update(GameSnapshot snapshot) {
-                System.out.println("Got a snapshot");
+                System.out.println("Comming till here");
+                new PlayerScreen().setVisible(true);
             }
         };
         setVisible(false);
