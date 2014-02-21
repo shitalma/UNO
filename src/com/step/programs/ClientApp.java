@@ -9,5 +9,4 @@ public class ClientApp {
 
         new GameClient(new Factory()).start(args[0],args[1]);
     }
-
 }

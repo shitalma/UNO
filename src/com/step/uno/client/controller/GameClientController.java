@@ -20,7 +20,6 @@ public class GameClientController implements MessageChannelListener {
 
     public GameClientController(Factory factory) {
         this.factory = factory;
-
     }
 
     public void join(String serverAddress,String playerName) {
