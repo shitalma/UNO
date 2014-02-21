@@ -17,7 +17,7 @@ public class WildCard extends JPanel {
         map.put("blue", Color.BLUE);
         map.put("yellow", Color.YELLOW);
 
-        setSize(500, 500);
+        setSize(200, 200);
 
         colors.add("green");
         colors.add("red");
