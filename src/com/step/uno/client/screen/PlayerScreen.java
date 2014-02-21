@@ -1,9 +1,14 @@
 package com.step.uno.client.screen;
 
 import com.step.uno.client.screen.elements.*;
+import com.step.uno.model.Card;
+import com.step.uno.model.Player;
+import com.step.uno.model.PlayerSummary;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 import static java.awt.BorderLayout.EAST;
 
@@ -12,7 +17,7 @@ public class PlayerScreen extends JFrame {
     JTextArea textArea;
 
 
-    public PlayerScreen() {
+    public PlayerScreen(List<Player> player, Card[] myCards, PlayerSummary[] playerSummaries) {
         setLayout(new BorderLayout());
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize);
@@ -80,9 +85,4 @@ public class PlayerScreen extends JFrame {
 
 
     }
-
-    public static void main(String[] args) {
-        new PlayerScreen();
-    }
-
 }

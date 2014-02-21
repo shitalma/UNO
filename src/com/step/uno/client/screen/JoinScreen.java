@@ -107,14 +107,14 @@ public class JoinScreen extends JFrame implements JoinGameView{
 
             public void update(Snapshot snapshot) {
                 System.out.println("Got a snapshot");
+
+
                 String[] log = new String[]{"aaa","sdkjfksdjkljsdk","kdkfjkdsf"};
                 System.out.println(snapshot.player == null);
                 System.out.println(snapshot.myCards == null);
                 System.out.println(log == null);
 
-//                new PlayerScreen(snapshot.player,
-//                        Arrays.asList(snapshot.myCards),
-//                        log).
+               new PlayerScreen(snapshot.player,snapshot.myCards,snapshot.playerSummaries);
             }
 
         };

@@ -41,9 +41,14 @@ public class GameMaster implements MessageServerListener, PlayerProxyObserver {
             channel.stop();
             return;
         }
+
         PlayerProxy proxy = new PlayerProxy(channel, this);
         proxy.start();
         proxies.add(proxy);
+//        if(proxies.size() == totalPlayers){
+//            System.out.println("starting game");
+//            startGame();
+//        }
     }
 
     public void startGame() {

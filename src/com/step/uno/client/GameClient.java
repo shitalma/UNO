@@ -17,6 +17,7 @@ public class GameClient implements MessageChannelListener {
         this.factory = factory;
     }
 
+
     public void start(String playerName, String serverAddress) {
         this.playerName = playerName;
         this.channel = factory.communication.connectTo(serverAddress, this);
@@ -63,7 +64,13 @@ public class GameClient implements MessageChannelListener {
     @Override
     public void onMessage(MessageChannel client, Object message) {
         if(message.getClass().equals(Snapshot.class)){
-            //present snapshot on to screen
+            Snapshot snapshot = (Snapshot)message;
+            String[] log = new String[]{"aaa","sdkjfksdjkljsdk","kdkfjkdsf"};
+
+//            new PlayerScreen(snapshot.player,
+//            Arrays.asList(snapshot.myCards),
+//            log).
+//present snapshot on to screen
         }
 
         if(message.getClass().equals(GameResult.class)){

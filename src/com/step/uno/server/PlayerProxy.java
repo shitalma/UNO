@@ -31,7 +31,9 @@ public class PlayerProxy implements MessageChannelListener {
     }
 
     private void onClientMessage(Introduction introduction){
+        System.out.println("I an player");
         this.player = new Player(introduction.playerName);
+        System.out.println("name" + player.name);
         observer.onPlayerRegistered(this.player);
     }
 
@@ -64,7 +66,7 @@ public class PlayerProxy implements MessageChannelListener {
     @Override
     public void onMessage(MessageChannel client, Object message) {
         try {
-            Method method = this.getClass().getMethod("onClientMessage",message.getClass());
+            Method method = this.getClass().getDeclaredMethod("onClientMessage", message.getClass());
             method.invoke(this,message);
         } catch (NoSuchMethodException e) {
 
@@ -81,7 +83,11 @@ public class PlayerProxy implements MessageChannelListener {
     }
 
     public void sendSnapshot(Game game) {
+//        System.out.println("2I am used");
+
         Snapshot snapshot = new Snapshot();
+        System.out.println("populating");
+
         game.populate(snapshot, player);
         channel.send(snapshot);
     }
