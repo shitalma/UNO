@@ -1,5 +1,7 @@
 package com.step.uno.client.screen;
 
+import com.step.communication.factory.CommunicationFactory;
+import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.screen.elements.*;
 import com.step.uno.model.Card;
 import com.step.uno.model.Colour;
@@ -112,10 +114,6 @@ public class PlayerScreen extends JFrame {
         getContentPane().add(deck, BorderLayout.CENTER);
 
 
-    }
-
-    public static void main(String[] args) {
-        new PlayerScreen();
     }
 
 }

@@ -37,6 +37,14 @@ public class CreateGameScreen extends JFrame {
                 controller.waitForConnections();
             }
         });
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+
+        int w = this.getSize().width;
+        int h = this.getSize().height;
+        int x = (dim.width-w)/2;
+        int y = (dim.height-h)/2;
+        this.setLocation(x, y);
+
     }
 
     public void createFirstScreenFromServerSide() {
@@ -61,5 +69,9 @@ public class CreateGameScreen extends JFrame {
         add(panel);
 
         setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new CreateGameScreen();
     }
 }

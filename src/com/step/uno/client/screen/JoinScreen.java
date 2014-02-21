@@ -6,6 +6,8 @@ import com.step.uno.client.view.PlayerView;
 import com.step.uno.messages.GameSnapshot;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +25,17 @@ public class JoinScreen extends JFrame implements JoinGameView{
     public JoinScreen(GameClientController controller) {
         this.controller = controller;
         setTitle("Login");
-        setSize(500, 500);
+
+        setSize(700, 300);
+
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+
+        int w = this.getSize().width;
+        int h = this.getSize().height;
+        int x = (dim.width-w)/2;
+        int y = (dim.height-h)/2;
+        this.setLocation(x, y);
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         createControls();
@@ -48,8 +60,12 @@ public class JoinScreen extends JFrame implements JoinGameView{
         joinButton = new JButton("JOIN");
         label1 = new JLabel("Game Master ");
         label2 = new JLabel("Player Name ");
-        masterAddress = new JTextField(20);
-        player = new JTextField(20);
+        masterAddress = new JTextField(10);
+        player = new JTextField(10);
+        masterAddress.setFont(new Font("sansserif", Font.BOLD, 25));
+        label2.setFont(new Font("sansserif", Font.BOLD, 25));
+        player.setFont(new Font("sansserif", Font.BOLD, 25));
+        label1.setFont(new Font("sansserif", Font.BOLD, 25));
     }
 
     public void addComponentsToPane(Container pane) {
@@ -91,6 +107,10 @@ public class JoinScreen extends JFrame implements JoinGameView{
         c.gridx = 0;
         c.gridwidth = 2;
         c.gridy = 2;
+        Border border3 = new LineBorder(Color.BLACK, 3);
+        joinButton.setBorder(border3);
+        joinButton.setPreferredSize(new Dimension(150,50));
+        joinButton.setFont(new Font("sansserif", Font.BOLD, 25));
         pane.add(joinButton, c);
     }
 
