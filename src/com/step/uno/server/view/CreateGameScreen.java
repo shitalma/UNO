@@ -34,26 +34,34 @@ public class CreateGameScreen extends JFrame {
                 int numberOfPlayers = Integer.parseInt(playersField.getText());
                 int noOfPacks = Integer.parseInt(packsField.getText());
                 GameMasterController controller = new GameMasterController(numberOfPlayers, noOfPacks, new Factory());
-//                controller.waitForConnections();
             }
         });
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
         int w = this.getSize().width;
         int h = this.getSize().height;
-        int x = (dim.width-w)/2;
-        int y = (dim.height-h)/2;
+        int x = (dim.width - w) / 2;
+        int y = (dim.height - h) / 2;
         this.setLocation(x, y);
 
     }
 
     public void createFirstScreenFromServerSide() {
-        setSize(500, 500);
+        setSize(800, 500);
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
+
+        players.setFont(new Font("sansserif", Font.BOLD, 25));
+        playersField.setFont(new Font("sansserif", Font.BOLD, 25));
+        packs.setFont(new Font("sansserif", Font.BOLD, 25));
+        packsField.setFont(new Font("sansserif", Font.BOLD, 25));
+        start.setFont(new Font("sansserif", Font.BOLD, 25));
+
         c.gridx = 0;
         c.gridy = 0;
+
         panel.add(players, c);
+
         c.gridx = 1;
         c.gridy = 0;
         panel.add(playersField, c);

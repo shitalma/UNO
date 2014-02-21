@@ -148,6 +148,4 @@ public class JoinScreen extends JFrame implements JoinGameView {
 
         setVisible(true);
     }
-
-
 }

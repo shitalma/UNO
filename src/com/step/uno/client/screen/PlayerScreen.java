@@ -44,8 +44,7 @@ public class PlayerScreen extends JFrame {
         // Activity Log
         textArea = new JTextArea(35, 35);
         textArea.setFont(new Font("sansserif", Font.BOLD, 20));
-        textArea.append("Kavita placed red:5\n");
-        textArea.append("Kavita placed red:5 wjjkgjfjngfg");
+        textArea.append("Kavita placed red:5");
         textArea.setEditable(false);
         JScrollPane scrollableTextArea = new JScrollPane(textArea);
         scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -62,7 +61,7 @@ public class PlayerScreen extends JFrame {
         JPanel pane = new JPanel();
         pane.setPreferredSize(new Dimension(250, 250));
         pane.setBorder(BorderFactory.createLineBorder(Color.black));
-        pane.add(new Players(this.players, Arrays.asList(this.playerSummaries)));
+        pane.add(new Players(Arrays.asList(this.playerSummaries)));
 
         // Close Pile
         JPanel deck = new JPanel();
