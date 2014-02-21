@@ -1,5 +1,6 @@
 package com.step.communication.channel;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
@@ -53,7 +54,8 @@ public class MessageChannel {
         try {
             new ObjectOutputStream(socket.getOutputStream()).writeObject(message);
         } catch (IOException e) {
-            throw new RuntimeException("Could not send message ", e);
+            JOptionPane.showMessageDialog(null, "Sorry you can't join.Specified no of players already joined game");
+//            throw new RuntimeException("Could not send message ");
         }
     }
 
