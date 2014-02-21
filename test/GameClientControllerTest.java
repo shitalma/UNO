@@ -5,7 +5,6 @@ import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
 import com.step.uno.factory.Factory;
 import com.step.uno.messages.Introduction;
-import com.step.uno.messages.Snapshot;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,14 +38,6 @@ public class GameClientControllerTest {
         controller.join("serverAddress", "me");
         controller.onConnectionClosed(mockMessageChannel);
         verify(playerView, times(0)).showDisconnected();
-    }
-
-    @Test
-    public void displaysGameSnapshotAsItArrives() {
-        controller.join("serverAddress", "me");
-        Snapshot snapshot = new Snapshot();
-        controller.onMessage(mockMessageChannel, snapshot);
-        verify(playerView, times(1)).update(snapshot);
     }
 
     class StubFactory extends Factory {

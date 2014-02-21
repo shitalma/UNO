@@ -3,6 +3,7 @@ package com.step.uno.client.screen;
 import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
+import com.step.uno.factory.Factory;
 import com.step.uno.messages.Snapshot;
 
 import javax.swing.*;
@@ -88,6 +89,7 @@ public class JoinScreen extends JFrame implements JoinGameView {
         c.gridy = 0;
         pane.add(masterAddress, c);
 
+
         c.fill = GridBagConstraints.HORIZONTAL;
         c.ipady = 20;
         c.gridx = 0;
@@ -147,5 +149,9 @@ public class JoinScreen extends JFrame implements JoinGameView {
         });
 
         setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new JoinScreen(new GameClientController(new Factory()));
     }
 }

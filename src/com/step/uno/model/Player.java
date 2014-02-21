@@ -14,7 +14,6 @@ public class Player implements Serializable{
     public Player(String name) {
         this.name = name;
     }
-
     public void take(Card card) {
         cards.add(card);
         declaredUno = false;
