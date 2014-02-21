@@ -17,9 +17,7 @@ public class GameClientController implements MessageChannelListener {
     private MessageChannel channel;
 
     public GameClientController(CommunicationFactory factory) {
-
         this.factory = factory;
-
     }
 
     public void join(String serverAddress,String playerName) {
@@ -34,7 +32,6 @@ public class GameClientController implements MessageChannelListener {
     }
 
     private void handle(GameSnapshot snapshot){
-
         if(playerView == null) playerView = joinGameView.switchToPlayerView();
         playerView.update(snapshot);
     }
