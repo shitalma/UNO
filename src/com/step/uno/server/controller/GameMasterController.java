@@ -43,6 +43,7 @@ public class GameMasterController implements MessageServerListener, MessageChann
         for (MessageChannel channel : channels) {
             channel.send(snapshot);
         }
+        System.out.println("All players connected...");
     }
 
     @Override
@@ -52,7 +53,7 @@ public class GameMasterController implements MessageServerListener, MessageChann
 
     public void waitForConnections() {
         messageServer.startListeningForConnections(this);
-        System.out.println("waiting for all players to connect...");
+        System.out.println("Waiting for all players to connect...");
     }
 
     @Override
