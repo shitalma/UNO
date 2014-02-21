@@ -31,7 +31,6 @@ public class PlayerProxy implements MessageChannelListener {
     }
 
     private void onClientMessage(Introduction introduction){
-        System.out.println("I an player");
         this.player = new Player(introduction.playerName);
         System.out.println("name" + player.name);
         observer.onPlayerRegistered(this.player);
