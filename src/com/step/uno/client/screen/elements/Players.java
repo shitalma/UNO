@@ -10,14 +10,13 @@ import java.awt.*;
 import java.util.List;
 
 public class Players extends JPanel {
-    public Players(List<Player> players, List<PlayerSummary> remainingCards) {
-        int count = 0;
-        for (Player player : players) {
+    public Players(List<PlayerSummary> remainingCards) {
+        for (PlayerSummary playerSummary : remainingCards) {
             JPanel panel1 = new JPanel();
             JLabel label = new JLabel();
             label.setText("  >   ");
             label.setFont(new Font("sansserif", Font.BOLD, 80));
-            JButton b = new JButton(" "+player.name+"  \n   "+remainingCards.get(count));
+            JButton b = new JButton(" " + playerSummary.name + "  \n   " + playerSummary.cardsInHand);
             b.setLayout(null);
             b.setFont(new Font("sansserif", Font.BOLD, 25));
             b.setPreferredSize(new Dimension(175, 175));
@@ -27,7 +26,6 @@ public class Players extends JPanel {
             panel1.add(label);
             panel1.setBorder(border2);
             add(panel1);
-            count++;
         }
     }
 }

@@ -11,9 +11,8 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
-public class JoinScreen extends JFrame implements JoinGameView{
+public class JoinScreen extends JFrame implements JoinGameView {
     JPanel loginPanel;
     JButton joinButton;
     JLabel label1;
@@ -33,8 +32,8 @@ public class JoinScreen extends JFrame implements JoinGameView{
 
         int w = this.getSize().width;
         int h = this.getSize().height;
-        int x = (dim.width-w)/2;
-        int y = (dim.height-h)/2;
+        int x = (dim.width - w) / 2;
+        int y = (dim.height - h) / 2;
         this.setLocation(x, y);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -110,7 +109,7 @@ public class JoinScreen extends JFrame implements JoinGameView{
         c.gridy = 2;
         Border border3 = new LineBorder(Color.BLACK, 3);
         joinButton.setBorder(border3);
-        joinButton.setPreferredSize(new Dimension(150,50));
+        joinButton.setPreferredSize(new Dimension(150, 50));
         joinButton.setFont(new Font("sansserif", Font.BOLD, 25));
         pane.add(joinButton, c);
     }
@@ -126,21 +125,16 @@ public class JoinScreen extends JFrame implements JoinGameView{
             @Override
 
             public void update(Snapshot snapshot) {
-                System.out.println("Got a snapshot");
+                System.out.println("displaying Player Screen");
 
-
-                String[] log = new String[]{"aaa","sdkjfksdjkljsdk","kdkfjkdsf"};
-                System.out.println(snapshot.player == null);
-                System.out.println(snapshot.myCards == null);
-                System.out.println(log == null);
-
-               new PlayerScreen(snapshot.player,snapshot.myCards,snapshot.playerSummaries);
+                new PlayerScreen(snapshot.player, snapshot.myCards, snapshot.playerSummaries, snapshot.openCard);
             }
 
         };
         setVisible(false);
         return view;
     }
+
     public void showScreen() {
         controller.bindView(this);
         joinButton.addActionListener(new ActionListener() {
@@ -154,6 +148,4 @@ public class JoinScreen extends JFrame implements JoinGameView{
 
         setVisible(true);
     }
-
-
 }

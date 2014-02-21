@@ -1,7 +1,10 @@
 package com.step.uno.client.screen;
 
-import com.step.uno.client.screen.elements.*;
+import com.step.uno.client.screen.elements.MyCards;
+import com.step.uno.client.screen.elements.Players;
+import com.step.uno.client.screen.elements.WildCard;
 import com.step.uno.model.Card;
+import com.step.uno.model.Colour;
 import com.step.uno.model.Player;
 import com.step.uno.model.PlayerSummary;
 
@@ -9,8 +12,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.Color;
-import java.util.*;
+import java.util.Arrays;
 import java.util.List;
 
 import static java.awt.BorderLayout.EAST;
@@ -21,12 +23,14 @@ public class PlayerScreen extends JFrame {
     private java.util.List<Player> players;
     private Card[] myCards;
     private PlayerSummary[] playerSummaries;
+    private Card openCard;
 
 
-    public PlayerScreen(List<Player> player, Card[] myCards, PlayerSummary[] playerSummaries) {
+    public PlayerScreen(List<Player> player, Card[] myCards, PlayerSummary[] playerSummaries, Card openCard) {
         this.players = player;
         this.myCards = myCards;
         this.playerSummaries = playerSummaries;
+        this.openCard = openCard;
         setLayout(new BorderLayout());
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize);
@@ -40,9 +44,8 @@ public class PlayerScreen extends JFrame {
 
         // Activity Log
         textArea = new JTextArea(35, 35);
-        textArea.setFont(new Font("sansserif", Font.BOLD,20 ));
-        textArea.append("Kavita placed red:5\n");
-        textArea.append("Kavita placed red:5 wjjkgjfjngfg");
+        textArea.setFont(new Font("sansserif", Font.BOLD, 20));
+        textArea.append("Kavita placed red:5");
         textArea.setEditable(false);
         JScrollPane scrollableTextArea = new JScrollPane(textArea);
         scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -59,7 +62,7 @@ public class PlayerScreen extends JFrame {
         JPanel pane = new JPanel();
         pane.setPreferredSize(new Dimension(250, 250));
         pane.setBorder(BorderFactory.createLineBorder(Color.black));
-        pane.add(new Players(this.players, Arrays.asList(this.playerSummaries)));
+        pane.add(new Players(Arrays.asList(this.playerSummaries)));
 
         // Close Pile
         JPanel deck = new JPanel();
@@ -81,6 +84,12 @@ public class PlayerScreen extends JFrame {
         Border border2 = new LineBorder(Color.BLACK, 3);
         button1.setBorder(border2);
         button1.setFont(new Font("sansserif", Font.BOLD, 25));
+        if (openCard.colour.equals(Colour.Red)) button1.setBackground(Color.RED);
+        if (openCard.colour.equals(Colour.Green)) button1.setBackground(Color.GREEN);
+        if (openCard.colour.equals(Colour.Blue)) button1.setBackground(Color.BLUE);
+        if (openCard.colour.equals(Colour.Yellow)) button1.setBackground(Color.YELLOW);
+        if (openCard.colour.equals(Colour.Black)) button1.setBackground(Color.BLACK);
+        button1.setText(this.openCard.sign.toString());
         deck.add(button1);
 
         // wild window
