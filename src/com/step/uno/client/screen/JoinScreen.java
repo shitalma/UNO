@@ -116,8 +116,11 @@ public class JoinScreen extends JFrame implements JoinGameView{
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.join(masterAddress.getText(), player.getText());
+                setVisible(false);
             }
         });
+
         setVisible(true);
     }
+
 }
