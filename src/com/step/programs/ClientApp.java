@@ -7,5 +7,4 @@ public class ClientApp {
     public static void main(String[] args) {
         new GameClient(new Factory()).start(args[0],args[1]);
     }
-
 }
