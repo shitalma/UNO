@@ -2,8 +2,6 @@ package com.step.uno.client.controller;
 
 import com.step.communication.channel.MessageChannel;
 import com.step.communication.channel.MessageChannelListener;
-import com.step.communication.factory.CommunicationFactory;
-import com.step.uno.client.GameClient;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
 import com.step.uno.factory.Factory;
