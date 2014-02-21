@@ -7,7 +7,7 @@ import com.step.uno.model.Player;
 import java.util.List;
 
 public class Factory{
-    public final CommunicationFactory communication = new CommunicationFactory();
+    public CommunicationFactory communication = new CommunicationFactory();
 
     public Game createGame(int totalPacks, List<Player> players) {
         return new Game(totalPacks,players);

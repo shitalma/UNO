@@ -32,6 +32,7 @@ public class GameMasterTest {
         verify(stub.game, times(1)).initialize();
     }
 
+
     private class FactoryStub extends Factory {
         Game game = mock(Game.class);
 

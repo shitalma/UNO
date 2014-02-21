@@ -28,6 +28,7 @@ public class GameClient implements MessageChannelListener {
 
     public void play(Card card) {
         channel.send(new PlayCardAction(card));
+
     }
 
     public void play(Card card, Colour newColour) {
