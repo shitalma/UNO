@@ -1,15 +1,11 @@
 package com.step.uno.client.screen;
 
-import com.step.communication.factory.CommunicationFactory;
-import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.screen.elements.*;
 import com.step.uno.model.Card;
 import com.step.uno.model.Colour;
 import com.step.uno.model.Player;
-import javafx.scene.paint.*;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -114,6 +110,10 @@ public class PlayerScreen extends JFrame {
         getContentPane().add(deck, BorderLayout.CENTER);
 
 
+    }
+
+    public static void main(String[] args) {
+        new PlayerScreen();
     }
 
 }

@@ -5,6 +5,11 @@ public class PlayerSummary {
     public int cardsInHand;
     private boolean declaredUno;
 
+    @Override
+    public String toString() {
+        return name+" "+cardsInHand +" "+declaredUno;
+    }
+
     public PlayerSummary(String name, int cardsInHand, boolean declaredUno) {
 
         this.name = name;
