@@ -67,13 +67,16 @@ public class Game {
         List<PlayerSummary> summaries = new ArrayList<>();
         for (Player p : players) {
             summaries.add(p.generateSummary());
+
         }
+        snapshot.player = this.players;
         snapshot.playerSummaries = summaries.toArray(new PlayerSummary[]{});
         snapshot.currentPlayerIndex = currentPlayerIndex;
         snapshot.openCard = openDeck.lookAtLast();
         snapshot.isInAscendingOrder = this.isInAscendingOrder;
         snapshot.runningColour = runningColour;
         snapshot.draw2Run = draw2Run;
+//        return
     }
 
     public void playCard(Player player, Card card, Colour newColour) {
@@ -157,5 +160,8 @@ public class Game {
 
     public void moveForwardAsPlayerTookNoActionOnDrawnCard() {
         nextTurn();
+    }
+    public List<Player> getPlayers() {
+        return this.players;
     }
 }

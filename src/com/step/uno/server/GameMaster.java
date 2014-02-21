@@ -5,6 +5,7 @@ import com.step.communication.server.MessageServer;
 import com.step.communication.server.MessageServerListener;
 import com.step.uno.factory.Factory;
 import com.step.uno.messages.GameResult;
+import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
 import com.step.uno.model.Colour;
 import com.step.uno.model.Game;
@@ -35,6 +36,7 @@ public class GameMaster implements MessageServerListener, PlayerProxyObserver {
 
     @Override
     public void onNewConnection(MessageChannel channel) {
+        System.out.println("new Connection");
         if (proxies.size() == totalPlayers) {
             channel.stop();
             return;
@@ -53,7 +55,6 @@ public class GameMaster implements MessageServerListener, PlayerProxyObserver {
     private void sendSnapshot() {
         for (PlayerProxy proxy : proxies)
             proxy.sendSnapshot(game);
-
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.step.uno.client.screen;
 import com.step.uno.client.screen.elements.*;
 import com.step.uno.model.Card;
 import com.step.uno.model.Player;
+import com.step.uno.model.PlayerSummary;
 
 import javax.swing.*;
 import java.awt.*;

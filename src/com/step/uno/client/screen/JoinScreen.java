@@ -3,12 +3,13 @@ package com.step.uno.client.screen;
 import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
-import com.step.uno.messages.GameSnapshot;
+import com.step.uno.messages.Snapshot;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class JoinScreen extends JFrame implements JoinGameView{
     JPanel loginPanel;
@@ -87,10 +88,17 @@ public class JoinScreen extends JFrame implements JoinGameView{
             }
 
             @Override
-            public void update(GameSnapshot snapshot) {
-
+            public void update(Snapshot snapshot) {
                 System.out.println("Got a snapshot");
-                new PlayerScreen(snapshot.players,snapshot.cards,snapshot.log).setVisible(true);
+                String[] log = new String[]{"aaa","sdkjfksdjkljsdk","kdkfjkdsf"};
+                System.out.println(snapshot.player == null);
+                System.out.println(snapshot.myCards == null);
+                System.out.println(log == null);
+
+//                new PlayerScreen(snapshot.player,
+//                        Arrays.asList(snapshot.myCards),
+//                        log).
+                setVisible(true);
             }
         };
         setVisible(false);
