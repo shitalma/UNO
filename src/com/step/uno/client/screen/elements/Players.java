@@ -1,6 +1,7 @@
 package com.step.uno.client.screen.elements;
 
 import com.step.uno.model.Player;
+import com.step.uno.model.PlayerSummary;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -9,7 +10,7 @@ import java.awt.*;
 import java.util.List;
 
 public class Players extends JPanel {
-    public Players(List<Player> players, List<String> remainingCards) {
+    public Players(List<Player> players, List<PlayerSummary> remainingCards) {
         int count = 0;
         for (Player player : players) {
             JPanel panel1 = new JPanel();

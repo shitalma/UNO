@@ -2,24 +2,31 @@ package com.step.uno.client.screen;
 
 import com.step.uno.client.screen.elements.*;
 import com.step.uno.model.Card;
-import com.step.uno.model.Colour;
 import com.step.uno.model.Player;
+import com.step.uno.model.PlayerSummary;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.Color;
-import java.util.Arrays;
+import java.util.*;
+import java.util.List;
 
 import static java.awt.BorderLayout.EAST;
 
 public class PlayerScreen extends JFrame {
     private final Dimension screenSize;
     JTextArea textArea;
+    private java.util.List<Player> players;
+    private Card[] myCards;
+    private PlayerSummary[] playerSummaries;
 
 
-    public PlayerScreen() {
+    public PlayerScreen(List<Player> player, Card[] myCards, PlayerSummary[] playerSummaries) {
+        this.players = player;
+        this.myCards = myCards;
+        this.playerSummaries = playerSummaries;
         setLayout(new BorderLayout());
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize);
@@ -41,7 +48,7 @@ public class PlayerScreen extends JFrame {
         scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         //My Cards
-        MyCards cards = new MyCards(Arrays.asList(Card.createCard(Colour.Red, "_7"), Card.createCard(Colour.Blue, "_7"), Card.createCard(Colour.Yellow, "_7")));
+        MyCards cards = new MyCards(Arrays.asList(this.myCards));
         JScrollPane area = new JScrollPane(cards);
         JPanel pane1 = (JPanel) this.getContentPane();
         pane1.add(area);
@@ -51,7 +58,7 @@ public class PlayerScreen extends JFrame {
         JPanel pane = new JPanel();
         pane.setPreferredSize(new Dimension(250, 250));
         pane.setBorder(BorderFactory.createLineBorder(Color.black));
-        pane.add(new Players(Arrays.asList(new Player("Shital"), new Player("Shital"), (new Player("Shital"))), Arrays.asList("2", "4", "6")));
+        pane.add(new Players(this.players, Arrays.asList(this.playerSummaries)));
 
         // Close Pile
         JPanel deck = new JPanel();
@@ -108,12 +115,5 @@ public class PlayerScreen extends JFrame {
         getContentPane().add(area, BorderLayout.SOUTH);
         getContentPane().add(pane, BorderLayout.NORTH);
         getContentPane().add(deck, BorderLayout.CENTER);
-
-
     }
-
-    public static void main(String[] args) {
-        new PlayerScreen();
-    }
-
 }
