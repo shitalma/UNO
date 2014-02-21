@@ -32,7 +32,10 @@ public class PlayerScreen extends JFrame {
         this.playerSummaries = playerSummaries;
         this.openCard = openCard;
         setLayout(new BorderLayout());
+//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds(0,0,screenSize.width, screenSize.height);
+
         setSize(screenSize);
         addComponents();
         setVisible(true);
@@ -89,7 +92,10 @@ public class PlayerScreen extends JFrame {
         if (openCard.colour.equals(Colour.Blue)) button1.setBackground(Color.BLUE);
         if (openCard.colour.equals(Colour.Yellow)) button1.setBackground(Color.YELLOW);
         if (openCard.colour.equals(Colour.Black)) button1.setBackground(Color.BLACK);
-        button1.setText(this.openCard.sign.toString());
+        String cardValueInOpenPile = this.openCard.sign.toString();
+        if(cardValueInOpenPile.contains("_"))
+            cardValueInOpenPile = cardValueInOpenPile.substring(1);
+        button1.setText(cardValueInOpenPile);
         deck.add(button1);
 
         // wild window
