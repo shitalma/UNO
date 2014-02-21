@@ -1,6 +1,5 @@
 package com.step.uno.client;
 
-import com.step.communication.factory.CommunicationFactory;
 import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.screen.JoinScreen;
 import com.step.uno.factory.Factory;
