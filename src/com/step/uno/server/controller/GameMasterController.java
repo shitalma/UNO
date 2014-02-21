@@ -52,6 +52,7 @@ public class GameMasterController implements MessageServerListener, MessageChann
 
     public void waitForConnections() {
         messageServer.startListeningForConnections(this);
+        System.out.println("waiting for all players to connect...");
     }
 
     @Override
