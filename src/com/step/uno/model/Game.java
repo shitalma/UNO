@@ -42,6 +42,11 @@ public class Game {
         //handle special cards in open card
         openDeck.add(draw());
     }
+
+    public Deck getOpenDeck() {
+        return openDeck;
+    }
+
     private Card draw(){
         //if cards are over, need to shuffle and pick from the bottom of open pile
         if(closedDeck.isEmpty()){
@@ -163,5 +168,14 @@ public class Game {
     }
     public List<Player> getPlayers() {
         return this.players;
+    }
+
+    public boolean cardIsValid(Card card) {
+        Card lastCard = openDeck.lookAtLast();
+        boolean valid = true;
+        if (lastCard.colour != card.colour || lastCard.sign != card.sign) {
+            valid = false;
+        }
+        return valid;
     }
 }
