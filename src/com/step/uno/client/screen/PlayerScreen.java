@@ -69,6 +69,7 @@ public class PlayerScreen extends JFrame {
         unoButton.setPreferredSize(new Dimension(30, 30));
         unoButton.setLocation(100, 100);
         unoButton.setBounds(930, 350, 275, 200);
+        unoButton.setBackground(Color.GREEN);
         deck.add(unoButton);
 
 
