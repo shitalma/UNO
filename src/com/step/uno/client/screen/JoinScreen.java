@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 public class JoinScreen extends JFrame implements JoinGameView{
     JPanel loginPanel;
@@ -134,6 +133,4 @@ public class JoinScreen extends JFrame implements JoinGameView{
 
         setVisible(true);
     }
-
-
 }
