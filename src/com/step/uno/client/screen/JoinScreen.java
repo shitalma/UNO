@@ -14,6 +14,8 @@ import java.util.Arrays;
 public class JoinScreen extends JFrame implements JoinGameView{
     JPanel loginPanel;
     JButton joinButton;
+    JLabel label1;
+    JLabel label2;
     JTextField masterAddress;
     JTextField player;
     final static boolean shouldWeightX = true;
@@ -35,7 +37,9 @@ public class JoinScreen extends JFrame implements JoinGameView{
 
 
     private void addControlsToPanel() {
+        loginPanel.add(label1);
         loginPanel.add(masterAddress);
+        loginPanel.add(label2);
         loginPanel.add(player);
         loginPanel.add(joinButton);
     }
@@ -43,8 +47,10 @@ public class JoinScreen extends JFrame implements JoinGameView{
     private void createControls() {
         loginPanel = new JPanel();
         joinButton = new JButton("JOIN");
-        masterAddress = new JTextField("127.0.0.1",20);
-        player = new JTextField("me",20);
+        label1 = new JLabel("Game Master ");
+        label2 = new JLabel("Player Name ");
+        masterAddress = new JTextField(20);
+        player = new JTextField(20);
     }
 
     public void addComponentsToPane(Container pane) {
@@ -55,6 +61,10 @@ public class JoinScreen extends JFrame implements JoinGameView{
         if (shouldWeightX) {
             c.weightx = 0.5;
         }
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 0;
+        pane.add(label1, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.ipady = 20;
@@ -62,6 +72,12 @@ public class JoinScreen extends JFrame implements JoinGameView{
         c.gridx = 1;
         c.gridy = 0;
         pane.add(masterAddress, c);
+
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.ipady = 20;
+        c.gridx = 0;
+        c.gridy = 1;
+        pane.add(label2, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.ipady = 20;
@@ -77,7 +93,7 @@ public class JoinScreen extends JFrame implements JoinGameView{
         c.gridwidth = 2;
         c.gridy = 2;
         pane.add(joinButton, c);
-      }
+    }
 
     @Override
     public PlayerView switchToPlayerView() {
@@ -88,6 +104,7 @@ public class JoinScreen extends JFrame implements JoinGameView{
             }
 
             @Override
+
             public void update(Snapshot snapshot) {
                 System.out.println("Got a snapshot");
                 String[] log = new String[]{"aaa","sdkjfksdjkljsdk","kdkfjkdsf"};
@@ -98,8 +115,8 @@ public class JoinScreen extends JFrame implements JoinGameView{
 //                new PlayerScreen(snapshot.player,
 //                        Arrays.asList(snapshot.myCards),
 //                        log).
-                setVisible(true);
             }
+
         };
         setVisible(false);
         return view;
@@ -110,8 +127,12 @@ public class JoinScreen extends JFrame implements JoinGameView{
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.join(masterAddress.getText(), player.getText());
+                setVisible(false);
+                System.out.println("Waiting...");
             }
         });
+
         setVisible(true);
     }
+
 }

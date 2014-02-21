@@ -12,7 +12,7 @@ import com.step.uno.server.GameMaster;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameMasterController implements MessageServerListener, MessageChannelListener {
+public class GameMasterController {
     private final int numberOfPlayers;
     private final int numberOfPacks;
     private Factory factory;
@@ -27,55 +27,7 @@ public class GameMasterController implements MessageServerListener, MessageChann
         this.factory = factory;
 //        messageServer = factory.communication.createMessageServer();
         gameMaster = new GameMaster(numberOfPlayers, numberOfPacks, factory);
+        System.out.println("Waiting for all players to connect...");
         gameMaster.start();
     }
-
-    @Override
-    public void onNewConnection(MessageChannel channel) {
-        gameMaster.onNewConnection(channel);
-//        if(isHousefull()){
-//            channel.stop();
-//            return;
-//        }
-//        channels.add(channel);
-//        channel.startListeningForMessages(this);
-//        if(isHousefull())startGame();
-    }
-
-    private boolean isHousefull() {
-        return channels.size() == numberOfPlayers;
-    }
-
-    private void startGame() {
-        gameMaster.start();
-//        Snapshot snapshot = new Snapshot();
-//        for (MessageChannel channel : channels) {
-//            channel.send(snapshot);
-//        }
-    }
-
-    @Override
-    public void onError(Exception e) {
-
-    }
-
-    public void waitForConnections() {
-//        gameMaster = new GameMaster(numberOfPlayers, numberOfPacks, factory);
-//        messageServer.startListeningForConnections(this);
-    }
-
-    @Override
-    public void onError(MessageChannel client, Exception e) {
-
-    }
-
-    @Override
-    public void onMessage(MessageChannel client, Object message) {
-
-    }
-
-    @Override
-    public void onConnectionClosed(MessageChannel client) {
-
-    }
-}
+ }

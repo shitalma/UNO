@@ -46,8 +46,8 @@ public class GameMaster implements MessageServerListener, PlayerProxyObserver {
         proxies.add(proxy);
     }
 
-    private void startGame() {
-        game = new Game(totalPacks, players);
+    public void startGame() {
+        game = factory.createGame(totalPacks, players);
         game.initialize();
         sendSnapshot();
     }

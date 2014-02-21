@@ -1,103 +1,88 @@
 package com.step.uno.client.screen;
 
 import com.step.uno.client.screen.elements.*;
-import com.step.uno.model.Card;
-import com.step.uno.model.Player;
-import com.step.uno.model.PlayerSummary;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
-import java.util.List;
+
+import static java.awt.BorderLayout.EAST;
 
 public class PlayerScreen extends JFrame {
-    final static boolean shouldFill = true;
-    final static boolean RIGHT_TO_LEFT = false;
-    private static GridBagConstraints constraints;
-    private static Container pane;
     private final Dimension screenSize;
+    JTextArea textArea;
 
 
-    private List<Player> players;
-    private List<Card> cards;
-    private String[] log;
-
-
-    public void addComponentsToPane(Container pane) {
-        if (RIGHT_TO_LEFT)
-            pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-
-        JPanel player, cards, UNOButton, log,arrow;
-
-        pane.setLayout(new GridBagLayout());
-        constraints = new GridBagConstraints();
-        if (shouldFill) {
-            //natural height, maximum width
-            constraints.fill = GridBagConstraints.HORIZONTAL;
-//            constraints.fill = GridBagConstraints.VERTICAL;
-        }
-        //adds players to grid 0,0
-        player = new Players(this.players,Arrays.asList("5", "8", "2", "6"));
-        addToRow(player, 0, 0, 3);
-
-        cards = new MyCards(this.cards);
-        addToRow(cards, 4, 0, 2);
-
-        UNOButton = new UNOButton();
-        addToRow(UNOButton, 4, 3, 1);
-
-        String[] logMessages = {"Aniket placed red 4", "Shital placed red 6", "Sandesh placed blue 6", "ram said UNO"};
-
-        log = new Log(this.log);
-
-        addLogToFrame(log);
-        arrow = new Arrow();
-        addToRow(arrow,1,0
-                ,3);
-        addToRow(new Status(), 3,1,2);
-
-        addToRow(new DrawButton(), 2,1,1);
-
-        addToRow(new PileButton(),2,2,1 );
-
-        addToRow(new WildCard().addAllButtons(),2,3,1);
-    }
-
-    private static void addLogToFrame(JPanel log) {
-        constraints.weightx = 0.5;
-        constraints.gridx = 3;
-        constraints.gridy = 0;
-        constraints.gridheight = 1;
-
-        PlayerScreen.pane.add(log, constraints);
-    }
-
-    private static void addToRow(JPanel panel, int gridY, int gridX, int width) {
-
-        constraints.weightx = 0.5;
-        constraints.gridx = gridX;
-        constraints.gridy = gridY;
-        constraints.gridwidth = width;
-
-        pane.add(panel, constraints);
-    }
-
-        public PlayerScreen(List<Player> players, List<Card> cards, String[] log) {
-            this.players = players;
-            this.cards = cards;
-            this.log = log;
+    public PlayerScreen() {
+        setLayout(new BorderLayout());
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setMinimumSize(screenSize);
-
-        setMaximizedBounds(new Rectangle(800, 500));
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        //Set up the content pane.
-        pane = getContentPane();
-        addComponentsToPane(pane);
-
-        //Display the window.
-        pack();
+        setSize(screenSize);
+        addComponents();
         setVisible(true);
     }
+
+    public void addComponents() {
+        setTitle("Player Screen");
+
+        // Activity Log
+        textArea = new JTextArea(35, 35);
+        JScrollPane scrollableTextArea = new JScrollPane(textArea);
+        scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        //My Cards
+        JScrollPane area = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        area.setPreferredSize(new Dimension(300, 200));
+
+        // Catch Buttons
+        JPanel pane = new JPanel();
+        pane.setPreferredSize(new Dimension(200, 200));
+        pane.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        // Close Pile
+        JPanel deck = new JPanel();
+        deck.setLayout(null);
+        JButton button = new JButton("Close pile");
+        button.setPreferredSize(new Dimension(30, 30));
+        button.setLocation(10, 10);
+        button.setBounds(10, 20, 300, 300);
+        deck.add(button);
+        // open Pile
+        JButton button1 = new JButton("open pile");
+        button1.setPreferredSize(new Dimension(30, 30));
+        button1.setLocation(100, 100);
+        button1.setBounds(400, 20, 300, 300);
+        deck.add(button1);
+
+        // wild window
+        WildCard wildCard = new WildCard();
+        wildCard.setBounds(800, 20, 300, 100);
+        deck.add(wildCard.addAllButtons(), new GridLayout(2, 2));
+
+        //status hint
+        JTextArea area1 = new JTextArea();
+        area1.setPreferredSize(new Dimension(50, 50));
+        area1.setBounds(10, 350, 900, 300);
+        deck.add(area1);
+
+        //UNO button
+        JButton unoButton = new JButton("UNO");
+        unoButton.setPreferredSize(new Dimension(30, 30));
+        unoButton.setLocation(100, 100);
+        unoButton.setBounds(930, 350, 275, 200);
+        deck.add(unoButton);
+
+
+        getContentPane().add(scrollableTextArea, EAST);
+        getContentPane().add(area, BorderLayout.SOUTH);
+        getContentPane().add(pane, BorderLayout.NORTH);
+        getContentPane().add(deck, BorderLayout.CENTER);
+
+
+    }
+
+    public static void main(String[] args) {
+        new PlayerScreen();
+    }
+
 }
