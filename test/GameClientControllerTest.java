@@ -41,13 +41,6 @@ public class GameClientControllerTest {
         verify(playerView, times(0)).showDisconnected();
     }
 
-    @Test
-    public void displaysGameSnapshotAsItArrives() {
-        controller.join("serverAddress", "me");
-        Snapshot snapshot = new Snapshot();
-        controller.onMessage(mockMessageChannel, snapshot);
-        verify(playerView, times(1)).update(snapshot);
-    }
 
     class StubFactory extends Factory {
 
