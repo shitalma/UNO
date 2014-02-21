@@ -5,69 +5,29 @@ import com.step.communication.channel.MessageChannelListener;
 import com.step.communication.factory.CommunicationFactory;
 import com.step.communication.server.MessageServer;
 import com.step.communication.server.MessageServerListener;
-import com.step.uno.messages.GameSnapshot;
+import com.step.uno.factory.Factory;
+import com.step.uno.messages.Snapshot;
+import com.step.uno.server.GameMaster;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameMasterController implements MessageServerListener, MessageChannelListener {
+public class GameMasterController {
     private final int numberOfPlayers;
     private final int numberOfPacks;
-    private MessageServer messageServer;
+    private Factory factory;
+//    private MessageServer messageServer;
     private List<MessageChannel> channels = new ArrayList<>();
+    private GameMaster gameMaster;
 
-    public GameMasterController(int numberOfPlayers, int numberOfPacks,CommunicationFactory factory) {
+    public GameMasterController(int numberOfPlayers, int numberOfPacks, Factory factory) {
 
         this.numberOfPlayers = numberOfPlayers;
         this.numberOfPacks = numberOfPacks;
-        messageServer = factory.createMessageServer();
-    }
-
-    @Override
-    public void onNewConnection(MessageChannel channel) {
-        if(isHousefull()){
-            channel.stop();
-            return;
-        }
-        channels.add(channel);
-        channel.startListeningForMessages(this);
-        if(isHousefull())startGame();
-    }
-
-    private boolean isHousefull() {
-        return channels.size() == numberOfPlayers;
-    }
-
-    private void startGame() {
-        GameSnapshot snapshot = new GameSnapshot();
-        for (MessageChannel channel : channels) {
-            channel.send(snapshot);
-        }
-        System.out.println("All players connected...");
-    }
-
-    @Override
-    public void onError(Exception e) {
-
-    }
-
-    public void waitForConnections() {
-        messageServer.startListeningForConnections(this);
+        this.factory = factory;
+//        messageServer = factory.communication.createMessageServer();
+        gameMaster = new GameMaster(numberOfPlayers, numberOfPacks, factory);
         System.out.println("Waiting for all players to connect...");
+        gameMaster.start();
     }
-
-    @Override
-    public void onError(MessageChannel client, Exception e) {
-
-    }
-
-    @Override
-    public void onMessage(MessageChannel client, Object message) {
-
-    }
-
-    @Override
-    public void onConnectionClosed(MessageChannel client) {
-
-    }
-}
+ }

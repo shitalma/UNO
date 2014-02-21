@@ -1,6 +1,6 @@
 package com.step.uno.server.view;
 
-import com.step.communication.factory.CommunicationFactory;
+import com.step.uno.factory.Factory;
 import com.step.uno.server.controller.GameMasterController;
 
 import javax.swing.*;
@@ -33,14 +33,14 @@ public class CreateGameScreen extends JFrame {
                 setVisible(false);
                 int numberOfPlayers = Integer.parseInt(playersField.getText());
                 int noOfPacks = Integer.parseInt(packsField.getText());
-                GameMasterController controller = new GameMasterController(numberOfPlayers, noOfPacks, new CommunicationFactory());
-                controller.waitForConnections();
+                GameMasterController controller = new GameMasterController(numberOfPlayers, noOfPacks, new Factory());
+//                controller.waitForConnections();
             }
         });
     }
 
     public void createFirstScreenFromServerSide() {
-        setSize(500,500);
+        setSize(500, 500);
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
@@ -57,7 +57,7 @@ public class CreateGameScreen extends JFrame {
         panel.add(packsField, c);
         c.gridx = 1;
         c.gridy = 2;
-        panel.add(start,c);
+        panel.add(start, c);
         add(panel);
 
         setVisible(true);
