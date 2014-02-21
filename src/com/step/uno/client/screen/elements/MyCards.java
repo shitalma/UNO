@@ -12,13 +12,18 @@ public class MyCards extends JPanel{
     public MyCards(List<Card> cards) {
         setLayout(new GridLayout(0, cards.size()));
         for (Card card : cards) {
-            JButton b = new JButton(card.sign.toString());
+            String cardName = card.sign.toString();
+            if(cardName.contains("_"))
+                cardName = cardName.substring(1);
+            JButton b = new JButton(cardName);
             b.setPreferredSize(new Dimension(175,175));
+
             if(card.colour.equals(Colour.Red)) b.setBackground(Color.RED);
             if(card.colour.equals(Colour.Green)) b.setBackground(Color.GREEN);
             if(card.colour.equals(Colour.Blue)) b.setBackground(Color.BLUE);
             if(card.colour.equals(Colour.Yellow)) b.setBackground(Color.YELLOW);
             if(card.colour.equals(Colour.Black)) b.setBackground(Color.BLACK);
+
             setLayout(new FlowLayout());
             Border border1 = new LineBorder(Color.BLACK, 2);
             b.setBorder(border1);
