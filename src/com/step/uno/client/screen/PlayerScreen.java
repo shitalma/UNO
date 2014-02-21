@@ -32,6 +32,7 @@ public class PlayerScreen extends JFrame {
         setSize(screenSize);
         addComponents();
         setVisible(true);
+        java.awt.Window win[] = java.awt.Window.getWindows();
     }
 
     public void addComponents() {
