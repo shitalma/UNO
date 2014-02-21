@@ -53,4 +53,8 @@ public class Player implements Serializable{
         for (Card card : cards) total += card.sign.points;
         return total;
     }
+
+    public int getNumberOfCards() {
+        return cards.size();
+    }
 }
