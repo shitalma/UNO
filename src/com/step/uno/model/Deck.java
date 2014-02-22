@@ -46,4 +46,7 @@ public class Deck implements Serializable {
     public void addAll(List<Card> newCards) {
         cards.addAll(newCards);
     }
+    public int getSize(){
+        return cards.size();
+    }
 }
