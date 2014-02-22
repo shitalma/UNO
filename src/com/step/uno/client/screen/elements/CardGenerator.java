@@ -16,13 +16,14 @@ public class CardGenerator {
     public CardGenerator(Color cardColor, String sign) {
         this.cardColor = cardColor;
         this.sign = sign;
+        addColorsToMap();
     }
     public void addColorsToMap() {
-        colorMap.put(Color.red,Colour.Red);
-        colorMap.put(Color.yellow,Colour.Yellow);
-        colorMap.put(Color.GREEN,Colour.Green);
+        colorMap.put(new Color(255,100,100),Colour.Red);
+        colorMap.put(new Color(225,255,100),Colour.Yellow);
+        colorMap.put(new Color(100,255,100),Colour.Green);
         colorMap.put(Color.BLACK,Colour.Black);
-        colorMap.put(Color.BLUE,Colour.Blue);
+        colorMap.put(new Color(100,100,255),Colour.Blue);
     }
 
     public Card createCard() {

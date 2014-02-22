@@ -62,7 +62,7 @@ public class PlayerProxy implements MessageChannelListener {
 
     @Override
     public void onMessage(MessageChannel client, Object message) {
-
+        System.out.println(message.toString());
         try {
             Method method = this.getClass().getDeclaredMethod("onClientMessage", message.getClass());
             method.invoke(this,message);
@@ -97,4 +97,5 @@ public class PlayerProxy implements MessageChannelListener {
         if(this.player != player) return;
         channel.send(new WaitingForDrawnCardAction(card));
     }
+
 }

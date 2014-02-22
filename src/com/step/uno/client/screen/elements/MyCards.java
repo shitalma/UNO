@@ -24,13 +24,8 @@ public class MyCards extends JPanel implements ActionListener {
             if (cardName.contains("_"))
                 cardName = cardName.substring(1);
             JButton b = new JButton(cardName);
-            b.setPreferredSize(new Dimension(160,150));
-
-            if (card.colour.equals(Colour.Red)) b.setBackground(Color.RED);
-            if (card.colour.equals(Colour.Green)) b.setBackground(Color.GREEN);
-            if (card.colour.equals(Colour.Blue)) b.setBackground(Color.BLUE);
-            if (card.colour.equals(Colour.Yellow)) b.setBackground(Color.YELLOW);
-            if (card.colour.equals(Colour.Black)) b.setBackground(Color.BLACK);
+            b.setPreferredSize(new Dimension(160, 150));
+            b.setBackground(card.colour.getColor());
 
             setLayout(new FlowLayout());
             Border border1 = new LineBorder(Color.BLACK, 2);

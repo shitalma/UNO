@@ -113,15 +113,12 @@ public class PlayerScreen extends JFrame implements PlayerView {
         Border border2 = new LineBorder(Color.BLACK, 3);
         openPile.setBorder(border2);
         openPile.setFont(new Font("sansserif", Font.BOLD, 25));
-        if (openCard.colour.equals(Colour.Red)) openPile.setBackground(Color.RED);
-        if (openCard.colour.equals(Colour.Green)) openPile.setBackground(Color.GREEN);
-        if (openCard.colour.equals(Colour.Blue)) openPile.setBackground(Color.BLUE);
-        if (openCard.colour.equals(Colour.Yellow)) openPile.setBackground(Color.YELLOW);
-        if (openCard.colour.equals(Colour.Black)) openPile.setBackground(Color.BLACK);
+
         String cardValueInOpenPile = this.openCard.sign.toString();
         if(cardValueInOpenPile.contains("_"))
             cardValueInOpenPile = cardValueInOpenPile.substring(1);
         openPile.setText(cardValueInOpenPile);
+        openPile.setBackground(this.openCard.colour.getColor());
         deck.add(openPile);
 
         // wild window
