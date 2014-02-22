@@ -47,7 +47,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         screenSize.height = screenSize.height -100;
         setSize(screenSize);
         setBounds(50,50,screenSize.width, screenSize.height);
-
+        setTitle(snapshot.currentPlayerName);
         setMinimumSize(screenSize);
         setMaximumSize(screenSize);
         addComponents();
@@ -58,7 +58,6 @@ public class PlayerScreen extends JFrame implements PlayerView {
     }
 
     public void addComponents() {
-        setTitle(players.get(0).getName());
         // Activity Log
         JScrollPane activityLog = getActivityLog();
         //My Cards
