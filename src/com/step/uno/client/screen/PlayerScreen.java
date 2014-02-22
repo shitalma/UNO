@@ -65,7 +65,6 @@ public class PlayerScreen extends JFrame implements PlayerView {
     }
 
     public void addComponents(boolean areCardsVisible) {
-        setTitle("Player Screen");
         // Activity Log
         activityLog = getActivityLog();
         //My Cards
