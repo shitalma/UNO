@@ -27,7 +27,7 @@ public class JoinScreen extends JFrame implements JoinGameView {
         this.controller = controller;
         setTitle("Login");
 
-        setSize(700, 300);
+        setSize(750, 500);
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -71,8 +71,12 @@ public class JoinScreen extends JFrame implements JoinGameView {
 
     public void addComponentsToPane(Container pane) {
 
-        pane.setLayout(new GridBagLayout());
+        GridBagLayout mgr = new GridBagLayout();
+        pane.setLayout(mgr  );
         GridBagConstraints c = new GridBagConstraints();
+
+
+        c.insets = new Insets(17,17,17,17);
 
         if (shouldWeightX) {
             c.weightx = 0.5;
