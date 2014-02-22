@@ -1,1 +1,0 @@
-java -cp "../lib/*" com.step.uno.client.UnoClient
