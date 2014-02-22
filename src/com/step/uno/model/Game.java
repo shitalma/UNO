@@ -82,7 +82,8 @@ public class Game {
         snapshot.draw2Run = draw2Run;
     }
 
-    public void playCard(Player player, Card card, Colour newColour) {
+        //handle action of card
+    public void playCard(Player player, Card card) {
         if(!new RuleEngine().isCardValidToPlay(card, openDeck.lookAtLast())) return;
         player.play(card);
         openDeck.add(card);
@@ -90,7 +91,7 @@ public class Game {
 //        handleSkip(card);
 //        handleDrawTwo(card);
 //        handleWildCard(card, newColour);
-//        nextTurn();
+        nextTurn();
     }
 
     private void handleReverse(Card card) {

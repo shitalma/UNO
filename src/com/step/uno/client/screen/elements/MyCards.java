@@ -15,24 +15,24 @@ import java.util.List;
 public class MyCards extends JPanel implements ActionListener {
     private PlayerViewObserver playerViewObserver;
 
-    public MyCards(List<Card> cards, PlayerViewObserver playerViewObserver) {
+    public MyCards(List<Card> cards, PlayerViewObserver playerViewObserver, boolean areCardsEnable) {
         this.playerViewObserver = playerViewObserver;
         setLayout(new GridLayout(0, cards.size()));
         for (Card card : cards) {
             String cardName = card.sign.toString();
             if (cardName.contains("_"))
                 cardName = cardName.substring(1);
-            JButton b = new JButton(cardName);
-            b.setPreferredSize(new Dimension(140, 180));
-            b.setBackground(card.colour.getColor());
-
+            JButton cardButton = new JButton(cardName);
+            cardButton.setPreferredSize(new Dimension(140, 180));
+            cardButton.setBackground(card.colour.getColor());
+            cardButton.setEnabled(areCardsEnable);
             setLayout(new FlowLayout());
             Border border1 = new LineBorder(Color.BLACK, 2);
-            b.setBorder(border1);
-            b.setFont(new Font("sansserif", Font.BOLD, 35));
+            cardButton.setBorder(border1);
+            cardButton.setFont(new Font("sansserif", Font.BOLD, 35));
 
-            b.addActionListener(this);
-            add(b);
+            cardButton.addActionListener(this);
+            add(cardButton);
         }
     }
 

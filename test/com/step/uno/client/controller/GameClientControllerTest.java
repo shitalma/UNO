@@ -74,7 +74,7 @@ public class GameClientControllerTest {
         controller.onSnapshotReceived(mockSnapShot);
 
         verify(joinGameView, times(1)).switchToPlayerView();
-        verify(mockPlayerView,times(1)).update(any(Snapshot.class),any(PlayerViewObserver.class));
+        verify(mockPlayerView,times(1)).update(any(Snapshot.class),any(PlayerViewObserver.class),anyBoolean());
     }
 
     @Test
@@ -89,7 +89,7 @@ public class GameClientControllerTest {
         controller.onSnapshotReceived(mockSnapShot);
         controller.onDisconnected();
         verify(joinGameView, times(1)).switchToPlayerView();
-        verify(mockPlayerView,times(1)).update(any(Snapshot.class),any(PlayerViewObserver.class));
+        verify(mockPlayerView,times(1)).update(any(Snapshot.class),any(PlayerViewObserver.class),anyBoolean());
         verify(mockPlayerView,times(1)).showDisconnected();
     }
 }

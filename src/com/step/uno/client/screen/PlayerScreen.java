@@ -8,6 +8,7 @@ import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
 import com.step.uno.model.Player;
 import com.step.uno.model.PlayerSummary;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -34,34 +35,41 @@ public class PlayerScreen extends JFrame implements PlayerView {
     private JPanel catchButton;
     private MyCards cards;
     private JScrollPane scrollPane = new JScrollPane();
+    private JScrollPane myCards1;
+    private JScrollPane myCardsPane;
+    private JScrollPane activityLog;
+    private Snapshot snapshot;
 
 
-    public void updatePlayerScreen(Snapshot snapshot) {
-        this.players = snapshot.player;
+    public void updatePlayerScreen(Snapshot snapshot, boolean areCardsVisible) {
+        this.snapshot = snapshot;
+        this.players = this.snapshot.player;
         this.myCards = snapshot.myCards;
         this.playerSummaries = snapshot.playerSummaries;
         this.openCard = snapshot.openCard;
         setLayout(new BorderLayout());
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenSize.width = screenSize.width - 100;
-        screenSize.height = screenSize.height -100;
+        screenSize.height = screenSize.height - 100;
         setSize(screenSize);
+
         setBounds(50,50,screenSize.width, screenSize.height);
         setTitle(snapshot.currentPlayerName);
         setMinimumSize(screenSize);
         setMaximumSize(screenSize);
-        addComponents();
+        addComponents(areCardsVisible);
         setVisible(true);
     }
 
     public PlayerScreen() {
     }
 
-    public void addComponents() {
+    public void addComponents(boolean areCardsVisible) {
+        setTitle("Player Screen");
         // Activity Log
-        JScrollPane activityLog = getActivityLog();
+        activityLog = getActivityLog();
         //My Cards
-        JScrollPane myCards = getMyCards();
+        myCardsPane = getMyCards(areCardsVisible);
         // Catch Buttons
         getPlayers();
         // Close Pile
@@ -79,7 +87,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         //UNO button
         getUnoButton();
         getContentPane().add(activityLog, EAST);
-        getContentPane().add(myCards, BorderLayout.SOUTH);
+        getContentPane().add(myCardsPane, BorderLayout.SOUTH);
         getContentPane().add(catchButton, BorderLayout.NORTH);
         getContentPane().add(deck, BorderLayout.CENTER);
     }
@@ -120,7 +128,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         openPile.setFont(new Font("sansserif", Font.BOLD, 25));
 
         String cardValueInOpenPile = this.openCard.sign.toString();
-        if(cardValueInOpenPile.contains("_"))
+        if (cardValueInOpenPile.contains("_"))
             cardValueInOpenPile = cardValueInOpenPile.substring(1);
         openPile.setText(cardValueInOpenPile);
         openPile.setBackground(this.openCard.colour.getColor());
@@ -164,13 +172,18 @@ public class PlayerScreen extends JFrame implements PlayerView {
         return scrollableTextArea;
     }
 
-    private JScrollPane getMyCards() {
+    private JScrollPane getMyCards(boolean areCardsVisible) {
+
         this.remove(scrollPane);
-        cards = new MyCards(Arrays.asList(this.myCards),playerViewObserver);
+        cards = new MyCards(Arrays.asList(snapshot.myCards), playerViewObserver,areCardsVisible);
+//        snapshot
         scrollPane = new JScrollPane(cards);
         JPanel pane1 = (JPanel) this.getContentPane();
         pane1.add(scrollPane);
         scrollPane.setPreferredSize(new Dimension(300, 200));
+        System.out.println(snapshot.player.get(snapshot.myPlayerIndex));
+        System.out.println(areCardsVisible);
+//        scrollPane.setEnabled(areCardsVisible);
         return scrollPane;
     }
 
@@ -180,8 +193,8 @@ public class PlayerScreen extends JFrame implements PlayerView {
     }
 
     @Override
-    public void update(Snapshot snapshot,PlayerViewObserver playerViewObserver) {
+    public void update(Snapshot snapshot, PlayerViewObserver playerViewObserver,boolean areCardsVisible) {
         this.playerViewObserver = playerViewObserver;
-        updatePlayerScreen(snapshot);
+        updatePlayerScreen(snapshot,areCardsVisible);
     }
 }
