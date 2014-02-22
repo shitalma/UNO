@@ -8,25 +8,6 @@ public class Card implements Serializable{
     public Colour colour;
     public Sign sign;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Card card = (Card) o;
-
-        if (colour != card.colour) return false;
-        if (sign != card.sign) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = colour != null ? colour.hashCode() : 0;
-        result = 31 * result + (sign != null ? sign.hashCode() : 0);
-        return result;
-    }
 //in one pack
     // 4 X {wildcard,wild+4}, 2 X {1-9, +2, reverse, skip}, 0,  for colours {red, green, blue, yellow},
 
@@ -71,5 +52,3 @@ public class Card implements Serializable{
         return colour.toString() +" " + sign.getPoints();
     }
 }
-
-
