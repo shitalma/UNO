@@ -81,18 +81,17 @@ public class Game {
         snapshot.isInAscendingOrder = this.isInAscendingOrder;
         snapshot.runningColour = runningColour;
         snapshot.draw2Run = draw2Run;
-//        return
     }
 
     public void playCard(Player player, Card card, Colour newColour) {
         //handle action of card
         player.play(card);
         openDeck.add(card);
-        handleReverse(card);
-        handleSkip(card);
-        handleDrawTwo(card);
-        handleWildCard(card, newColour);
-        nextTurn();
+//        handleReverse(card);
+//        handleSkip(card);
+//        handleDrawTwo(card);
+//        handleWildCard(card, newColour);
+//        nextTurn();
     }
 
     private void handleReverse(Card card) {
