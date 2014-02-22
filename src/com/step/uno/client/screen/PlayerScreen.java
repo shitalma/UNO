@@ -118,6 +118,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         if(cardValueInOpenPile.contains("_"))
             cardValueInOpenPile = cardValueInOpenPile.substring(1);
         openPile.setText(cardValueInOpenPile);
+        openPile.setBackground(this.openCard.colour.getColor());
         deck.add(openPile);
 
         // wild window
