@@ -19,7 +19,6 @@ public class GameClient implements MessageChannelListener {
     }
 
     public void start(String playerName, String serverAddress) {
-        System.out.println("I am gc");
         this.playerName = playerName;
         this.channel = factory.communication.connectTo(serverAddress, this);
         channel.startListeningForMessages(this);
