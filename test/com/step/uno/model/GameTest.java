@@ -4,7 +4,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class GameTest {
     ArrayList<Player> players = new ArrayList<>();
@@ -29,10 +31,14 @@ public class GameTest {
         Game game = new Game(1, players);
         game.getOpenDeck().add(Card.createCard(Colour.Green, "_1"));
 
-        //Specify game's valid cards
-        //Verify card can be played.
-
         assertEquals(true, game.cardIsValid(Card.createCard(Colour.Green, "_1")));
+    }
+
+    @Test
+    public void PlayerShouldDrawACardIfHeDoesNotHaveValidCard() throws Exception {
+        uday.take(Card.createCard(Colour.Blue, "_1"));
+
+        assertEquals(true, uday.hasCard(Card.createCard(Colour.Blue, "_2")));
     }
 
 }

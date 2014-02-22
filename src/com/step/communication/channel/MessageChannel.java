@@ -54,8 +54,7 @@ public class MessageChannel {
         try {
             new ObjectOutputStream(socket.getOutputStream()).writeObject(message);
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Sorry you can't join.Specified no of players already joined game");
-//            throw new RuntimeException("Could not send message ");
+            throw new RuntimeException("Could not send message ");
         }
     }
 

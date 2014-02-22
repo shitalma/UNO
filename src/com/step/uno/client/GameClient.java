@@ -11,14 +11,18 @@ public class GameClient implements MessageChannelListener {
     private Factory factory;
     private MessageChannel channel;
     private String playerName;
+    private GameClientObserver observer;
 
-    public GameClient(Factory factory) {
+    public GameClient(Factory factory, GameClientObserver observer) {
         this.factory = factory;
+        this.observer = observer;
     }
 
     public void start(String playerName, String serverAddress) {
+        System.out.println("I am gc");
         this.playerName = playerName;
         this.channel = factory.communication.connectTo(serverAddress, this);
+        channel.startListeningForMessages(this);
         sendIntroduction();
     }
 
@@ -42,6 +46,7 @@ public class GameClient implements MessageChannelListener {
     }
 
     public void draw() {
+        System.out.println(channel == null);
         channel.send(new DrawCardAction());
     }
 
@@ -62,24 +67,36 @@ public class GameClient implements MessageChannelListener {
 
     }
 
+//    private void handle(Snapshot snapshot) {
+//        if (playerView == null) playerView = joinGameView.switchToPlayerView();
+//        playerView.update(snapshot);
+//    }
+
     @Override
     public void onMessage(MessageChannel client, Object message) {
-        if (message.getClass().equals(Snapshot.class)) {
-            //present snapshot on to screen
+//        System.out.println((Snapshot) message);
+        if(message.getClass().equals(Snapshot.class))
+            observer.onSnapshotReceived((Snapshot) message);
+        if(message.getClass().equals(WaitingForDrawnCardAction.class)){
+            observer.waitForTurn();
         }
-
-        if (message.getClass().equals(GameResult.class)) {
-            //present result on to screen
-        }
-
-        if (message.getClass().equals(WaitingForDrawnCardAction.class)) {
-            //add new card to screen
-            //wait for 5 seconds to play that card
-            //send no NoActionOnDrawnCard message
-        }
+//        try {
+//            System.out.println(getClass().getDeclaredMethod("handle", message.getClass()));
+//            getClass().getDeclaredMethod("handle", message.getClass())
+//                    .invoke(this, message);
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        } catch (InvocationTargetException e) {
+//            e.printStackTrace();
+//        } catch (NoSuchMethodException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override
     public void onConnectionClosed(MessageChannel client) {
+        client.stop();
+
+        observer.onDisconnected();
     }
 }

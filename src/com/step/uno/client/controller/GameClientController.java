@@ -1,66 +1,61 @@
 package com.step.uno.client.controller;
 
 import com.step.communication.channel.MessageChannel;
-import com.step.communication.channel.MessageChannelListener;
+import com.step.uno.client.GameClient;
+import com.step.uno.client.GameClientObserver;
+import com.step.uno.client.screen.PlayerViewObserver;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
 import com.step.uno.factory.Factory;
-import com.step.uno.messages.Introduction;
 import com.step.uno.messages.Snapshot;
+import com.step.uno.model.Card;
 
-import java.lang.reflect.InvocationTargetException;
-
-public class GameClientController implements MessageChannelListener {
+public class GameClientController implements PlayerViewObserver, GameClientObserver {
     private Factory factory;
     private JoinGameView joinGameView;
     private PlayerView playerView;
     private MessageChannel channel;
+    private GameClient gameClient;
 
     public GameClientController(Factory factory) {
         this.factory = factory;
-    }
-
-    public void join(String serverAddress,String playerName) {
-        channel = factory.communication.connectTo(serverAddress,this);
-        channel.startListeningForMessages(this);
-        channel.send(Introduction.create(playerName));
-    }
-
-    @Override
-    public void onError(MessageChannel client, Exception e) {
+        gameClient = factory.getGameClient(this);
 
     }
 
-    private void handle(Snapshot snapshot){
-        if(playerView == null) playerView = joinGameView.switchToPlayerView();
-        playerView.update(snapshot);
-    }
-
-    @Override
-    public void onMessage(MessageChannel client, Object message) {
-        System.out.println((Snapshot)message);
-
-        try {
-            System.out.println(getClass().getDeclaredMethod("handle",message.getClass()));
-            getClass().getDeclaredMethod("handle",message.getClass())
-                    .invoke(this, message);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void onConnectionClosed(MessageChannel client) {
-        client.stop();
-        if(playerView != null)
-            playerView.showDisconnected();
+    public void join(String serverAddress, String playerName) {
+        gameClient.start(playerName, serverAddress);
     }
 
     public void bindView(JoinGameView joinGameView) {
         this.joinGameView = joinGameView;
+    }
+
+
+    @Override
+    public void onDraw() {
+        gameClient.draw();
+    }
+
+    @Override
+    public void play(Card card) {
+
+    }
+
+    @Override
+    public void onSnapshotReceived(Snapshot snapshot) {
+        if (playerView == null)
+            playerView = joinGameView.switchToPlayerView();
+        playerView.update(snapshot, this);
+    }
+
+    @Override
+    public void onDisconnected() {
+        playerView.showDisconnected();
+    }
+
+    @Override
+    public void waitForTurn() {
+
     }
 }

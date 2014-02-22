@@ -1,8 +1,12 @@
 package com.step.uno.client.screen;
 
+import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.screen.elements.MyCards;
 import com.step.uno.client.screen.elements.Players;
 import com.step.uno.client.screen.elements.WildCard;
+import com.step.uno.client.view.PlayerView;
+import com.step.uno.factory.Factory;
+import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
 import com.step.uno.model.Colour;
 import com.step.uno.model.Player;
@@ -12,21 +16,24 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
 
 import static java.awt.BorderLayout.EAST;
 
-public class PlayerScreen extends JFrame {
-    private final Dimension screenSize;
+public class PlayerScreen extends JFrame implements PlayerView {
+    private Dimension screenSize;
     JTextArea textArea;
     private java.util.List<Player> players;
     private Card[] myCards;
     private PlayerSummary[] playerSummaries;
     private Card openCard;
+    private PlayerViewObserver playerViewObserver;
 
 
-    public PlayerScreen(List<Player> player, Card[] myCards, PlayerSummary[] playerSummaries, Card openCard) {
+    public void updatePlayerScreen(List<Player> player, Card[] myCards, PlayerSummary[] playerSummaries, Card openCard) {
         this.players = player;
         this.myCards = myCards;
         this.playerSummaries = playerSummaries;
@@ -38,8 +45,12 @@ public class PlayerScreen extends JFrame {
 
         setSize(screenSize);
         addComponents();
-        setVisible(true);
         java.awt.Window win[] = java.awt.Window.getWindows();
+        setVisible(true);
+    }
+
+    public PlayerScreen() {
+
     }
 
     public void addComponents() {
@@ -70,14 +81,20 @@ public class PlayerScreen extends JFrame {
         // Close Pile
         JPanel deck = new JPanel();
         deck.setLayout(null);
-        JButton button = new JButton("Close pile");
-        button.setPreferredSize(new Dimension(30, 30));
-        button.setLocation(10, 10);
-        button.setBounds(10, 20, 300, 300);
+        JButton drawButton = new JButton("Close pile");
+        drawButton.setPreferredSize(new Dimension(30, 30));
+        drawButton.setLocation(10, 10);
+        drawButton.setBounds(10, 20, 300, 300);
         Border border1 = new LineBorder(Color.BLACK, 3);
-        button.setBorder(border1);
-        button.setFont(new Font("sansserif", Font.BOLD, 25));
-        deck.add(button);
+        drawButton.setBorder(border1);
+        drawButton.setFont(new Font("sansserif", Font.BOLD, 25));
+        deck.add(drawButton);
+        drawButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playerViewObserver.onDraw();
+            }
+        });
 
         // open Pile
         JButton button1 = new JButton("open pile");
@@ -131,5 +148,16 @@ public class PlayerScreen extends JFrame {
         getContentPane().add(area, BorderLayout.SOUTH);
         getContentPane().add(pane, BorderLayout.NORTH);
         getContentPane().add(deck, BorderLayout.CENTER);
+    }
+
+    @Override
+    public void showDisconnected() {
+        System.out.println("disconnected");
+    }
+
+    @Override
+    public void update(Snapshot snapshot,PlayerViewObserver playerViewObserver) {
+        this.playerViewObserver = playerViewObserver;
+        updatePlayerScreen(snapshot.player,snapshot.myCards, snapshot.playerSummaries,snapshot.openCard);
     }
 }

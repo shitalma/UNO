@@ -60,8 +60,8 @@ public class JoinScreen extends JFrame implements JoinGameView {
         joinButton = new JButton("JOIN");
         label1 = new JLabel("Game Master ");
         label2 = new JLabel("Player Name ");
-        masterAddress = new JTextField(10);
-        player = new JTextField(10);
+        masterAddress = new JTextField("localhost");
+        player = new JTextField("aa");
         masterAddress.setFont(new Font("sansserif", Font.BOLD, 25));
         label2.setFont(new Font("sansserif", Font.BOLD, 25));
         player.setFont(new Font("sansserif", Font.BOLD, 25));
@@ -116,21 +116,7 @@ public class JoinScreen extends JFrame implements JoinGameView {
 
     @Override
     public PlayerView switchToPlayerView() {
-        PlayerView view = new PlayerView() {
-            @Override
-            public void showDisconnected() {
-                System.out.println("disconnected");
-            }
-
-            @Override
-
-            public void update(Snapshot snapshot) {
-                System.out.println("displaying Player Screen");
-
-                new PlayerScreen(snapshot.player, snapshot.myCards, snapshot.playerSummaries, snapshot.openCard);
-            }
-
-        };
+        PlayerView view = new PlayerScreen();
         setVisible(false);
         return view;
     }

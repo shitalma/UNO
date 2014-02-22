@@ -57,4 +57,12 @@ public class Player implements Serializable{
     public int getNumberOfCards() {
         return cards.size();
     }
+
+    public boolean hasCard(Card card) {
+        for (Card currentCard : cards) {
+            if(currentCard.colour == card.colour || currentCard.sign == card.sign)
+                return true;
+        }
+        return false;
+    }
 }
