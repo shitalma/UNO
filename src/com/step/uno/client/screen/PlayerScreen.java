@@ -36,6 +36,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
     private JPanel deck;
     private JPanel catchButton;
     private MyCards cards;
+    private JScrollPane scrollPane = new JScrollPane();
 
 
     public void updatePlayerScreen(List<Player> players, Card[] myCards, PlayerSummary[] playerSummaries, Card openCard) {
@@ -71,11 +72,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
 
         //My Cards
 
-        cards = new MyCards(Arrays.asList(this.myCards),playerViewObserver);
-        JScrollPane area = new JScrollPane(cards);
-        JPanel pane1 = (JPanel) this.getContentPane();
-        pane1.add(area);
-        area.setPreferredSize(new Dimension(300, 200));
+        JScrollPane area = getjScrollPane();
 
         // Catch Buttons
         catchButton = new JPanel();
@@ -153,6 +150,16 @@ public class PlayerScreen extends JFrame implements PlayerView {
         getContentPane().add(area, BorderLayout.SOUTH);
         getContentPane().add(catchButton, BorderLayout.NORTH);
         getContentPane().add(deck, BorderLayout.CENTER);
+    }
+
+    private JScrollPane getjScrollPane() {
+        this.remove(scrollPane);
+        cards = new MyCards(Arrays.asList(this.myCards),playerViewObserver);
+        scrollPane = new JScrollPane(cards);
+        JPanel pane1 = (JPanel) this.getContentPane();
+        pane1.add(scrollPane);
+        scrollPane.setPreferredSize(new Dimension(300, 200));
+        return scrollPane;
     }
 
     @Override
