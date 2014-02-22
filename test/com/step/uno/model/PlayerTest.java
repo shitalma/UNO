@@ -8,15 +8,12 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by udaykant on 2/21/14.
- */
 public class PlayerTest {
     Player player = new Player("Someone");
     List<Card> cards = new ArrayList<>();
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         cards.add(Card.createCard(Colour.Red,"_4"));
         cards.add(Card.createCard(Colour.Green,"_6"));
         player.take(cards.get(0));
@@ -24,7 +21,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void testPlay() throws Exception {
+    public void testPlay() {
         player.play(cards.get(1));
         assertEquals(player.getNumberOfCards(),1);
     }

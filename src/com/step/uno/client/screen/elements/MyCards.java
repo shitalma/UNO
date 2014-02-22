@@ -8,7 +8,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.List;
 
-public class MyCards extends JPanel{
+public class MyCards extends JPanel {
     public MyCards(List<Card> cards) {
         setLayout(new GridLayout(0, cards.size()));
         for (Card card : cards) {

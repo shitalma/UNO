@@ -32,3 +32,9 @@ distZip {
         include '*'
     }
 }
+
+allprojects {
+    tasks.withType(Compile) {
+        options.compilerArgs += ["-Xlint:none"]
+    }
+}

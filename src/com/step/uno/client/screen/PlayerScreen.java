@@ -1,11 +1,9 @@
 package com.step.uno.client.screen;
 
-import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.screen.elements.MyCards;
 import com.step.uno.client.screen.elements.Players;
 import com.step.uno.client.screen.elements.WildCard;
 import com.step.uno.client.view.PlayerView;
-import com.step.uno.factory.Factory;
 import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
 import com.step.uno.model.Colour;
@@ -31,15 +29,21 @@ public class PlayerScreen extends JFrame implements PlayerView {
     private PlayerSummary[] playerSummaries;
     private Card openCard;
     private PlayerViewObserver playerViewObserver;
+    private JButton unoButton;
+    private JTextArea hint;
+    private WildCard wildCard;
+    private JButton openPile;
+    private JPanel deck;
+    private JPanel catchButton;
+    private MyCards cards;
 
 
-    public void updatePlayerScreen(List<Player> player, Card[] myCards, PlayerSummary[] playerSummaries, Card openCard) {
-        this.players = player;
+    public void updatePlayerScreen(List<Player> players, Card[] myCards, PlayerSummary[] playerSummaries, Card openCard) {
+        this.players = players;
         this.myCards = myCards;
         this.playerSummaries = playerSummaries;
         this.openCard = openCard;
         setLayout(new BorderLayout());
-//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0,0,screenSize.width, screenSize.height);
 
@@ -66,20 +70,21 @@ public class PlayerScreen extends JFrame implements PlayerView {
         scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         //My Cards
-        MyCards cards = new MyCards(Arrays.asList(this.myCards));
+
+        cards = new MyCards(Arrays.asList(this.myCards));
         JScrollPane area = new JScrollPane(cards);
         JPanel pane1 = (JPanel) this.getContentPane();
         pane1.add(area);
         area.setPreferredSize(new Dimension(300, 200));
 
         // Catch Buttons
-        JPanel pane = new JPanel();
-        pane.setPreferredSize(new Dimension(250, 250));
-        pane.setBorder(BorderFactory.createLineBorder(Color.black));
-        pane.add(new Players(Arrays.asList(this.playerSummaries)));
+        catchButton = new JPanel();
+        catchButton.setPreferredSize(new Dimension(250, 250));
+        catchButton.setBorder(BorderFactory.createLineBorder(Color.black));
+        catchButton.add(new Players(Arrays.asList(this.playerSummaries)));
 
         // Close Pile
-        JPanel deck = new JPanel();
+        deck = new JPanel();
         deck.setLayout(null);
         JButton drawButton = new JButton("Close pile");
         drawButton.setPreferredSize(new Dimension(30, 30));
@@ -97,43 +102,43 @@ public class PlayerScreen extends JFrame implements PlayerView {
         });
 
         // open Pile
-        JButton button1 = new JButton("open pile");
-        button1.setPreferredSize(new Dimension(30, 30));
-        button1.setLocation(100, 100);
-        button1.setBounds(400, 20, 300, 300);
+        openPile = new JButton("open pile");
+        openPile.setPreferredSize(new Dimension(30, 30));
+        openPile.setLocation(100, 100);
+        openPile.setBounds(400, 20, 300, 300);
         Border border2 = new LineBorder(Color.BLACK, 3);
-        button1.setBorder(border2);
-        button1.setFont(new Font("sansserif", Font.BOLD, 25));
-        if (openCard.colour.equals(Colour.Red)) button1.setBackground(Color.RED);
-        if (openCard.colour.equals(Colour.Green)) button1.setBackground(Color.GREEN);
-        if (openCard.colour.equals(Colour.Blue)) button1.setBackground(Color.BLUE);
-        if (openCard.colour.equals(Colour.Yellow)) button1.setBackground(Color.YELLOW);
-        if (openCard.colour.equals(Colour.Black)) button1.setBackground(Color.BLACK);
+        openPile.setBorder(border2);
+        openPile.setFont(new Font("sansserif", Font.BOLD, 25));
+        if (openCard.colour.equals(Colour.Red)) openPile.setBackground(Color.RED);
+        if (openCard.colour.equals(Colour.Green)) openPile.setBackground(Color.GREEN);
+        if (openCard.colour.equals(Colour.Blue)) openPile.setBackground(Color.BLUE);
+        if (openCard.colour.equals(Colour.Yellow)) openPile.setBackground(Color.YELLOW);
+        if (openCard.colour.equals(Colour.Black)) openPile.setBackground(Color.BLACK);
         String cardValueInOpenPile = this.openCard.sign.toString();
         if(cardValueInOpenPile.contains("_"))
             cardValueInOpenPile = cardValueInOpenPile.substring(1);
-        button1.setText(cardValueInOpenPile);
-        deck.add(button1);
+        openPile.setText(cardValueInOpenPile);
+        deck.add(openPile);
 
         // wild window
-        WildCard wildCard = new WildCard();
+        wildCard = new WildCard();
         wildCard.setBounds(800, 20, 300, 100);
         deck.add(wildCard.addAllButtons(), new GridLayout(2, 2));
 
         //status hint
-        JTextArea area1 = new JTextArea();
-        area1.setPreferredSize(new Dimension(50, 50));
-        area1.setBounds(10, 350, 900, 200);
-        area1.setEditable(false);
+        hint = new JTextArea();
+        hint.setPreferredSize(new Dimension(50, 50));
+        hint.setBounds(10, 350, 900, 200);
+        hint.setEditable(false);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
-        area1.setBorder(BorderFactory.createCompoundBorder(border,
+        hint.setBorder(BorderFactory.createCompoundBorder(border,
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-        area1.setText("Status hint");
-        area1.setFont(new Font("sansserif", Font.BOLD, 25));
-        deck.add(area1);
+        hint.setText("Status hint");
+        hint.setFont(new Font("sansserif", Font.BOLD, 25));
+        deck.add(hint);
 
         //UNO button
-        JButton unoButton = new JButton("UNO");
+        unoButton = new JButton("UNO");
         unoButton.setPreferredSize(new Dimension(30, 30));
         unoButton.setLocation(100, 100);
         unoButton.setBounds(930, 350, 275, 200);
@@ -146,7 +151,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
 
         getContentPane().add(scrollableTextArea, EAST);
         getContentPane().add(area, BorderLayout.SOUTH);
-        getContentPane().add(pane, BorderLayout.NORTH);
+        getContentPane().add(catchButton, BorderLayout.NORTH);
         getContentPane().add(deck, BorderLayout.CENTER);
     }
 
@@ -158,6 +163,6 @@ public class PlayerScreen extends JFrame implements PlayerView {
     @Override
     public void update(Snapshot snapshot,PlayerViewObserver playerViewObserver) {
         this.playerViewObserver = playerViewObserver;
-        updatePlayerScreen(snapshot.player,snapshot.myCards, snapshot.playerSummaries,snapshot.openCard);
+        updatePlayerScreen(snapshot.player, snapshot.myCards, snapshot.playerSummaries, snapshot.openCard);
     }
 }
