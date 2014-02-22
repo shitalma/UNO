@@ -39,6 +39,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
     private JScrollPane myCardsPane;
     private JScrollPane activityLog;
     private Snapshot snapshot;
+    private int currentPlayerIndex;
 
 
     public void updatePlayerScreen(Snapshot snapshot, boolean areCardsVisible) {
@@ -47,6 +48,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         this.myCards = snapshot.myCards;
         this.playerSummaries = snapshot.playerSummaries;
         this.openCard = snapshot.openCard;
+        this.currentPlayerIndex = snapshot.currentPlayerIndex;
         setLayout(new BorderLayout());
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenSize.width = screenSize.width - 100;
@@ -70,7 +72,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         //My Cards
         myCardsPane = getMyCards(areCardsVisible);
         // Catch Buttons
-        getPlayers();
+        getPlayers(this.currentPlayerIndex);
         // Close Pile
         getDrawButton();
         // open Pile
@@ -84,7 +86,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         //status hint
         getStatusHint();
         //UNO button
-        getUnoButton();
+//        getUnoButton();
         getContentPane().add(activityLog, EAST);
         getContentPane().add(myCardsPane, BorderLayout.SOUTH);
         getContentPane().add(catchButton, BorderLayout.NORTH);
@@ -153,11 +155,11 @@ public class PlayerScreen extends JFrame implements PlayerView {
         });
     }
 
-    private void getPlayers() {
+    private void getPlayers(int currentPlayerIndex) {
         catchButton = new JPanel();
         catchButton.setPreferredSize(new Dimension(180, 180));
         catchButton.setBorder(BorderFactory.createLineBorder(Color.black));
-        catchButton.add(new Players(Arrays.asList(this.playerSummaries)));
+        catchButton.add(new Players(Arrays.asList(this.playerSummaries),currentPlayerIndex));
     }
 
     private JScrollPane getActivityLog() {
