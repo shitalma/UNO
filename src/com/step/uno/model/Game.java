@@ -171,10 +171,8 @@ public class Game {
 
     public boolean IsCardValid(Card card) {
         Card lastCard = openDeck.lookAtLast();
-        boolean valid = true;
-        if (lastCard.colour != card.colour || lastCard.sign != card.sign) {
-            valid = false;
-        }
-        return valid;
+        if (lastCard.colour == card.colour || lastCard.sign == card.sign)
+            return true;
+        return false;
     }
 }
