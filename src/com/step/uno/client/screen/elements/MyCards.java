@@ -16,7 +16,7 @@ public class MyCards extends JPanel{
             if(cardName.contains("_"))
                 cardName = cardName.substring(1);
             JButton b = new JButton(cardName);
-            b.setPreferredSize(new Dimension(175,175));
+            b.setPreferredSize(new Dimension(160,150));
 
             if(card.colour.equals(Colour.Red)) b.setBackground(Color.RED);
             if(card.colour.equals(Colour.Green)) b.setBackground(Color.GREEN);

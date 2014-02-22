@@ -1,11 +1,9 @@
 package com.step.uno.client.screen;
 
-import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.screen.elements.MyCards;
 import com.step.uno.client.screen.elements.Players;
 import com.step.uno.client.screen.elements.WildCard;
 import com.step.uno.client.view.PlayerView;
-import com.step.uno.factory.Factory;
 import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
 import com.step.uno.model.Colour;
@@ -41,9 +39,13 @@ public class PlayerScreen extends JFrame implements PlayerView {
         setLayout(new BorderLayout());
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds(0,0,screenSize.width, screenSize.height);
-
+        screenSize.width = screenSize.width - 100;
+        screenSize.height = screenSize.height -100;
         setSize(screenSize);
+        setBounds(50,50,screenSize.width, screenSize.height);
+
+        setMinimumSize(screenSize);
+        setMaximumSize(screenSize);
         addComponents();
         java.awt.Window win[] = java.awt.Window.getWindows();
         setVisible(true);
@@ -57,7 +59,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         setTitle("Player Screen");
 
         // Activity Log
-        textArea = new JTextArea(35, 35);
+        textArea = new JTextArea(35, 20);
         textArea.setFont(new Font("sansserif", Font.BOLD, 20));
         textArea.append("Kavita placed red:5");
         textArea.setEditable(false);
@@ -74,7 +76,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
 
         // Catch Buttons
         JPanel pane = new JPanel();
-        pane.setPreferredSize(new Dimension(250, 250));
+        pane.setPreferredSize(new Dimension(180, 180));
         pane.setBorder(BorderFactory.createLineBorder(Color.black));
         pane.add(new Players(Arrays.asList(this.playerSummaries)));
 
@@ -84,7 +86,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         JButton drawButton = new JButton("Close pile");
         drawButton.setPreferredSize(new Dimension(30, 30));
         drawButton.setLocation(10, 10);
-        drawButton.setBounds(10, 20, 300, 300);
+        drawButton.setBounds(20, 20, 180, 180);
         Border border1 = new LineBorder(Color.BLACK, 3);
         drawButton.setBorder(border1);
         drawButton.setFont(new Font("sansserif", Font.BOLD, 25));
@@ -100,7 +102,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         JButton button1 = new JButton("open pile");
         button1.setPreferredSize(new Dimension(30, 30));
         button1.setLocation(100, 100);
-        button1.setBounds(400, 20, 300, 300);
+        button1.setBounds(230, 20, 180, 180);
         Border border2 = new LineBorder(Color.BLACK, 3);
         button1.setBorder(border2);
         button1.setFont(new Font("sansserif", Font.BOLD, 25));
@@ -117,13 +119,13 @@ public class PlayerScreen extends JFrame implements PlayerView {
 
         // wild window
         WildCard wildCard = new WildCard();
-        wildCard.setBounds(800, 20, 300, 100);
+        wildCard.setBounds(500, 20, 270, 90);
         deck.add(wildCard.addAllButtons(), new GridLayout(2, 2));
 
         //status hint
         JTextArea area1 = new JTextArea();
         area1.setPreferredSize(new Dimension(50, 50));
-        area1.setBounds(10, 350, 900, 200);
+        area1.setBounds(10, 230, 650, 150);
         area1.setEditable(false);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         area1.setBorder(BorderFactory.createCompoundBorder(border,
@@ -136,7 +138,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         JButton unoButton = new JButton("UNO");
         unoButton.setPreferredSize(new Dimension(30, 30));
         unoButton.setLocation(100, 100);
-        unoButton.setBounds(930, 350, 275, 200);
+        unoButton.setBounds(680, 230, 230, 150);
         unoButton.setBackground(Color.GREEN);
         Border border3 = new LineBorder(Color.BLACK, 3);
         unoButton.setBorder(border3);

@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Arc2D;
 
 public class CreateGameScreen extends JFrame {
     private JLabel players;
@@ -24,7 +25,8 @@ public class CreateGameScreen extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         playersField = new JTextField(15);
-        packsField = new JTextField(15);
+
+        packsField = new JTextField("1" ,15);
         start = new JButton(" START ");
         createFirstScreenFromServerSide();
         start.addActionListener(new ActionListener() {
