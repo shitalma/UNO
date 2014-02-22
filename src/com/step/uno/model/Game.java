@@ -83,7 +83,7 @@ public class Game {
     }
 
     public void playCard(Player player, Card card, Colour newColour) {
-        if(!new RuleEngine().IsCardValidToPlay(card, openDeck.lookAtLast())) return;
+        if(!new RuleEngine().isCardValidToPlay(card, openDeck.lookAtLast())) return;
         player.play(card);
         openDeck.add(card);
 //        handleReverse(card);

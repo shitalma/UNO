@@ -18,36 +18,36 @@ public class RuleEngineTest {
 
     @Test
     public void anyNumberCardIsValidToPlayOnSameColorOfLastCard() {
-        Assert.assertEquals(true, ruleEngine.IsCardValidToPlay(blue_0, blue_6));
+        Assert.assertEquals(true, ruleEngine.isCardValidToPlay(blue_0, blue_6));
     }
 
     @Test
     public void anyNumberCardIsValidToPlayOnSameSignOfLastCard() {
-        Assert.assertEquals(true, ruleEngine.IsCardValidToPlay(red_6, blue_6));
+        Assert.assertEquals(true, ruleEngine.isCardValidToPlay(red_6, blue_6));
     }
 
     @Test
     public void drawTwoIsValidToPlayOnDrawTwo() {
-        Assert.assertEquals(true, ruleEngine.IsCardValidToPlay(yellow_draw_2, red_draw_2));
+        Assert.assertEquals(true, ruleEngine.isCardValidToPlay(yellow_draw_2, red_draw_2));
     }
 
     @Test
     public void otherCardIsNotValidToPlayOnDrawToExceptDrawToOrSameColorCard() {
-        Assert.assertEquals(false, ruleEngine.IsCardValidToPlay(blue_6, yellow_draw_2));
+        Assert.assertEquals(false, ruleEngine.isCardValidToPlay(blue_6, yellow_draw_2));
     }
 
     @Test
     public void anyCardIsValidOnWildDrawFour() {
-        Assert.assertEquals(true, ruleEngine.IsCardValidToPlay(blue_6, black_draw_4));
+        Assert.assertEquals(true, ruleEngine.isCardValidToPlay(blue_6, black_draw_4));
     }
 
     @Test
     public void cardWithReverseSignIsValidToPlayOnReverseCard() {
-        Assert.assertEquals(true, ruleEngine.IsCardValidToPlay(red_reverse, yellow_reverse));
+        Assert.assertEquals(true, ruleEngine.isCardValidToPlay(red_reverse, yellow_reverse));
     }
 
     @Test
     public void cardWithSameColorOrReverseSignIsValidToPlayOnReverseCard() {
-        Assert.assertEquals(true, ruleEngine.IsCardValidToPlay(red_reverse, black_draw_4));
+        Assert.assertEquals(true, ruleEngine.isCardValidToPlay(red_reverse, black_draw_4));
     }
 }
