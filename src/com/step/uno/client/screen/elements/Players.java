@@ -18,8 +18,8 @@ public class Players extends JPanel {
             label.setFont(new Font("sansserif", Font.BOLD, 80));
             JButton b = new JButton(" " + playerSummary.name + "  \n   " + playerSummary.cardsInHand);
             b.setLayout(null);
-            b.setFont(new Font("sansserif", Font.BOLD, 25));
-            b.setPreferredSize(new Dimension(175, 175));
+            b.setFont(new Font("sansserif", Font.BOLD, 22));
+            b.setPreferredSize(new Dimension(140, 140));
             Border border2 = new LineBorder(Color.BLACK, 3);
 
             panel1.add(b);
