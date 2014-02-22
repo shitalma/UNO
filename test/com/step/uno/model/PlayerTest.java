@@ -1,24 +1,39 @@
 package com.step.uno.model;
 
-import junit.framework.TestCase;
+import org.junit.Before;
 import org.junit.Test;
 
-public class PlayerTest extends TestCase {
-    @Test
-    public void testIfPlayerHasCard() throws Exception {
-        Player raj = new Player("Raj");
-        raj.take(Card.createCard(Colour.Blue, "_2"));
-        raj.take(Card.createCard(Colour.Green, "_1"));
+import java.util.ArrayList;
+import java.util.List;
 
-        assertTrue(raj.hasCard(Card.createCard(Colour.Red, "_2")));;
+import static org.junit.Assert.assertEquals;
+
+/**
+ * Created by udaykant on 2/21/14.
+ */
+public class PlayerTest {
+    Player player = new Player("Someone");
+    List<Card> cards = new ArrayList<>();
+
+    @Before
+    public void setUp() throws Exception {
+        cards.add(Card.createCard(Colour.Red,"_4"));
+        cards.add(Card.createCard(Colour.Green,"_6"));
+        player.take(cards.get(0));
+        player.take(cards.get(1));
     }
 
     @Test
-    public void testIfPlayerDoesNotHaveCard() throws Exception {
-        Player raj = new Player("Raj");
-        raj.take(Card.createCard(Colour.Blue, "_2"));
-        raj.take(Card.createCard(Colour.Green, "_1"));
+    public void testPlay() throws Exception {
+        player.play(cards.get(1));
+        assertEquals(player.getNumberOfCards(),1);
+    }
 
-        assertFalse(raj.hasCard(Card.createCard(Colour.Red, "_3")));;
+    @Test
+    public void testHasWon(){
+        player.play(cards.get(0));
+        player.play(cards.get(1));
+
+        assertEquals(player.hasWon(),true);
     }
 }

@@ -3,6 +3,7 @@ package com.step.uno.client.screen;
 import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
+import com.step.uno.factory.Factory;
 import com.step.uno.messages.Snapshot;
 
 import javax.swing.*;
@@ -26,7 +27,7 @@ public class JoinScreen extends JFrame implements JoinGameView {
         this.controller = controller;
         setTitle("Login");
 
-        setSize(700, 300);
+        setSize(750, 500);
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -70,8 +71,12 @@ public class JoinScreen extends JFrame implements JoinGameView {
 
     public void addComponentsToPane(Container pane) {
 
-        pane.setLayout(new GridBagLayout());
+        GridBagLayout mgr = new GridBagLayout();
+        pane.setLayout(mgr  );
         GridBagConstraints c = new GridBagConstraints();
+
+
+        c.insets = new Insets(17,17,17,17);
 
         if (shouldWeightX) {
             c.weightx = 0.5;
@@ -87,6 +92,7 @@ public class JoinScreen extends JFrame implements JoinGameView {
         c.gridx = 1;
         c.gridy = 0;
         pane.add(masterAddress, c);
+
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.ipady = 20;
@@ -133,5 +139,9 @@ public class JoinScreen extends JFrame implements JoinGameView {
         });
 
         setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new JoinScreen(new GameClientController(new Factory()));
     }
 }
