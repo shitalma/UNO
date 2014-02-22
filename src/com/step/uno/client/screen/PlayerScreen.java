@@ -114,7 +114,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         openPile.setPreferredSize(new Dimension(30, 30));
         openPile.setLocation(100, 100);
         openPile.setBounds(230, 20, 140, 200);
-
+        openPile.setEnabled(false);
         Border border2 = new LineBorder(Color.BLACK, 3);
         openPile.setBorder(border2);
         openPile.setFont(new Font("sansserif", Font.BOLD, 25));
