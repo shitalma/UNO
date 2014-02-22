@@ -72,7 +72,6 @@ public class Game {
         List<PlayerSummary> summaries = new ArrayList<>();
         for (Player p : players) {
             summaries.add(p.generateSummary());
-
         }
         snapshot.player = this.players;
         snapshot.playerSummaries = summaries.toArray(new PlayerSummary[]{});
@@ -83,7 +82,7 @@ public class Game {
         snapshot.draw2Run = draw2Run;
     }
 
-    public void playCard(Player player, Card card, Colour newColour) {
+    public void playCard(Player player, Card card) {
         //handle action of card
         player.play(card);
         openDeck.add(card);
@@ -91,7 +90,7 @@ public class Game {
 //        handleSkip(card);
 //        handleDrawTwo(card);
 //        handleWildCard(card, newColour);
-//        nextTurn();
+        nextTurn();
     }
 
     private void handleReverse(Card card) {

@@ -1,6 +1,5 @@
 package com.step.uno.client.controller;
 
-import com.step.communication.channel.MessageChannel;
 import com.step.uno.client.GameClient;
 import com.step.uno.client.GameClientObserver;
 import com.step.uno.client.screen.PlayerViewObserver;
@@ -41,9 +40,14 @@ public class GameClientController implements PlayerViewObserver, GameClientObser
 
     @Override
     public void onSnapshotReceived(Snapshot snapshot) {
+        boolean areCardsVisible = false;
         if (playerView == null)
             playerView = joinGameView.switchToPlayerView();
-        playerView.update(snapshot, this);
+        if (snapshot.myPlayerIndex == snapshot.currentPlayerIndex) {
+            areCardsVisible = true;
+        }
+        playerView.update(snapshot, this, areCardsVisible);
+
     }
 
     @Override
@@ -55,4 +59,5 @@ public class GameClientController implements PlayerViewObserver, GameClientObser
     public void waitForTurn() {
 
     }
+
 }

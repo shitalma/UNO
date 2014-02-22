@@ -75,7 +75,7 @@ public class GameMaster implements MessageServerListener, PlayerProxyObserver {
 
     @Override
     public void onPlayerPlayed(Player player, Card card, Colour newColour) {
-        game.playCard(player,card,newColour);
+        game.playCard(player,card);
 //        if(player.hasWon())
 //            sendResult();
 //        else
