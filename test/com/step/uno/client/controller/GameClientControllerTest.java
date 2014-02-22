@@ -18,7 +18,7 @@ public class GameClientControllerTest {
     Factory mockedFactory = mock(Factory.class);
 
     @Test
-    public void joinShouldTakeServerAddressAndPlayerNameAndStartGameClient() {
+    public void shouldStartGameClient() {
 
         GameClient gameClient = mock(GameClient.class);
         when(mockedFactory.getGameClient(any(GameClientObserver.class))).thenReturn(gameClient);
@@ -30,7 +30,7 @@ public class GameClientControllerTest {
 
 
     @Test
-    public void onDrawShouldCallGameClientsDraw() {
+    public void shouldDrawACard() {
         GameClient gameClient = mock(GameClient.class);
         when(mockedFactory.getGameClient(any(GameClientObserver.class))).thenReturn(gameClient);
         GameClientController controller = new GameClientController(mockedFactory);
@@ -40,7 +40,7 @@ public class GameClientControllerTest {
     }
 
     @Test
-    public void onPlayShouldCallGameClientsPlay() {
+    public void playerShouldPlayACard() {
         GameClient gameClient = mock(GameClient.class);
         when(mockedFactory.getGameClient(any(GameClientObserver.class))).thenReturn(gameClient);
         GameClientController controller = new GameClientController(mockedFactory);
@@ -50,7 +50,7 @@ public class GameClientControllerTest {
     }
 
     @Test
-    public void callSwitchPlayerViewWhenOnSnapShotCalled() {
+    public void shouldSwitchAPlayerView() {
         JoinGameView joinGameView = mock(JoinGameView.class);
         GameClientController controller = new GameClientController(mockedFactory);
         when(joinGameView.switchToPlayerView()).thenReturn(mock(PlayerView.class));
@@ -63,7 +63,7 @@ public class GameClientControllerTest {
     }
 
     @Test
-    public void callUpdateWhenOnSnapShotCalled() throws Exception {
+    public void shouldUpdateAPlayerViewOnPlayerAction() throws Exception {
         JoinGameView joinGameView = mock(JoinGameView.class);
         GameClientController controller = new GameClientController(mockedFactory);
         PlayerView mockPlayerView = mock(PlayerView.class);
@@ -78,7 +78,7 @@ public class GameClientControllerTest {
     }
 
     @Test
-    public void callShowOnDisconnectedWhenOnDisconnectedIsCalled() {
+    public void shouldInformUserWhenServerIsClosed() {
         JoinGameView joinGameView = mock(JoinGameView.class);
         GameClientController controller = new GameClientController(mockedFactory);
         PlayerView mockPlayerView = mock(PlayerView.class);
@@ -92,6 +92,4 @@ public class GameClientControllerTest {
         verify(mockPlayerView,times(1)).update(any(Snapshot.class),any(PlayerViewObserver.class),anyBoolean());
         verify(mockPlayerView,times(1)).showDisconnected();
     }
-
-
 }

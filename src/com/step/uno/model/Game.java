@@ -82,8 +82,9 @@ public class Game {
         snapshot.draw2Run = draw2Run;
     }
 
-    public void playCard(Player player, Card card) {
         //handle action of card
+    public void playCard(Player player, Card card) {
+        if(!new RuleEngine().IsCardValidToPlay(card, openDeck.lookAtLast())) return;
         player.play(card);
         openDeck.add(card);
 //        handleReverse(card);
@@ -167,13 +168,5 @@ public class Game {
     public List<Player> getPlayers() {
         return this.players;
     }
-
-    public boolean cardIsValid(Card card) {
-        Card lastCard = openDeck.lookAtLast();
-        boolean valid = true;
-        if (lastCard.colour != card.colour || lastCard.sign != card.sign) {
-            valid = false;
-        }
-        return valid;
-    }
+ 
 }

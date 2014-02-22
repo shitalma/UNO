@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player implements Serializable{
-    public String name;
+    private String name;
     private List<Card> cards = new ArrayList<>();
     private boolean declaredUno;
 
@@ -21,6 +21,7 @@ public class Player implements Serializable{
 
     public void populateSelf(Snapshot snapshot) {
         snapshot.myCards = cards.toArray(new Card[]{});
+        snapshot.currentPlayerName = this.name;
     }
 
     public PlayerSummary generateSummary() {
@@ -63,5 +64,9 @@ public class Player implements Serializable{
                 return true;
         }
         return false;
+    }
+
+    public String getName() {
+        return name;
     }
 }

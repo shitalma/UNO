@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Arc2D;
 
 public class CreateGameScreen extends JFrame {
     private JLabel players;
@@ -18,7 +17,7 @@ public class CreateGameScreen extends JFrame {
     private JButton start;
 
     public CreateGameScreen() {
-        super("Create game screen");
+        super(" UNO ");
         panel = new JPanel();
         players = new JLabel("Number of players : ");
         packs = new JLabel("Number of packs : ");
