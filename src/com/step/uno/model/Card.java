@@ -51,4 +51,24 @@ public class Card implements Serializable{
     public String toString() {
         return colour.toString() +" " + sign.getPoints();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Card)) return false;
+
+        Card card = (Card) o;
+
+        if (colour != card.colour) return false;
+        if (sign != card.sign) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = colour != null ? colour.hashCode() : 0;
+        result = 31 * result + (sign != null ? sign.hashCode() : 0);
+        return result;
+    }
 }
