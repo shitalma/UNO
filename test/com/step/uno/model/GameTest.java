@@ -12,7 +12,7 @@ public class GameTest {
     Player sayali = new Player("sayali");
 
     @Test
-    public void testNumberOfCardOfOnePlayerWithOnePack() {
+    public void eachPlayerGets7CardsWhenGameStarts() {
         players.add(uday);
         players.add(sayali);
 
@@ -23,17 +23,18 @@ public class GameTest {
     }
 
     @Test
-    public void testPlayerCanPlayAValidCard() {
+    public void testPlayerCanPlayExactSameCard() {
         players.add(uday);
         players.add(sayali);
         Game game = new Game(1, players);
         game.getOpenDeck().add(Card.createCard(Colour.Green, "_1"));
 
-        assertEquals(true, game.cardIsValid(Card.createCard(Colour.Green, "_1")));
+        assertEquals(true, game.IsCardValid(Card.createCard(Colour.Green, "_1")));
     }
 
     @Test
-    public void PlayerShouldDrawACardIfHeDoesNotHaveValidCard() {
+    public void playerCanDrawACard() {
+
         uday.take(Card.createCard(Colour.Blue, "_1"));
 
         assertEquals(true, uday.hasCard(Card.createCard(Colour.Blue, "_2")));
