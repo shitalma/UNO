@@ -3,8 +3,6 @@ package com.step.uno.client.screen;
 import com.step.uno.client.controller.GameClientController;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
-import com.step.uno.factory.Factory;
-import com.step.uno.messages.Snapshot;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -139,9 +137,5 @@ public class JoinScreen extends JFrame implements JoinGameView {
         });
 
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new JoinScreen(new GameClientController(new Factory()));
     }
 }

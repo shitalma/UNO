@@ -47,7 +47,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         screenSize.height = screenSize.height -100;
         setSize(screenSize);
         setBounds(50,50,screenSize.width, screenSize.height);
-
+        setTitle(snapshot.currentPlayerName);
         setMinimumSize(screenSize);
         setMaximumSize(screenSize);
         addComponents();
@@ -55,11 +55,9 @@ public class PlayerScreen extends JFrame implements PlayerView {
     }
 
     public PlayerScreen() {
-
     }
 
     public void addComponents() {
-        setTitle("Player Screen");
         // Activity Log
         JScrollPane activityLog = getActivityLog();
         //My Cards
@@ -115,7 +113,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         openPile = new JButton("open pile");
         openPile.setPreferredSize(new Dimension(30, 30));
         openPile.setLocation(100, 100);
-        openPile.setBounds(230, 20, 180, 180);
+        openPile.setBounds(230, 20, 140, 200);
 
         Border border2 = new LineBorder(Color.BLACK, 3);
         openPile.setBorder(border2);
@@ -133,11 +131,9 @@ public class PlayerScreen extends JFrame implements PlayerView {
         deck = new JPanel();
         deck.setLayout(null);
         JButton drawButton = new JButton(" Draw ");
-        drawButton.setPreferredSize(new Dimension(160, 180));
-
         drawButton.setPreferredSize(new Dimension(30, 30));
         drawButton.setLocation(10, 10);
-        drawButton.setBounds(20, 20, 180, 200);
+        drawButton.setBounds(20, 20, 140, 200);
         Border border1 = new LineBorder(Color.BLACK, 3);
         drawButton.setBorder(border1);
         drawButton.setFont(new Font("sansserif", Font.BOLD, 25));

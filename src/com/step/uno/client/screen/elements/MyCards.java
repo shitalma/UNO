@@ -2,7 +2,6 @@ package com.step.uno.client.screen.elements;
 
 import com.step.uno.client.screen.PlayerViewObserver;
 import com.step.uno.model.Card;
-import com.step.uno.model.Colour;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -24,7 +23,7 @@ public class MyCards extends JPanel implements ActionListener {
             if (cardName.contains("_"))
                 cardName = cardName.substring(1);
             JButton b = new JButton(cardName);
-            b.setPreferredSize(new Dimension(160, 150));
+            b.setPreferredSize(new Dimension(140, 180));
             b.setBackground(card.colour.getColor());
 
             setLayout(new FlowLayout());
