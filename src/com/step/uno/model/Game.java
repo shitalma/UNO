@@ -15,7 +15,6 @@ public class Game {
     private boolean isInAscendingOrder = true;
     private Colour runningColour;
     private int draw2Run=0;
-    private boolean isCardValid;
 
     public Game(int packs, List<Player> givenPlayers) {
         players = new ArrayList<>(givenPlayers);
@@ -81,14 +80,10 @@ public class Game {
         snapshot.isInAscendingOrder = this.isInAscendingOrder;
         snapshot.runningColour = runningColour;
         snapshot.draw2Run = draw2Run;
-        snapshot.isCardValid = isCardValid;
     }
 
     public void playCard(Player player, Card card, Colour newColour) {
-        if(!new RuleEngine().isCardValidToPlay(card, openDeck.lookAtLast())){
-            this.isCardValid = false;
-            return;
-        }
+        if(!new RuleEngine().isCardValidToPlay(card, openDeck.lookAtLast())) return;
         player.play(card);
         openDeck.add(card);
 //        handleReverse(card);
