@@ -174,23 +174,21 @@ public class PlayerScreen extends JFrame implements PlayerView {
     }
 
     private JScrollPane getMyCards(boolean areCardsVisible) {
-
         this.remove(scrollPane);
         cards = new MyCards(Arrays.asList(snapshot.myCards), playerViewObserver,areCardsVisible);
-//        snapshot
         scrollPane = new JScrollPane(cards);
         JPanel pane1 = (JPanel) this.getContentPane();
         pane1.add(scrollPane);
         scrollPane.setPreferredSize(new Dimension(300, 200));
         System.out.println(snapshot.player.get(snapshot.myPlayerIndex));
         System.out.println(areCardsVisible);
-//        scrollPane.setEnabled(areCardsVisible);
         return scrollPane;
     }
 
     @Override
     public void showDisconnected() {
         System.out.println("disconnected");
+        System.exit(0);
     }
 
     @Override
