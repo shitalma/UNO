@@ -66,7 +66,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         //My Cards
-        MyCards cards = new MyCards(Arrays.asList(this.myCards));
+        MyCards cards = new MyCards(Arrays.asList(this.myCards),playerViewObserver);
         JScrollPane area = new JScrollPane(cards);
         JPanel pane1 = (JPanel) this.getContentPane();
         pane1.add(area);
