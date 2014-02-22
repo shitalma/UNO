@@ -15,7 +15,7 @@ public class GameMasterTest {
     FactoryStub stub = new FactoryStub();
 
     @Test
-    public void testWhenAllPlayersJoinGameShouldStart() throws Exception {
+    public void testWhenAllPlayersJoinGameShouldStart() {
 
 
         GameMaster gameMaster = new GameMaster(2, 1, stub);

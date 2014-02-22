@@ -32,7 +32,6 @@ public class GameClient implements MessageChannelListener {
 
     public void play(Card card) {
         channel.send(new PlayCardAction(card));
-
     }
 
     public void play(Card card, Colour newColour) {
@@ -46,7 +45,6 @@ public class GameClient implements MessageChannelListener {
     }
 
     public void draw() {
-        System.out.println(channel == null);
         channel.send(new DrawCardAction());
     }
 
@@ -67,30 +65,13 @@ public class GameClient implements MessageChannelListener {
 
     }
 
-//    private void handle(Snapshot snapshot) {
-//        if (playerView == null) playerView = joinGameView.switchToPlayerView();
-//        playerView.update(snapshot);
-//    }
-
     @Override
     public void onMessage(MessageChannel client, Object message) {
-//        System.out.println((Snapshot) message);
         if(message.getClass().equals(Snapshot.class))
             observer.onSnapshotReceived((Snapshot) message);
         if(message.getClass().equals(WaitingForDrawnCardAction.class)){
             observer.waitForTurn();
         }
-//        try {
-//            System.out.println(getClass().getDeclaredMethod("handle", message.getClass()));
-//            getClass().getDeclaredMethod("handle", message.getClass())
-//                    .invoke(this, message);
-//        } catch (IllegalAccessException e) {
-//            e.printStackTrace();
-//        } catch (InvocationTargetException e) {
-//            e.printStackTrace();
-//        } catch (NoSuchMethodException e) {
-//            e.printStackTrace();
-//        }
     }
 
     @Override
