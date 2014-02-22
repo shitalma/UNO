@@ -11,14 +11,11 @@ import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
 
 public class GameClientController implements PlayerViewObserver, GameClientObserver {
-    private Factory factory;
     private JoinGameView joinGameView;
     private PlayerView playerView;
-    private MessageChannel channel;
     private GameClient gameClient;
 
     public GameClientController(Factory factory) {
-        this.factory = factory;
         gameClient = factory.getGameClient(this);
 
     }
@@ -39,7 +36,7 @@ public class GameClientController implements PlayerViewObserver, GameClientObser
 
     @Override
     public void play(Card card) {
-
+        gameClient.play(card);
     }
 
     @Override

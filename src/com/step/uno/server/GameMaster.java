@@ -5,7 +5,6 @@ import com.step.communication.server.MessageServer;
 import com.step.communication.server.MessageServerListener;
 import com.step.uno.factory.Factory;
 import com.step.uno.messages.GameResult;
-import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
 import com.step.uno.model.Colour;
 import com.step.uno.model.Game;
@@ -100,6 +99,7 @@ public class GameMaster implements MessageServerListener, PlayerProxyObserver {
         for (PlayerProxy proxy : proxies) {
             proxy.sendWaitingForDrawnCardAction(player,card);
         }
+        sendSnapshot();
     }
 
     @Override
