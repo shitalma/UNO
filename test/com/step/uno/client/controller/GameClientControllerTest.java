@@ -2,6 +2,7 @@ package com.step.uno.client.controller;
 
 import com.step.uno.client.GameClient;
 import com.step.uno.client.GameClientObserver;
+import com.step.uno.client.screen.PlayerViewObserver;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
 import com.step.uno.factory.Factory;
@@ -49,26 +50,48 @@ public class GameClientControllerTest {
     }
 
     @Test
-    public void testOnSnapshotReceived() {
-//        JoinGameView joinGameView = mock(JoinGameView.class);
-//        GameClientController controller = new GameClientController(mockedFactory);
-//        controller.onSnapshotReceived(new Snapshot());
-//        verify(joinGameView,atLeastOnce()).switchToPlayerView();
+    public void callSwitchPlayerViewWhenOnSnapShotCalled() {
+        JoinGameView joinGameView = mock(JoinGameView.class);
+        GameClientController controller = new GameClientController(mockedFactory);
+        when(joinGameView.switchToPlayerView()).thenReturn(mock(PlayerView.class));
+
+        controller.bindView(joinGameView);
+        Snapshot mockSnapShot = mock(Snapshot.class);
+        controller.onSnapshotReceived(mockSnapShot);
+
+        verify(joinGameView, times(1)).switchToPlayerView();
     }
 
     @Test
-    public void testOnDisconnected() {
+    public void callUpdateWhenOnSnapShotCalled() throws Exception {
+        JoinGameView joinGameView = mock(JoinGameView.class);
+        GameClientController controller = new GameClientController(mockedFactory);
+        PlayerView mockPlayerView = mock(PlayerView.class);
+        when(joinGameView.switchToPlayerView()).thenReturn(mockPlayerView);
 
-//        GameClientController controller = new GameClientController(mockedFactory);
-//        PlayerView mockedPlayerView= mock(PlayerView.class);
-//        controller.onDisconnected();
-//        verify(mockedPlayerView,atLeastOnce()).showDisconnected();
+        controller.bindView(joinGameView);
+        Snapshot mockSnapShot = mock(Snapshot.class);
+        controller.onSnapshotReceived(mockSnapShot);
 
-
+        verify(joinGameView, times(1)).switchToPlayerView();
+        verify(mockPlayerView,times(1)).update(any(Snapshot.class),any(PlayerViewObserver.class));
     }
 
     @Test
-    public void testWaitForTurn() {
+    public void callShowOnDisconnectedWhenOnDisconnectedIsCalled() {
+        JoinGameView joinGameView = mock(JoinGameView.class);
+        GameClientController controller = new GameClientController(mockedFactory);
+        PlayerView mockPlayerView = mock(PlayerView.class);
+        when(joinGameView.switchToPlayerView()).thenReturn(mockPlayerView);
 
+        controller.bindView(joinGameView);
+        Snapshot mockSnapShot = mock(Snapshot.class);
+        controller.onSnapshotReceived(mockSnapShot);
+        controller.onDisconnected();
+        verify(joinGameView, times(1)).switchToPlayerView();
+        verify(mockPlayerView,times(1)).update(any(Snapshot.class),any(PlayerViewObserver.class));
+        verify(mockPlayerView,times(1)).showDisconnected();
     }
+
+
 }
