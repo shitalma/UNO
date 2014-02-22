@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player implements Serializable{
-    public String name;
+    private String name;
     private List<Card> cards = new ArrayList<>();
     private boolean declaredUno;
 
@@ -63,5 +63,9 @@ public class Player implements Serializable{
                 return true;
         }
         return false;
+    }
+
+    public String getName() {
+        return name;
     }
 }

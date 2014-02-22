@@ -1,6 +1,5 @@
 package com.step.uno.client.controller;
 
-import com.step.communication.channel.MessageChannel;
 import com.step.uno.client.GameClient;
 import com.step.uno.client.GameClientObserver;
 import com.step.uno.client.screen.PlayerViewObserver;
