@@ -32,12 +32,16 @@ public class PlayerTest {
         assertEquals(player.getNumberOfCards(),3);
     }
 
-
     @Test
     public void tellThatPlayerWonGameIfHisCardsAreZero(){
         player.play(cards.get(0));
         player.play(cards.get(1));
 
         assertEquals(player.hasWon(),true);
+    }
+
+    @Test
+    public void getTheNameOfPlayer() {
+        assertEquals("someone",player.getName());
     }
 }
