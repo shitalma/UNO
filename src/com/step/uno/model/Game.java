@@ -72,7 +72,6 @@ public class Game {
         List<PlayerSummary> summaries = new ArrayList<>();
         for (Player p : players) {
             summaries.add(p.generateSummary());
-
         }
         snapshot.player = this.players;
         snapshot.playerSummaries = summaries.toArray(new PlayerSummary[]{});
