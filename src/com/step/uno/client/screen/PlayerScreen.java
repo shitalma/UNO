@@ -71,7 +71,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
 
         //My Cards
 
-        cards = new MyCards(Arrays.asList(this.myCards));
+        cards = new MyCards(Arrays.asList(this.myCards),playerViewObserver);
         JScrollPane area = new JScrollPane(cards);
         JPanel pane1 = (JPanel) this.getContentPane();
         pane1.add(area);
