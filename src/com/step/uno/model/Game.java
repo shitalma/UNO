@@ -84,7 +84,7 @@ public class Game {
     }
 
     public void playCard(Player player, Card card, Colour newColour) {
-        //handle action of card
+        if(!IsCardValid(card)) return;
         player.play(card);
         openDeck.add(card);
 //        handleReverse(card);
@@ -169,7 +169,7 @@ public class Game {
         return this.players;
     }
 
-    public boolean cardIsValid(Card card) {
+    public boolean IsCardValid(Card card) {
         Card lastCard = openDeck.lookAtLast();
         boolean valid = true;
         if (lastCard.colour != card.colour || lastCard.sign != card.sign) {

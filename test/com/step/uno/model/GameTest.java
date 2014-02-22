@@ -29,7 +29,7 @@ public class GameTest {
         Game game = new Game(1, players);
         game.getOpenDeck().add(Card.createCard(Colour.Green, "_1"));
 
-        assertEquals(true, game.cardIsValid(Card.createCard(Colour.Green, "_1")));
+        assertEquals(true, game.IsCardValid(Card.createCard(Colour.Green, "_1")));
     }
 
     @Test
