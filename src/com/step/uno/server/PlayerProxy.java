@@ -13,7 +13,6 @@ import java.lang.reflect.Method;
 public class PlayerProxy implements MessageChannelListener {
     private MessageChannel channel;
     private PlayerProxyObserver observer;
-    private String playerName;
     private Player player;
 
     public PlayerProxy(MessageChannel channel,PlayerProxyObserver observer) {
@@ -40,7 +39,6 @@ public class PlayerProxy implements MessageChannelListener {
     }
 
     private void onClientMessage(DrawCardAction drawCard){
-        System.out.println("draw a card");
         observer.onPlayerDrewCard(player);
 
     }
@@ -64,13 +62,12 @@ public class PlayerProxy implements MessageChannelListener {
 
     @Override
     public void onMessage(MessageChannel client, Object message) {
-        System.out.println("draw a card11111111111");
-
+        System.out.println(message.toString());
         try {
             Method method = this.getClass().getDeclaredMethod("onClientMessage", message.getClass());
             method.invoke(this,message);
         } catch (NoSuchMethodException e) {
-
+            System.out.println("I was not called");
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -84,7 +81,6 @@ public class PlayerProxy implements MessageChannelListener {
     }
 
     public void sendSnapshot(Game game) {
-//        System.out.println("2I am used");
 
         Snapshot snapshot = new Snapshot();
         System.out.println("populating");
@@ -101,4 +97,5 @@ public class PlayerProxy implements MessageChannelListener {
         if(this.player != player) return;
         channel.send(new WaitingForDrawnCardAction(card));
     }
+
 }

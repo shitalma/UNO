@@ -28,7 +28,7 @@ public class Player implements Serializable{
     }
 
     public void play(Card card) {
-        cards.remove(card);
+       cards.remove(card);
     }
 
     public void declareUno() {

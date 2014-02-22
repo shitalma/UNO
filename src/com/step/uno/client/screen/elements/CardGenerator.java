@@ -16,6 +16,7 @@ public class CardGenerator {
     public CardGenerator(Color cardColor, String sign) {
         this.cardColor = cardColor;
         this.sign = sign;
+        addColorsToMap();
     }
     public void addColorsToMap() {
         colorMap.put(Color.red,Colour.Red);
