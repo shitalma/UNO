@@ -10,7 +10,8 @@ public class RuleEngineTest {
     Card red_6 = Card.createCard(Colour.Red, "_6");
     Card red_reverse = Card.createCard(Colour.Red, "Reverse");
     Card yellow_reverse = Card.createCard(Colour.Yellow, "Reverse");
-    Card black_draw_4 = Card.createCard(Colour.Black, "WildDrawFour");
+    Card draw_4 = Card.createCard(Colour.Black, "WildDrawFour");
+    Card wild = Card.createCard(Colour.Black, "Wild");
     Card yellow_draw_2 = Card.createCard(Colour.Yellow, "DrawTwo");
     Card red_draw_2 = Card.createCard(Colour.Red, "DrawTwo");
 
@@ -38,7 +39,7 @@ public class RuleEngineTest {
 
     @Test
     public void anyCardIsValidOnWildDrawFour() {
-        Assert.assertEquals(true, ruleEngine.isCardValidToPlay(blue_6, black_draw_4));
+        Assert.assertEquals(true, ruleEngine.isCardValidToPlay(blue_6, draw_4));
     }
 
     @Test
@@ -48,6 +49,17 @@ public class RuleEngineTest {
 
     @Test
     public void cardWithSameColorOrReverseSignIsValidToPlayOnReverseCard() {
-        Assert.assertEquals(true, ruleEngine.isCardValidToPlay(red_reverse, black_draw_4));
+        Assert.assertEquals(true, ruleEngine.isCardValidToPlay(red_reverse, draw_4));
     }
+
+    @Test
+    public void wildCardISValidForAnySituation() {
+        Assert.assertEquals(true, ruleEngine.isCardValidToPlay(wild, blue_6));
+    }
+
+    @Test
+    public void wildDraw4CardISValidForAnySituation() {
+        Assert.assertEquals(true, ruleEngine.isCardValidToPlay(draw_4, blue_6));
+    }
+
 }
