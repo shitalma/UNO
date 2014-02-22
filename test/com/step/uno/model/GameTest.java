@@ -23,16 +23,6 @@ public class GameTest {
     }
 
     @Test
-    public void testPlayerCanPlayExactSameCard() {
-        players.add(uday);
-        players.add(sayali);
-        Game game = new Game(1, players);
-        game.getOpenDeck().add(Card.createCard(Colour.Green, "_1"));
-
-        assertEquals(true, game.IsCardValid(Card.createCard(Colour.Green, "_1")));
-    }
-
-    @Test
     public void playerCanDrawACard() {
 
         uday.take(Card.createCard(Colour.Blue, "_1"));

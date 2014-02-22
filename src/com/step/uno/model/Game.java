@@ -84,7 +84,7 @@ public class Game {
     }
 
     public void playCard(Player player, Card card, Colour newColour) {
-        if(!IsCardValid(card)) return;
+        if(!new RuleEngine().IsCardValidToPlay(card, openDeck.lookAtLast())) return;
         player.play(card);
         openDeck.add(card);
 //        handleReverse(card);
@@ -168,11 +168,5 @@ public class Game {
     public List<Player> getPlayers() {
         return this.players;
     }
-
-    public boolean IsCardValid(Card card) {
-        Card lastCard = openDeck.lookAtLast();
-        if (lastCard.colour == card.colour || lastCard.sign == card.sign)
-            return true;
-        return false;
-    }
+ 
 }
