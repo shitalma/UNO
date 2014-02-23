@@ -1,9 +1,12 @@
 package com.step.uno.model;
 
+import com.step.uno.messages.Snapshot;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import static junit.framework.Assert.assertNotSame;
 import static org.junit.Assert.assertEquals;
 
 public class GameTest {
@@ -70,7 +73,6 @@ public class GameTest {
 //        System.out.println(nextPlayer.getName());
 //
 //
-//        assertNotSame(player,nextPlayer);
+////        assertNotSame(player,nextPlayer);
 //    }
 }
-

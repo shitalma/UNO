@@ -71,6 +71,8 @@ public class GameClient implements MessageChannelListener {
         if(message.getClass().equals(WaitingForDrawnCardAction.class)){
             observer.waitForTurn();
         }
+        if(message.getClass().equals(GameResult.class))
+            observer.onGameResult((GameResult)message);
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.step.uno.client.screen.PlayerViewObserver;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
 import com.step.uno.factory.Factory;
+import com.step.uno.messages.GameResult;
 import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
 
@@ -57,6 +58,11 @@ public class GameClientController implements PlayerViewObserver, GameClientObser
 
     @Override
     public void waitForTurn() {
+
+    }
+
+    @Override
+    public void onGameResult(GameResult message) {
 
     }
 

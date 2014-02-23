@@ -6,6 +6,7 @@ public class RuleEngine {
         if(card.sign == Sign.Wild || card.sign == Sign.WildDrawFour ) return true;
         if (lastCard.colour == card.colour || lastCard.sign == card.sign)
             return true;
+        if(lastCard.colour == Colour.Black) return true; // just for testing
         return false;
     }
 }

@@ -29,7 +29,9 @@ public class Player implements Serializable{
     }
 
     public void play(Card card) {
+        System.out.println("Before :" +cards.size());
        cards.remove(card);
+        System.out.println("After" +cards.size());
     }
 
     public void declareUno() {

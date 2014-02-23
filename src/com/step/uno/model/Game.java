@@ -84,7 +84,10 @@ public class Game {
 
         //handle action of card
     public void playCard(Player player, Card card) {
-        if(!new RuleEngine().isCardValidToPlay(card, openDeck.lookAtLast())) return;
+        RuleEngine ruleEngine = new RuleEngine();
+        Card lastCard = openDeck.lookAtLast();
+        boolean isCardValid = ruleEngine.isCardValidToPlay(card, lastCard);
+        if(!isCardValid) return;
         player.play(card);
         openDeck.add(card);
 //        handleReverse(card);
@@ -154,6 +157,10 @@ public class Game {
             playerResults.add(player.generateResult());
         }
         result.players = playerResults.toArray(new PlayerResult[]{});
+        for (PlayerResult playerResult : playerResults) {
+            System.out.println(playerResult.name +" "+playerResult.cards +" "+ playerResult.points);
+
+        }
     }
 
     public void drawTwoCards(Player player) {
