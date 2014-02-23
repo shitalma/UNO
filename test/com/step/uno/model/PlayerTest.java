@@ -21,16 +21,27 @@ public class PlayerTest {
     }
 
     @Test
-    public void testPlay() {
+    public void cardShouldBeRemovedAfterPlayingACard() {
         player.play(cards.get(1));
         assertEquals(player.getNumberOfCards(),1);
     }
 
     @Test
-    public void testHasWon(){
+    public void cardShouldBeAddedAfterDrawingACard() {
+        player.take(cards.get(1));
+        assertEquals(player.getNumberOfCards(),3);
+    }
+
+    @Test
+    public void tellThatPlayerWonGameIfHisCardsAreZero(){
         player.play(cards.get(0));
         player.play(cards.get(1));
 
         assertEquals(player.hasWon(),true);
+    }
+
+    @Test
+    public void getTheNameOfPlayer() {
+        assertEquals("Someone",player.getName());
     }
 }

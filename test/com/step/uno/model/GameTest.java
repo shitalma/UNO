@@ -24,7 +24,7 @@ public class GameTest {
     }
 
     @Test
-    public void testPlayerCanPlayExactSameCard() {
+    public void testPlayerCanPlayValidCard() {
         ArrayList<Player> players = new ArrayList<>();
         Player uday = new Player("uday");
         Player sayali = new Player("sayali");
@@ -34,7 +34,7 @@ public class GameTest {
         Game game = new Game(1, players);
         game.getOpenDeck().add(Card.createCard(Colour.Green, "_1"));
 
-//        assertEquals(true, game.I(Card.createCard(Colour.Green, "_1")));
+        assertEquals(true, new RuleEngine().isCardValidToPlay((Card.createCard(Colour.Green, "_1")),Card.createCard(Colour.Green, "_1")));
     }
 
     @Test
