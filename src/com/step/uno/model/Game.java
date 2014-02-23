@@ -59,16 +59,6 @@ public class Game {
         return closedDeck.draw();
     }
 
-    // on {} => [next()] match colour/sign  or draw one;
-    // on {0-9} => [next()] match colour/sign  or drawone ;
-    // on {skip} => [next()next()]  match colour/sign  or drawone ;
-    // on {reverse} => [reverse, next()],  match colour/sign  or drawone ;
-
-    // on {draw2} => [run++,next()],  match sign  or draw run*2, run=0;
-    // on {wild:colour} => [next()] match colour/sign  or drawone ;
-    // on {wildDraw4:colour} => [next() draw 4 next()]  ;
-
-
     public void populate(Snapshot snapshot, Player player) {
         player.populateSelf(snapshot);
         snapshot.myPlayerIndex = players.indexOf(player);
@@ -170,7 +160,6 @@ public class Game {
         result.players = playerResults.toArray(new PlayerResult[]{});
         for (PlayerResult playerResult : playerResults) {
             System.out.println(playerResult.name +" "+playerResult.cards +" "+ playerResult.points);
-
         }
     }
 

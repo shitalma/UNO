@@ -4,6 +4,8 @@ import com.step.uno.client.screen.elements.MyCards;
 import com.step.uno.client.screen.elements.Players;
 import com.step.uno.client.screen.elements.WildCard;
 import com.step.uno.client.view.PlayerView;
+import com.step.uno.client.view.ResultView;
+import com.step.uno.messages.GameResult;
 import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
 import com.step.uno.model.Player;
@@ -199,5 +201,12 @@ public class PlayerScreen extends JFrame implements PlayerView {
     public void update(Snapshot snapshot, PlayerViewObserver playerViewObserver,boolean areCardsVisible) {
         this.playerViewObserver = playerViewObserver;
         updatePlayerScreen(snapshot,areCardsVisible);
+    }
+
+    @Override
+    public ResultView switchToResultView(GameResult gameResult) {
+        ResultView resultView = new ReportScreen(gameResult);
+        setVisible(false);
+        return resultView;
     }
 }
