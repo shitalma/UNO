@@ -94,7 +94,7 @@ public class Game {
         getStatusHint(card);
 //        handleReverse(card);
 //        handleSkip(card);
-//        handleDrawTwo(card);
+        handleDrawTwo(card);
 //        handleWildCard(card, newColour);
         nextTurn();
     }
@@ -115,7 +115,8 @@ public class Game {
 
     private void handleDrawTwo(Card card) {
         if (!card.sign.equals(Sign.DrawTwo)) return;
-        draw2Run++;
+        draw2Run = draw2Run + 2;
+
     }
 
     private void handleWildCard(Card card, Colour newColour) {
@@ -142,6 +143,7 @@ public class Game {
         //Can play the same card in that turn
         Card newCard = draw();
         player.take(newCard);
+        nextTurn();
         return newCard;
     }
 
