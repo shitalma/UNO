@@ -106,6 +106,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
     }
 
     private void getStatusHint() {
+
         hint = new JTextArea();
         hint.setPreferredSize(new Dimension(50, 50));
         hint.setBounds(10, 230, 650, 150);
@@ -113,7 +114,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         hint.setBorder(BorderFactory.createCompoundBorder(border,
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-        hint.setText("Status hint");
+        hint.setText(snapshot.hint);
         hint.setFont(new Font("sansserif", Font.BOLD, 25));
         deck.add(hint);
     }
@@ -128,7 +129,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
         openPile.setBorder(border2);
         openPile.setFont(new Font("sansserif", Font.BOLD, 25));
 
-        String cardValueInOpenPile = this.openCard.sign.toString();
+        String cardValueInOpenPile = this.openCard.sign.getValue();
         if (cardValueInOpenPile.contains("_"))
             cardValueInOpenPile = cardValueInOpenPile.substring(1);
         openPile.setText(cardValueInOpenPile);
@@ -139,7 +140,10 @@ public class PlayerScreen extends JFrame implements PlayerView {
     private void getDrawButton() {
         deck = new JPanel();
         deck.setLayout(null);
-        JButton drawButton = new JButton(" Draw ");
+        int drawCount = snapshot.draw2Run;
+        if(drawCount == 0)
+            drawCount = 1;
+        JButton drawButton = new JButton("Draw  "+ drawCount);
         drawButton.setPreferredSize(new Dimension(30, 30));
         drawButton.setLocation(10, 10);
         drawButton.setBounds(20, 20, 140, 200);

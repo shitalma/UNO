@@ -36,6 +36,7 @@ public class GameClientController implements PlayerViewObserver, GameClientObser
 
     @Override
     public void play(Card card) {
+
         gameClient.play(card);
     }
 
