@@ -15,6 +15,7 @@ public class Game {
     private boolean isInAscendingOrder = true;
     private Colour runningColour;
     private int draw2Run=0;
+    private String hint;
 
     public Game(int packs, List<Player> givenPlayers) {
         players = new ArrayList<>(givenPlayers);
@@ -40,7 +41,9 @@ public class Game {
             }
         }
         //handle special cards in open card
-        openDeck.add(draw());
+        Card topCard = draw();
+        openDeck.add(topCard);
+        getStatusHint(topCard);
     }
 
     public Deck getOpenDeck() {
@@ -80,6 +83,7 @@ public class Game {
         snapshot.isInAscendingOrder = this.isInAscendingOrder;
         snapshot.runningColour = runningColour;
         snapshot.draw2Run = draw2Run;
+        snapshot.hint = hint;
     }
 
         //handle action of card
@@ -87,11 +91,16 @@ public class Game {
         if(!new RuleEngine().isCardValidToPlay(card, openDeck.lookAtLast())) return;
         player.play(card);
         openDeck.add(card);
+        getStatusHint(card);
 //        handleReverse(card);
 //        handleSkip(card);
 //        handleDrawTwo(card);
 //        handleWildCard(card, newColour);
         nextTurn();
+    }
+
+    private void getStatusHint(Card card) {
+        this.hint = "U can put " + card.colour + " or "+card.sign.getValue();
     }
 
     private void handleReverse(Card card) {

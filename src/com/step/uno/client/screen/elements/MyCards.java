@@ -19,9 +19,9 @@ public class MyCards extends JPanel implements ActionListener {
         this.playerViewObserver = playerViewObserver;
         setLayout(new GridLayout(0, cards.size()));
         for (Card card : cards) {
-            String cardName = card.sign.toString();
-            if (cardName.contains("_"))
-                cardName = cardName.substring(1);
+            String cardName = card.sign.getValue();
+//            if (cardName.contains("_"))
+//                cardName = cardName.substring();
             JButton cardButton = new JButton(cardName);
             cardButton.setPreferredSize(new Dimension(140, 180));
             cardButton.setBackground(card.colour.getColor());
