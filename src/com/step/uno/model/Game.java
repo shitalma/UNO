@@ -96,7 +96,7 @@ public class Game {
     }
 
     private void getActivity(Player player, Card card) {
-        this.activity = player.getName() + " placed "+ card.colour +" "+ card.sign.getValue();
+        this.activity = player.getName() + " placed "+ runningColour +" "+ card.sign.getValue();
     }
 
     private void getStatusHint(Card card) {
