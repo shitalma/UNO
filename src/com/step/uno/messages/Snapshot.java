@@ -20,4 +20,5 @@ public class Snapshot implements Serializable {
     public int draw2Run;
     public String currentPlayerName;
     public String hint;
+    public String activity;
 }

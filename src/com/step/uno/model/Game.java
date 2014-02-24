@@ -16,6 +16,7 @@ public class Game {
     private Colour runningColour;
     private int draw2Run=0;
     private String hint;
+    private String activity = " ";
 
     public Game(int packs, List<Player> givenPlayers) {
         players = new ArrayList<>(givenPlayers);
@@ -74,6 +75,7 @@ public class Game {
         snapshot.runningColour = runningColour;
         snapshot.draw2Run = draw2Run;
         snapshot.hint = hint;
+        snapshot.activity = activity;
     }
 
         //handle action of card
@@ -85,11 +87,16 @@ public class Game {
         player.play(card);
         openDeck.add(card);
         getStatusHint(card);
+        getActivity(player,card);
 //        handleReverse(card);
 //        handleSkip(card);
         handleDrawTwo(card);
 //        handleWildCard(card, newColour);
         nextTurn();
+    }
+
+    private void getActivity(Player player, Card card) {
+        this.activity = player.getName() + " placed "+ card.colour +" "+ card.sign.getValue();
     }
 
     private void getStatusHint(Card card) {

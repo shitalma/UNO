@@ -171,7 +171,7 @@ public class PlayerScreen extends JFrame implements PlayerView {
     private JScrollPane getActivityLog() {
         textArea = new JTextArea(35, 20);
         textArea.setFont(new Font("sansserif", Font.BOLD, 20));
-        textArea.append("Kavita placed red:5");
+        textArea.setText(textArea.getText() + snapshot.activity);
         textArea.setEditable(false);
         JScrollPane scrollableTextArea = new JScrollPane(textArea);
         scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);

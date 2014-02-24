@@ -5,12 +5,10 @@ import com.step.uno.client.GameClientObserver;
 import com.step.uno.client.screen.PlayerViewObserver;
 import com.step.uno.client.view.JoinGameView;
 import com.step.uno.client.view.PlayerView;
-import com.step.uno.client.view.ResultView;
 import com.step.uno.factory.Factory;
 import com.step.uno.messages.GameResult;
 import com.step.uno.messages.Snapshot;
 import com.step.uno.model.Card;
-import sun.net.www.content.text.plain;
 
 public class GameClientController implements PlayerViewObserver, GameClientObserver {
     private JoinGameView joinGameView;
