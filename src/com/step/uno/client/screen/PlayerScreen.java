@@ -142,10 +142,10 @@ public class PlayerScreen extends JFrame implements PlayerView {
     private void getDrawButton() {
         deck = new JPanel();
         deck.setLayout(null);
-        int drawCount = snapshot.draw2Run;
-        if(drawCount == 0)
-            drawCount = 1;
-        JButton drawButton = new JButton("Draw  "+ drawCount);
+//        int drawCount = snapshot.draw2Run;
+//        if(drawCount == 0)
+//            drawCount = 1;
+        JButton drawButton = new JButton("  Draw  ");
         drawButton.setPreferredSize(new Dimension(30, 30));
         drawButton.setLocation(10, 10);
         drawButton.setBounds(20, 20, 140, 200);
