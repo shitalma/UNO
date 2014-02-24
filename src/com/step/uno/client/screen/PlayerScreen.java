@@ -186,8 +186,6 @@ public class PlayerScreen extends JFrame implements PlayerView {
         JPanel pane1 = (JPanel) this.getContentPane();
         pane1.add(scrollPane);
         scrollPane.setPreferredSize(new Dimension(300, 200));
-        System.out.println(snapshot.player.get(snapshot.myPlayerIndex));
-        System.out.println(areCardsVisible);
         return scrollPane;
     }
 
